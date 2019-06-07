@@ -1,0 +1,17 @@
+{
+  "extends": "@bluelovers/tsconfig",
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "declaration": true,
+    "removeComments": false
+  },
+  "include": [
+    "./lib/**/*.ts"
+  ],
+  "exclude": [
+    "**/*.d.ts",
+    "**/tests/**",
+    "**/esm/**"
+  ]
+}

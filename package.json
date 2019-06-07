@@ -1,0 +1,42 @@
+{
+  "name": "lazy-url",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/bluelovers/lazy-url#readme",
+  "bugs": {
+    "url": "https://github.com/bluelovers/lazy-url/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bluelovers/lazy-url.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "build": "npm run build:before & npm run build:tsc & npm run build:after",
+    "build:after": "git add ./esm & git add ./lib & echo build:after",
+    "build:before": "git rm ./esm -r -f & echo build:before",
+    "build:tsc": "tsc -p tsconfig.esm.json && tsc -p tsconfig.json",
+    "coverage": "npx nyc npm run test",
+    "lint": "npx eslint **/*.ts",
+    "ncu": "npx yarn-tool ncu -u",
+    "prepublishOnly": "npm run ncu && npm run sort-package-json",
+    "postpublish": "git commit -m \"publish new version\" .",
+    "sort-package-json": "npx sort-package-json ./package.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@types/node": "^12.0.7",
+    "symbol.inspect": "^1.0.0",
+    "url-parse": "^1.4.7"
+  },
+  "devDependencies": {
+    "@types/url-parse": "^1.4.3"
+  }
+}
