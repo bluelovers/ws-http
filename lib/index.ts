@@ -6,7 +6,7 @@ import urlParse from 'url-parse';
 import SymbolInspect from 'symbol.inspect';
 import util from 'util';
 
-export type IURLLike = string | URL;
+export type IURLLike = string | URL | IURLObjectLike;
 export const SYM_URL = Symbol('url');
 export const SYM_HIDDEN = Symbol('hidden');
 
@@ -22,6 +22,11 @@ export class LazyURL extends URL implements URL
 {
 	protected [SYM_URL]?: URL;
 	protected [SYM_HIDDEN]: Partial<URL>;
+
+	static create(url: IURLLike | [IURLLike, IURLLike?], base?: IURLLike)
+	{
+		return new this(url, base)
+	}
 
 	constructor(url: IURLLike | [IURLLike, IURLLike?], base?: IURLLike)
 	{
@@ -468,6 +473,11 @@ export function findSymbolContext(): symbol
 	return SymbolContext;
 }
 
+export interface IURLObjectLike
+{
+	href: string;
+}
+
 export interface IURLObject
 {
 	href: string;
@@ -493,9 +503,17 @@ export function _core(url: IURLLike | [IURLLike, IURLLike?], base?: IURLLike)
 		}
 	}
 
-	if (url && url instanceof URL)
+	if (url && url instanceof LazyURL)
+	{
+		url = url.toRealString();
+	}
+	else if (url && url instanceof URL)
 	{
 		url = url.href;
+	}
+	else if (url != null && typeof (url as IURLObjectLike).href === 'string')
+	{
+		url = (url as IURLObjectLike).href;
 	}
 	else if (typeof url !== 'string')
 	{
@@ -505,6 +523,11 @@ export function _core(url: IURLLike | [IURLLike, IURLLike?], base?: IURLLike)
 	let _url: URL;
 	const _hidden_: Partial<URL> = {};
 
+	if (typeof base !== 'string' && base != null && typeof base.href === 'string')
+	{
+		base = base.href;
+	}
+
 	if (base === '')
 	{
 		base = void 0;
@@ -512,7 +535,7 @@ export function _core(url: IURLLike | [IURLLike, IURLLike?], base?: IURLLike)
 
 	try
 	{
-		_url = new URL(url, base)
+		_url = new URL(url, base as string)
 	}
 	catch (e)
 	{
