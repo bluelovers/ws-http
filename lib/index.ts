@@ -456,7 +456,7 @@ export class URLSearchParamsLazy extends URLSearchParams implements URLSearchPar
 {
 	clone(): URLSearchParamsLazy
 	{
-		console.dir(this.entries());
+		//console.dir(this.entries());
 		// @ts-ignore
 		return new URLSearchParamsLazy(this.entries())
 	}
