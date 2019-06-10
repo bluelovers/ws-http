@@ -62,9 +62,6 @@ export declare class LazyURL extends URL implements URL {
 export declare type IEntries = (["hash" | "host" | "hostname" | "href" | "password" | "pathname" | "port" | "protocol" | "search" | "username", string] | ["searchParams", URLSearchParams])[];
 export declare type IEntriesRow<T extends IUrlKeys> = [T, URL[T]];
 export declare type IUrlKeys = 'href' | 'username' | 'password' | 'host' | 'hostname' | 'port' | 'pathname' | 'search' | 'searchParams' | 'protocol' | 'hash';
-export declare class URLSearchParamsLazy extends URLSearchParams implements URLSearchParams {
-    clone(): URLSearchParamsLazy;
-}
 export declare function findSymbolContext(): symbol;
 export interface IURLObjectLike {
     href: string;

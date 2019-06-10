@@ -81,6 +81,16 @@ describe(relative(__filename), () =>
 				`fake+http://url-fake-hostname/zh-TW/scripts`,
 				`/zh-TW/scripts`,
 			],
+			[
+				['/api/v5/repos/xxxx/xxxx/contents', 'https://gitee.com/api/v5/'],
+				'https://gitee.com/api/v5/repos/xxxx/xxxx/contents',
+				'https://gitee.com/api/v5/repos/xxxx/xxxx/contents',
+			],
+			[
+				['/api/v5/repos/xxxx/xxxx/contents', '/api/v5/'],
+				'fake+http://url-fake-hostname/api/v5/repos/xxxx/xxxx/contents',
+				'/api/v5/repos/xxxx/xxxx/contents',
+			],
 		].forEach(test =>
 		{
 			// @ts-ignore

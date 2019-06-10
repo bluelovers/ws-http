@@ -452,16 +452,6 @@ export type IUrlKeys =
 	| 'hash'
 	;
 
-export class URLSearchParamsLazy extends URLSearchParams implements URLSearchParams
-{
-	clone(): URLSearchParamsLazy
-	{
-		//console.dir(this.entries());
-		// @ts-ignore
-		return new URLSearchParamsLazy(this.entries())
-	}
-}
-
 export function findSymbolContext(): symbol
 {
 	let u = new URL(`https://localhost`);
