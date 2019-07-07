@@ -44,12 +44,12 @@ export declare class LazyURL extends URL implements URL {
     * @alias search
     */
     query: string;
+    toObject(): IURLObject;
     /**
      * clone into a object
      *
      * @returns {IURLObject}
      */
-    toObject(url: URL): IURLObject;
     static toObject(url: URL): IURLObject;
     keys(): IUrlKeys[];
     values(): (string | URLSearchParams)[];

@@ -6,6 +6,8 @@
 yarn add lazy-url
 ```
 
+see [index.test.ts](./test/index.test.ts)
+
 ```ts
 // @ts-ignore
 import LazyURL from 'lazy-url';

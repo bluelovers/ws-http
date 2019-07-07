@@ -324,16 +324,16 @@ export class LazyURL extends URL implements URL
 		this.search = value;
 	}
 
+	toObject(): IURLObject
+	{
+		return LazyURL.toObject(this)
+	}
+
 	/**
 	 * clone into a object
 	 *
 	 * @returns {IURLObject}
 	 */
-	toObject(url: URL): IURLObject
-	{
-		return LazyURL.toObject(url)
-	}
-
 	static toObject(url: URL): IURLObject
 	{
 		return LazyURL.keys().reduce((a, b) =>
