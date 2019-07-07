@@ -1,12 +1,13 @@
 /**
  * Created by user on 2019/6/6.
  */
-export declare type IURLLike = string | URL;
+export declare type IURLLike = string | URL | IURLObjectLike;
 export declare const SYM_URL: unique symbol;
 export declare const SYM_HIDDEN: unique symbol;
 export declare class LazyURL extends URL implements URL {
     protected [SYM_URL]?: URL;
     protected [SYM_HIDDEN]: Partial<URL>;
+    static create(url: IURLLike | [IURLLike, IURLLike?], base?: IURLLike): LazyURL;
     constructor(url: IURLLike | [IURLLike, IURLLike?], base?: IURLLike);
     readonly paths: any;
     fakeExists(): number;
@@ -43,12 +44,12 @@ export declare class LazyURL extends URL implements URL {
     * @alias search
     */
     query: string;
+    toObject(): IURLObject;
     /**
      * clone into a object
      *
      * @returns {IURLObject}
      */
-    toObject(url: URL): IURLObject;
     static toObject(url: URL): IURLObject;
     keys(): IUrlKeys[];
     values(): (string | URLSearchParams)[];
@@ -61,10 +62,10 @@ export declare class LazyURL extends URL implements URL {
 export declare type IEntries = (["hash" | "host" | "hostname" | "href" | "password" | "pathname" | "port" | "protocol" | "search" | "username", string] | ["searchParams", URLSearchParams])[];
 export declare type IEntriesRow<T extends IUrlKeys> = [T, URL[T]];
 export declare type IUrlKeys = 'href' | 'username' | 'password' | 'host' | 'hostname' | 'port' | 'pathname' | 'search' | 'searchParams' | 'protocol' | 'hash';
-export declare class URLSearchParamsLazy extends URLSearchParams implements URLSearchParams {
-    clone(): URLSearchParamsLazy;
-}
 export declare function findSymbolContext(): symbol;
+export interface IURLObjectLike {
+    href: string;
+}
 export interface IURLObject {
     href: string;
     protocol: string;

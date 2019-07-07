@@ -1,6 +1,6 @@
 {
   "name": "lazy-url",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "a more easy use URL",
   "keywords": [
     "URL",
@@ -46,7 +46,7 @@
     "coverage": "npx nyc npm run test",
     "lint": "npx eslint **/*.ts",
     "ncu": "npx yarn-tool ncu -u",
-    "prepublishOnly": "npm run ncu && npm run sort-package-json",
+    "prepublishOnly": "npm run ncu && npm run sort-package-json && yarn run build",
     "postpublish": "git commit -m \"publish new version\" .",
     "sort-package-json": "npx sort-package-json ./package.json",
     "test": "echo \"Error: no test specified\" && exit 1"
