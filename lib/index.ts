@@ -344,7 +344,7 @@ export class LazyURL extends URL implements URL
 			}
 			else
 			{
-				a[b] = this[b];
+				a[b] = url[b];
 			}
 
 			return a
