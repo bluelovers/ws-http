@@ -701,7 +701,10 @@ function http (opts, onRequest) {
   const _http = require('http')
 
   const server = _http.createServer(function (req, res) {
-    onRequest(originalUrl(req), server.address().port)
+    let result = originalUrl(req)
+    delete result.host;
+
+    onRequest(result, server.address().port)
     res.end()
   })
 
@@ -725,7 +728,10 @@ function https (opts, onRequest) {
   const _https = require('https')
 
   const server = _https.createServer(pem, function (req, res) {
-    onRequest(originalUrl(req), server.address().port)
+    let result = originalUrl(req)
+    delete result.host;
+
+    onRequest(result, server.address().port)
     res.end()
   })
 
