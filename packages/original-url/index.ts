@@ -6,6 +6,7 @@ export interface IResult
 {
 	raw: string;
 	protocol: string | 'https:' | 'http:';
+	host: string;
 	hostname: string;
 	port: number;
 	pathname: string;
@@ -128,6 +129,11 @@ export function originalUrl(req)
 		result.port = Number(getFirstHeader(req, 'x-forwarded-port'))
 	}
 	else if (host.port) result.port = Number(host.port)
+
+	if (result.hostname)
+	{
+		result.host = result.hostname + ':' + host.port;
+	}
 
 	// pathname
 	if (url.pathname)
