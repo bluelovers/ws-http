@@ -2,7 +2,7 @@
 
 const pem = require('https-pem')
 const test = require('tape')
-const originalUrl = require('./')
+const originalUrl = require('../index').default
 
 /**
  * Basic HTTP

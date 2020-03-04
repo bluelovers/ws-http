@@ -1,25 +1,7 @@
 {
-  "name": "original-url",
+  "name": "original-url2",
   "version": "1.2.3",
   "description": "Reconstruct the original URL used in an HTTP request based on the HTTP request headers",
-  "main": "index.js",
-  "dependencies": {
-    "forwarded-parse": "^2.1.0"
-  },
-  "devDependencies": {
-    "https-pem": "^2.0.0",
-    "standard": "^11.0.1",
-    "tape": "^4.9.1"
-  },
-  "scripts": {
-    "format": "standard --fix",
-    "bench": "node benchmark/benchmark.js",
-    "test": "standard && node test.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/watson/original-url.git"
-  },
   "keywords": [
     "http",
     "https",
@@ -41,12 +23,43 @@
     "x-forwarded-host",
     "x-forwarded-port"
   ],
-  "author": "Thomas Watson <w@tson.dk> (https://twitter.com/wa7son)",
-  "license": "MIT",
+  "homepage": "https://github.com/watson/original-url#readme",
   "bugs": {
     "url": "https://github.com/watson/original-url/issues"
   },
-  "homepage": "https://github.com/watson/original-url#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/watson/original-url.git"
+  },
+  "license": "MIT",
+  "author": "Thomas Watson <w@tson.dk> (https://twitter.com/wa7son)",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "bench": "node benchmark/benchmark.js",
+    "coverage": "npx nyc yarn run test",
+    "lint": "npx eslint **/*.ts",
+    "ncu": "npx yarn-tool ncu -u",
+    "npm:publish": "npm publish",
+    "postpublish_": "git commit -m \"chore(release): publish\" .",
+    "prepublish:lockfile": "npx sync-lockfile .",
+    "prepublishOnly": "yarn run test",
+    "sort-package-json": "npx yarn-tool sort",
+    "test": "node test/test.js",
+    "test:mocha": "npx mocha --require ts-node/register \"!(node_modules)/**/*.{test,spec}.{ts,tsx}\"",
+    "tsc:default": "tsc -p tsconfig.json",
+    "tsc:esm": "tsc -p tsconfig.esm.json"
+  },
+  "dependencies": {
+    "forwarded-parse": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/tape": "^4.2.34",
+    "https-pem": "^2.0.0",
+    "tape": "^4.13.2"
+  },
   "coordinates": [
     55.778257,
     12.593204
