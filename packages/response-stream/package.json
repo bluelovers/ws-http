@@ -1,5 +1,5 @@
 {
-  "name": "response-stream",
+  "name": "http-response-stream",
   "version": "1.0.1",
   "description": "",
   "license": "ISC",
@@ -26,5 +26,6 @@
     "@bluelovers/tsconfig": "^1.0.17",
     "@types/node": "^13.5.0",
     "tsdx": "^0.12.3"
-  }
+  },
+  "gitHead": "a4f916a9cf1ff0cef069e248bc786a885882bed4"
 }
