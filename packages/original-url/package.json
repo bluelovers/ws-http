@@ -53,7 +53,8 @@
     "tsc:esm": "tsc -p tsconfig.esm.json"
   },
   "dependencies": {
-    "forwarded-parse": "^2.1.0"
+    "forwarded-parse": "^2.1.0",
+    "ip-regex": "^4.1.0"
   },
   "devDependencies": {
     "@types/tape": "^4.2.34",

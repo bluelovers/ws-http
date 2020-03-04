@@ -7,3 +7,4 @@ export declare function getFirstHeader(req: {
     headers: Record<any, any>;
 }, header: string): string;
 export declare function parsePartialURL(url: string): import("url").UrlWithStringQuery;
+export declare function isIPv6(ip: string): boolean;

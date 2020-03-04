@@ -1,7 +1,6 @@
 import { parse as parseUrl, UrlWithStringQuery } from 'url';
 import parseForwarded from 'forwarded-parse';
-import { isIPv6 } from 'net';
-import { parsePartialURL, getFirstHeader } from './util';
+import { parsePartialURL, getFirstHeader, isIPv6 } from './util';
 
 export interface IResult
 {

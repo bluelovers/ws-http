@@ -1,5 +1,7 @@
-
 import { parse as parseUrl } from "url";
+import { v6 } from 'ip-regex';
+
+const re_v6 = v6({ exact: true });
 
 /**
  * In case there's more than one header of a given name, we want the first one
@@ -19,4 +21,9 @@ export function parsePartialURL(url: string)
 	const result = parseUrl(containsProtocol ? url : 'invalid://' + url)
 	if (!containsProtocol) result.protocol = ''
 	return result
+}
+
+export function isIPv6(ip: string)
+{
+	return re_v6.test(ip)
 }
