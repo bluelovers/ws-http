@@ -6,6 +6,9 @@ export interface IResult
 {
 	raw: string;
 	protocol: string | 'https:' | 'http:';
+	/**
+	 * hostname + port
+	 */
 	host: string;
 	hostname: string;
 	port: number;
@@ -132,7 +135,7 @@ export function originalUrl(req)
 
 	if (result.hostname)
 	{
-		result.host = result.hostname + ':' + host.port;
+		result.host = result.hostname + (host.port ? ':' + host.port : '');
 	}
 
 	// pathname

@@ -1,6 +1,9 @@
 export interface IResult {
     raw: string;
     protocol: string | 'https:' | 'http:';
+    /**
+     * hostname + port
+     */
     host: string;
     hostname: string;
     port: number;
