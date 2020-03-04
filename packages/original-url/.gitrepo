@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/watson/original-url.git
+	branch = master
+	commit = 4447ad715030695b5a9627765e211e018e99c38c
+	parent = 125da9d5463a270887d7084ab2dc9df2e389d892
+	method = merge
+	cmdver = 0.4.1
