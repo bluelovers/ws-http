@@ -31,6 +31,20 @@ export function iifFallbackPort(port: string | number, ports: IPortsInput): numb
 	return port > 0 ? port : 0;
 }
 
+/**
+ * OPENSHIFT_NODEJS_PORT
+ * VCAP_APP_PORT
+ * PORT
+ */
+export function getPortEnv()
+{
+	return iifFallbackPort(0, [
+		process.env.OPENSHIFT_NODEJS_PORT,
+		process.env.VCAP_APP_PORT,
+		process.env.PORT,
+	]);
+}
+
 export function getDefaultPort(options: {
 	preferPorts?: IPortsInput,
 	fallbackPorts?: IPortsInput,
@@ -44,11 +58,7 @@ export function getDefaultPort(options: {
 
 	if (port === 0 && typeof process !== 'undefined' && process?.env)
 	{
-		port = iifFallbackPort(port, [
-			process.env.OPENSHIFT_NODEJS_PORT,
-			process.env.VCAP_APP_PORT,
-			process.env.PORT,
-		]);
+		port = getPortEnv();
 	}
 
 	port = iifFallbackPort(port, fallbackPorts);
