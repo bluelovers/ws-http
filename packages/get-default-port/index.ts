@@ -48,9 +48,10 @@ export function getPortEnv()
 export function getDefaultPort(options: {
 	preferPorts?: IPortsInput,
 	fallbackPorts?: IPortsInput,
+	defaultPort?: number,
 } = {}): number
 {
-	const { preferPorts, fallbackPorts } = options;
+	const { preferPorts, fallbackPorts, defaultPort } = options;
 
 	let port: number | string;
 
@@ -63,7 +64,7 @@ export function getDefaultPort(options: {
 
 	port = iifFallbackPort(port, fallbackPorts);
 
-	return port || 3000
+	return port || defaultPort && iifFallbackPort(defaultPort, 0) || 3000
 }
 
 export default getDefaultPort

@@ -12,5 +12,6 @@ export declare function getPortEnv(): number;
 export declare function getDefaultPort(options?: {
     preferPorts?: IPortsInput;
     fallbackPorts?: IPortsInput;
+    defaultPort?: number;
 }): number;
 export default getDefaultPort;
