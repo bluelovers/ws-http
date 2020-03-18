@@ -41,6 +41,7 @@ export function getPortEnv()
 	return iifFallbackPort(0, [
 		process.env.OPENSHIFT_NODEJS_PORT,
 		process.env.VCAP_APP_PORT,
+		process.env.NODE_PORT,
 		process.env.PORT,
 	]);
 }
