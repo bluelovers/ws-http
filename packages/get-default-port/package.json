@@ -1,6 +1,6 @@
 {
   "name": "get-default-port",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "get port from environment and give ports, default is 3000",
   "homepage": "https://github.com/bluelovers/ws-http/tree/master/packages/get-default-port#readme",
   "bugs": {
