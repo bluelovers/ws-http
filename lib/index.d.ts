@@ -9,10 +9,10 @@ export declare class LazyURL extends URL implements URL {
     protected [SYM_HIDDEN]: Partial<URL>;
     static create(url: IURLLike | [IURLLike, IURLLike?], base?: IURLLike): LazyURL;
     constructor(url: IURLLike | [IURLLike, IURLLike?], base?: IURLLike);
-    readonly paths: any;
+    get paths(): string[];
     fakeExists(): number;
     fakeKeys(): string[];
-    fakeEntries(): [string, string | URLSearchParams | (() => string)][];
+    fakeEntries(): [string, string | (() => string) | URLSearchParams | (() => string)][];
     /**
      * get the real url (remove fake value)
      * throw error if not a valid url
@@ -21,29 +21,34 @@ export declare class LazyURL extends URL implements URL {
      */
     toRealString(): string;
     toString(): string;
-    hostname: string;
-    protocol: string;
+    get hostname(): string;
+    set hostname(value: string);
+    get protocol(): string;
+    set protocol(value: string);
     /**
      * @alias protocol
      */
+    get scheme(): string;
     /**
-    * @alias protocol
-    */
-    scheme: string;
+     * @alias protocol
+     */
+    set scheme(value: string);
     /**
      * @alias hash
      */
+    get fragment(): string;
     /**
-    * @alias hash
-    */
-    fragment: string;
+     * @alias hash
+     */
+    set fragment(value: string);
     /**
      * @alias search
      */
+    get query(): string;
     /**
-    * @alias search
-    */
-    query: string;
+     * @alias search
+     */
+    set query(value: string);
     toObject(): IURLObject;
     /**
      * clone into a object

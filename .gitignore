@@ -68,3 +68,8 @@ coverage
 !.gitlab
 .git
 
+/.mocharc.yml
+/.nowignore
+/.nycrc
+/tsconfig.tsbuildinfo
+/tsconfig.esm.tsbuildinfo

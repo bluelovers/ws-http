@@ -31,32 +31,41 @@
     "url": "git+https://github.com/bluelovers/lazy-url.git"
   },
   "license": "ISC",
-  "author": "",
+  "author": "bluelovers",
   "main": "lib/index.js",
   "module": "esm/index.js",
+  "types": "lib/index.d.ts",
   "directories": {
     "lib": "lib",
     "test": "test"
   },
   "scripts": {
-    "build": "npm run build:before & npm run build:tsc & npm run build:after",
+    "coverage": "npx nyc npm run test",
+    "lint": "npx eslint **/*.ts",
+    "test": "jest --coverage",
+    "build": "yarn run build:before & yarn run build:tsc & yarn run build:after",
     "build:after": "git add ./esm & git add ./lib & echo build:after",
     "build:before": "git rm ./esm -r -f & echo build:before",
     "build:tsc": "tsc -p tsconfig.esm.json && tsc -p tsconfig.json",
-    "coverage": "npx nyc npm run test",
-    "lint": "npx eslint **/*.ts",
+    "npm:publish": "npm publish",
+    "npm:publish:lerna": "npx lerna publish --yes --cd-version patch",
+    "prepublish:lockfile": "npx sync-lockfile .",
+    "prepublishOnly": "yarn run ncu && yarn run sort-package-json && yarn run build",
+    "prepublishOnly_": "yarn run ncu && yarn run sort-package-json && yarn run test",
+    "postpublish": "git commit -m \"chore(release): publish\" .",
     "ncu": "npx yarn-tool ncu -u",
-    "prepublishOnly": "npm run ncu && npm run sort-package-json && yarn run build",
-    "postpublish": "git commit -m \"publish new version\" .",
-    "sort-package-json": "npx sort-package-json ./package.json",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "sort-package-json": "npx yarn-tool sort"
   },
   "dependencies": {
-    "@types/node": "^12.0.12",
-    "symbol.inspect": "^1.0.0",
+    "symbol.inspect": "^1.0.1",
     "url-parse": "^1.4.7"
   },
   "devDependencies": {
-    "@types/url-parse": "^1.4.3"
+    "@bluelovers/tsconfig": "^1.0.19",
+    "@types/jest": "^25.2.3",
+    "@types/node": "^14.0.5",
+    "@types/url-parse": "^1.4.3",
+    "jest": "^26.0.1",
+    "ts-jest": "^26.0.0"
   }
 }

@@ -69,7 +69,7 @@ export class LazyURL extends URL implements URL
 
 	 */
 
-	get paths()
+	get paths(): string[]
 	{
 		if (SymbolContext != null && this[SymbolContext] && Array.isArray(this[SymbolContext].path))
 		{
