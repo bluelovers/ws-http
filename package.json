@@ -1,6 +1,6 @@
 {
   "name": "lazy-url",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "a more easy use URL",
   "keywords": [
     "URL",
@@ -33,7 +33,6 @@
   "license": "ISC",
   "author": "bluelovers",
   "main": "lib/index.js",
-  "module": "esm/index.js",
   "types": "lib/index.d.ts",
   "directories": {
     "lib": "lib",
