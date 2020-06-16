@@ -29,7 +29,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "ynpx --quiet eslint -- **/*.ts",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "test:jest": "ynpx --quiet jest -- --coverage",
     "test:mocha": "ynpx --quiet -p ts-node -p mocha mocha -- --require ts-node/register \"!(node_modules)/**/*.{test,spec}.{ts,tsx}\"",
     "prepublishOnly": "yarn run prepublishOnly:check-bin && yarn run test",
@@ -44,5 +44,5 @@
   "peerDependencies": {
     "abort-controller": "^3.0.0"
   },
-  "gitHead": "8085adf1cbb97fddbfcdabde2294430143714ef7"
+  "gitHead": "603941de35a5c34f1a89c25fe6bdf0028742c533"
 }
