@@ -9,23 +9,12 @@
   "module": "dist/response-stream.esm.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "coverage": "npx nyc yarn run test",
-    "lint": "npx eslint **/*.ts",
     "ncu": "npx yarn-tool ncu -u",
-    "npm:publish": "npm publish",
-    "postpublish_": "git commit -m \"chore(release): publish\" .",
-    "prepublish:lockfile": "npx sync-lockfile .",
+    "build": "ynpx tsdx -- build",
     "prepublishOnly_": "yarn run ncu && yarn run sort-package-json && yarn run test",
     "sort-package-json": "npx yarn-tool sort",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "test:mocha": "npx mocha --require ts-node/register \"!(node_modules)/**/*.{test,spec}.{ts,tsx}\"",
-    "tsc:default": "tsc -p tsconfig.json",
-    "tsc:esm": "tsc -p tsconfig.esm.json"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "devDependencies": {
-    "@bluelovers/tsconfig": "^1.0.17",
-    "@types/node": "^13.5.0",
-    "tsdx": "^0.12.3"
-  },
+  "devDependencies": {},
   "gitHead": "a4f916a9cf1ff0cef069e248bc786a885882bed4"
 }

@@ -23,14 +23,6 @@
     "x-forwarded-host",
     "x-forwarded-port"
   ],
-  "homepage": "https://github.com/watson/original-url#readme",
-  "bugs": {
-    "url": "https://github.com/watson/original-url/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/watson/original-url.git"
-  },
   "license": "MIT",
   "author": "Thomas Watson <w@tson.dk> (https://twitter.com/wa7son)",
   "main": "index.js",
@@ -47,7 +39,7 @@
     "prepublish:lockfile": "npx sync-lockfile .",
     "prepublishOnly": "yarn run test",
     "sort-package-json": "npx yarn-tool sort",
-    "test": "node test/test.js",
+    "test": "jest",
     "test:mocha": "npx mocha --require ts-node/register \"!(node_modules)/**/*.{test,spec}.{ts,tsx}\"",
     "tsc:default": "tsc -p tsconfig.json",
     "tsc:esm": "tsc -p tsconfig.esm.json"
@@ -57,9 +49,7 @@
     "ip-regex": "^4.1.0"
   },
   "devDependencies": {
-    "@types/tape": "^4.2.34",
-    "https-pem": "^2.0.0",
-    "tape": "^4.13.2"
+    "https-pem": "^2.0.0"
   },
   "coordinates": [
     55.778257,

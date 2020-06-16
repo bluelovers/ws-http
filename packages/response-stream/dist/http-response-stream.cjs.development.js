@@ -1,7 +1,5 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', { value: true });
-
 var stream = require('stream');
 
 /**
@@ -15,4 +13,4 @@ function responseStream(serverResponse, data) {
 
 exports.default = responseStream;
 exports.responseStream = responseStream;
-//# sourceMappingURL=response-stream.cjs.development.js.map
+//# sourceMappingURL=http-response-stream.cjs.development.js.map

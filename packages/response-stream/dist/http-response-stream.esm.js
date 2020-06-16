@@ -11,4 +11,4 @@ function responseStream(serverResponse, data) {
 
 export default responseStream;
 export { responseStream };
-//# sourceMappingURL=response-stream.esm.js.map
+//# sourceMappingURL=http-response-stream.esm.js.map
