@@ -2,12 +2,6 @@
 /**
  * Created by user on 2020/6/16.
  */
-var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, privateMap) {
-    if (!privateMap.has(receiver)) {
-        throw new TypeError("attempted to get private field on non-instance");
-    }
-    return privateMap.get(receiver);
-};
 var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, privateMap, value) {
     if (!privateMap.has(receiver)) {
         throw new TypeError("attempted to set private field on non-instance");
@@ -15,10 +9,16 @@ var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (
     privateMap.set(receiver, value);
     return value;
 };
+var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, privateMap) {
+    if (!privateMap.has(receiver)) {
+        throw new TypeError("attempted to get private field on non-instance");
+    }
+    return privateMap.get(receiver);
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var _timer;
+var _timer, _ms;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AbortControllerTimer = exports.AbortController = void 0;
 const abort_controller_1 = __importDefault(require("abort-controller"));
@@ -26,8 +26,9 @@ exports.AbortController = abort_controller_1.default;
 class AbortControllerTimer extends abort_controller_1.default {
     constructor(ms) {
         super();
-        this.ms = ms;
         _timer.set(this, void 0);
+        _ms.set(this, void 0);
+        __classPrivateFieldSet(this, _ms, ms);
         this.reset();
         this.on('abort', (ev) => {
             this.clear();
@@ -48,7 +49,17 @@ class AbortControllerTimer extends abort_controller_1.default {
         return __classPrivateFieldGet(this, _timer);
     }
     get timeout() {
-        return this.ms;
+        if (__classPrivateFieldGet(this, _ms) > 0) {
+            return __classPrivateFieldGet(this, _ms);
+        }
+    }
+    set timeout(ms) {
+        ms |= 0;
+        if (ms <= 0) {
+            this.abort();
+            throw new TypeError(`ms should be greater than 0, but got {${ms}}`);
+        }
+        __classPrivateFieldSet(this, _ms, ms);
     }
     /**
      * warning: reset the timer will not abort signal
@@ -60,19 +71,19 @@ class AbortControllerTimer extends abort_controller_1.default {
         if (this.aborted) {
             throw new Error(`signal already aborted, can't be refresh`);
         }
-        const ms = this.ms;
-        this.ms |= 0;
-        if (this.ms > 0) {
-            __classPrivateFieldSet(this, _timer, setTimeout(() => this.abort(), this.ms));
+        const ms = __classPrivateFieldGet(this, _ms);
+        __classPrivateFieldSet(this, _ms, __classPrivateFieldGet(this, _ms) | 0);
+        if (__classPrivateFieldGet(this, _ms) > 0) {
+            __classPrivateFieldSet(this, _timer, setTimeout(() => this.abort(), __classPrivateFieldGet(this, _ms)));
         }
-        else if (this.ms < 0) {
+        else if (__classPrivateFieldGet(this, _ms) < 0) {
             try {
                 super.abort();
             }
             catch (e) {
                 console.trace(e);
             }
-            throw new TypeError(`ms should be greater than or equal to 0, but got {${ms} => ${this.ms}}`);
+            throw new TypeError(`ms should be greater than or equal to 0, but got {${ms} => ${__classPrivateFieldGet(this, _ms)}}`);
         }
         return __classPrivateFieldGet(this, _timer);
     }
@@ -108,6 +119,6 @@ class AbortControllerTimer extends abort_controller_1.default {
     }
 }
 exports.AbortControllerTimer = AbortControllerTimer;
-_timer = new WeakMap();
+_timer = new WeakMap(), _ms = new WeakMap();
 exports.default = AbortControllerTimer;
 //# sourceMappingURL=index.js.map

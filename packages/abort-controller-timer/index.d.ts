@@ -11,7 +11,6 @@ declare const AbortControllerTimer_base: {
 };
 export declare class AbortControllerTimer extends AbortControllerTimer_base {
     #private;
-    ms?: number;
     readonly signal: AbortSignal;
     constructor(ms?: number);
     on<K extends keyof AbortSignalEventMap>(type: K, listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -19,6 +18,7 @@ export declare class AbortControllerTimer extends AbortControllerTimer_base {
     get aborted(): boolean;
     get timer(): number | Timeout;
     get timeout(): number;
+    set timeout(ms: number);
     /**
      * warning: reset the timer will not abort signal
      *

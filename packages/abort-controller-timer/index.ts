@@ -13,10 +13,12 @@ export class AbortControllerTimer extends (AbortController2 as typeof AbortContr
 	readonly signal: AbortSignal
 
 	#timer?: Timeout | number
+	#ms: number
 
-	constructor(public ms?: number)
+	constructor(ms?: number)
 	{
 		super();
+		this.#ms = ms;
 		this.reset()
 
 		this.on('abort', (ev) =>
@@ -55,7 +57,23 @@ export class AbortControllerTimer extends (AbortController2 as typeof AbortContr
 
 	get timeout(): number
 	{
-		return this.ms
+		if (this.#ms > 0)
+		{
+			return this.#ms
+		}
+	}
+
+	set timeout(ms: number)
+	{
+		ms |= 0;
+
+		if (ms <= 0)
+		{
+			this.abort();
+			throw new TypeError(`ms should be greater than 0, but got {${ms}}`)
+		}
+
+		this.#ms = ms;
 	}
 
 	/**
@@ -72,15 +90,15 @@ export class AbortControllerTimer extends (AbortController2 as typeof AbortContr
 			throw new Error(`signal already aborted, can't be refresh`)
 		}
 
-		const ms = this.ms;
+		const ms = this.#ms;
 
-		this.ms |= 0;
+		this.#ms |= 0;
 
-		if (this.ms > 0)
+		if (this.#ms > 0)
 		{
-			this.#timer = setTimeout(() => this.abort(), this.ms)
+			this.#timer = setTimeout(() => this.abort(), this.#ms)
 		}
-		else if (this.ms < 0)
+		else if (this.#ms < 0)
 		{
 			try
 			{
@@ -91,7 +109,7 @@ export class AbortControllerTimer extends (AbortController2 as typeof AbortContr
 				console.trace(e)
 			}
 
-			throw new TypeError(`ms should be greater than or equal to 0, but got {${ms} => ${this.ms}}`)
+			throw new TypeError(`ms should be greater than or equal to 0, but got {${ms} => ${this.#ms}}`)
 		}
 
 		return this.#timer
