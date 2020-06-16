@@ -1,0 +1,47 @@
+{
+  "name": "abort-controller-timer",
+  "version": "1.0.0",
+  "description": "An AbortController that aborts after a specified timeout",
+  "keywords": [
+    "timeout",
+    "w3c",
+    "whatwg",
+    "event",
+    "events",
+    "abort",
+    "cancel",
+    "abortcontroller",
+    "abortsignal",
+    "controller",
+    "signal",
+    "shim"
+  ],
+  "homepage": "https://github.com/bluelovers/ws-http/tree/master/packages/abort-controller-timer#readme",
+  "bugs": {
+    "url": "https://github.com/bluelovers/ws-http/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bluelovers/ws-http.git"
+  },
+  "license": "ISC",
+  "author": "bluelovers",
+  "main": "index.js",
+  "scripts": {
+    "lint": "ynpx --quiet eslint -- **/*.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:jest": "ynpx --quiet jest -- --coverage",
+    "test:mocha": "ynpx --quiet -p ts-node -p mocha mocha -- --require ts-node/register \"!(node_modules)/**/*.{test,spec}.{ts,tsx}\"",
+    "prepublishOnly": "yarn run prepublishOnly:check-bin && yarn run test",
+    "prepublishOnly:check-bin": "ynpx --quiet @yarn-tool/check-pkg-bin",
+    "prepublishOnly:update": "yarn run ncu && yarn run sort-package-json",
+    "ncu": "ynpx --quiet yarn-tool -- ncu -u",
+    "sort-package-json": "ynpx --quiet yarn-tool -- sort"
+  },
+  "devDependencies": {
+    "abort-controller": "^3.0.0"
+  },
+  "peerDependencies": {
+    "abort-controller": "^3.0.0"
+  }
+}
