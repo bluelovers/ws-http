@@ -2,16 +2,16 @@
   "name": "get-default-port",
   "version": "1.0.4",
   "description": "get port from environment and give ports, default is 3000",
-  "homepage": "https://github.com/bluelovers/ws-http/tree/master/packages/get-default-port#readme",
-  "bugs": {
-    "url": "https://github.com/bluelovers/ws-http/issues"
-  },
   "keywords": [
     "environment",
     "env",
     "http",
     "port"
   ],
+  "homepage": "https://github.com/bluelovers/ws-http/tree/master/packages/get-default-port#readme",
+  "bugs": {
+    "url": "https://github.com/bluelovers/ws-http/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bluelovers/ws-http.git"
@@ -22,15 +22,16 @@
   "scripts": {
     "coverage": "npx nyc yarn run test",
     "lint": "npx eslint **/*.ts",
-    "ncu": "npx yarn-tool ncu -u",
-    "npm:publish": "npm publish",
-    "postpublish_": "git commit -m \"chore(release): publish\" .",
-    "prepublish:lockfile": "npx sync-lockfile .",
-    "prepublishOnly_": "yarn run ncu && yarn run sort-package-json && yarn run test",
-    "sort-package-json": "npx yarn-tool sort",
     "test": "echo \"Error: no test specified\"",
     "test:mocha": "npx mocha --require ts-node/register \"!(node_modules)/**/*.{test,spec}.{ts,tsx}\"",
+    "npm:publish": "npm publish",
+    "prepublish:lockfile": "npx sync-lockfile .",
+    "prepublishOnly_": "yarn run ncu && yarn run sort-package-json && yarn run test",
+    "postpublish_": "git commit -m \"chore(release): publish\" .",
+    "ncu": "npx yarn-tool ncu -u",
+    "sort-package-json": "npx yarn-tool sort",
     "tsc:default": "tsc -p tsconfig.json",
     "tsc:esm": "tsc -p tsconfig.esm.json"
-  }
+  },
+  "gitHead": "8085adf1cbb97fddbfcdabde2294430143714ef7"
 }

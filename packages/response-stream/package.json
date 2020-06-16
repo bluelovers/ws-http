@@ -9,11 +9,11 @@
   "module": "dist/response-stream.esm.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "ncu": "npx yarn-tool ncu -u",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "ynpx tsdx -- build",
     "prepublishOnly_": "yarn run ncu && yarn run sort-package-json && yarn run test",
-    "sort-package-json": "npx yarn-tool sort",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "ncu": "npx yarn-tool ncu -u",
+    "sort-package-json": "npx yarn-tool sort"
   },
-  "gitHead": "a4f916a9cf1ff0cef069e248bc786a885882bed4"
+  "gitHead": "8085adf1cbb97fddbfcdabde2294430143714ef7"
 }

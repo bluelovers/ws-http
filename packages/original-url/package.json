@@ -30,17 +30,17 @@
     "test": "test"
   },
   "scripts": {
-    "bench": "node benchmark/benchmark.js",
     "coverage": "npx nyc yarn run test",
     "lint": "npx eslint **/*.ts",
-    "ncu": "npx yarn-tool ncu -u",
-    "npm:publish": "npm publish",
-    "postpublish_": "git commit -m \"chore(release): publish\" .",
-    "prepublish:lockfile": "npx sync-lockfile .",
-    "prepublishOnly": "yarn run test",
-    "sort-package-json": "npx yarn-tool sort",
     "test": "jest",
     "test:mocha": "npx mocha --require ts-node/register \"!(node_modules)/**/*.{test,spec}.{ts,tsx}\"",
+    "npm:publish": "npm publish",
+    "prepublish:lockfile": "npx sync-lockfile .",
+    "prepublishOnly": "yarn run test",
+    "postpublish_": "git commit -m \"chore(release): publish\" .",
+    "bench": "node benchmark/benchmark.js",
+    "ncu": "npx yarn-tool ncu -u",
+    "sort-package-json": "npx yarn-tool sort",
     "tsc:default": "tsc -p tsconfig.json",
     "tsc:esm": "tsc -p tsconfig.esm.json"
   },
@@ -55,5 +55,5 @@
     55.778257,
     12.593204
   ],
-  "gitHead": "f62644d4ac09e3f08305ec8c79af7d4443749964"
+  "gitHead": "8085adf1cbb97fddbfcdabde2294430143714ef7"
 }

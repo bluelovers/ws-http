@@ -43,5 +43,6 @@
   },
   "peerDependencies": {
     "abort-controller": "^3.0.0"
-  }
+  },
+  "gitHead": "8085adf1cbb97fddbfcdabde2294430143714ef7"
 }
