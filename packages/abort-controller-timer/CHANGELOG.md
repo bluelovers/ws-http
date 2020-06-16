@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.4](https://github.com/bluelovers/ws-http/compare/abort-controller-timer@1.0.3...abort-controller-timer@1.0.4) (2020-06-16)
+
+
+### ✨　Features
+
+*  allow set timeout ([874f7b6](https://github.com/bluelovers/ws-http/commit/874f7b64793399457290ac152f2f999b3487b04f))
+
+
+
+
+
 ## [1.0.3](https://github.com/bluelovers/ws-http/compare/abort-controller-timer@1.0.2...abort-controller-timer@1.0.3) (2020-06-16)
 
 
