@@ -29,6 +29,22 @@ export class AbortControllerTimer extends (AbortController2 as typeof AbortContr
 		})
 	}
 
+	addEventListener<K extends keyof AbortSignalEventMap>(type: K,
+		listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any,
+		options?: boolean | AddEventListenerOptions,
+	)
+	{
+		this.signal.addEventListener(type, listener, options)
+	}
+
+	removeEventListener<K extends keyof AbortSignalEventMap>(type: K,
+		listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any,
+		options?: boolean | EventListenerOptions,
+	)
+	{
+		this.signal.removeEventListener(type, listener, options)
+	}
+
 	on<K extends keyof AbortSignalEventMap>(type: K,
 		listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any,
 		options?: boolean | AddEventListenerOptions,
@@ -39,10 +55,20 @@ export class AbortControllerTimer extends (AbortController2 as typeof AbortContr
 
 	off<K extends keyof AbortSignalEventMap>(type: K,
 		listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any,
-		options?: boolean | AddEventListenerOptions,
+		options?: boolean | EventListenerOptions,
 	)
 	{
 		this.signal.removeEventListener(type, listener, options)
+	}
+
+	get onabort()
+	{
+		return this.signal.onabort
+	}
+
+	set onabort(value: ((this: AbortSignal, ev: Event) => any) | null)
+	{
+		this.signal.onabort = value
 	}
 
 	get aborted(): boolean

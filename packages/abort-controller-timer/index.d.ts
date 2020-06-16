@@ -13,8 +13,12 @@ export declare class AbortControllerTimer extends AbortControllerTimer_base {
     #private;
     readonly signal: AbortSignal;
     constructor(ms?: number);
+    addEventListener<K extends keyof AbortSignalEventMap>(type: K, listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    removeEventListener<K extends keyof AbortSignalEventMap>(type: K, listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     on<K extends keyof AbortSignalEventMap>(type: K, listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-    off<K extends keyof AbortSignalEventMap>(type: K, listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+    off<K extends keyof AbortSignalEventMap>(type: K, listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+    get onabort(): ((this: AbortSignal, ev: Event) => any) | null;
+    set onabort(value: ((this: AbortSignal, ev: Event) => any) | null);
     get aborted(): boolean;
     get timer(): number | Timeout;
     get timeout(): number;

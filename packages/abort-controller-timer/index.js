@@ -36,11 +36,23 @@ class AbortControllerTimer extends abort_controller_1.default {
             once: true,
         });
     }
+    addEventListener(type, listener, options) {
+        this.signal.addEventListener(type, listener, options);
+    }
+    removeEventListener(type, listener, options) {
+        this.signal.removeEventListener(type, listener, options);
+    }
     on(type, listener, options) {
         this.signal.addEventListener(type, listener, options);
     }
     off(type, listener, options) {
         this.signal.removeEventListener(type, listener, options);
+    }
+    get onabort() {
+        return this.signal.onabort;
+    }
+    set onabort(value) {
+        this.signal.onabort = value;
     }
     get aborted() {
         return this.signal.aborted;
