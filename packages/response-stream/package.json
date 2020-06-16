@@ -1,6 +1,6 @@
 {
   "name": "http-response-stream",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "license": "ISC",
   "author": "",
@@ -15,6 +15,5 @@
     "sort-package-json": "npx yarn-tool sort",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "devDependencies": {},
   "gitHead": "a4f916a9cf1ff0cef069e248bc786a885882bed4"
 }

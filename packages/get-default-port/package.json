@@ -1,6 +1,6 @@
 {
   "name": "get-default-port",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "get port from environment and give ports, default is 3000",
   "homepage": "https://github.com/bluelovers/ws-http/tree/master/packages/get-default-port#readme",
   "bugs": {
@@ -32,6 +32,5 @@
     "test:mocha": "npx mocha --require ts-node/register \"!(node_modules)/**/*.{test,spec}.{ts,tsx}\"",
     "tsc:default": "tsc -p tsconfig.json",
     "tsc:esm": "tsc -p tsconfig.esm.json"
-  },
-  "devDependencies": {}
+  }
 }
