@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.6](https://github.com/bluelovers/ws-http/compare/get-default-port@1.0.5...get-default-port@1.0.6) (2020-06-16)
+
+
+### 🛠　Build System
+
+*  retry publish ([b3400d0](https://github.com/bluelovers/ws-http/commit/b3400d0d1a70234b89116fded921e0f57ac8e6f2))
+
+
+
+
+
 ## [1.0.5](https://github.com/bluelovers/ws-http/compare/get-default-port@1.0.4...get-default-port@1.0.5) (2020-06-16)
 
 
