@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.6](https://github.com/bluelovers/ws-http/compare/abort-controller-timer@1.0.5...abort-controller-timer@1.0.6) (2020-06-16)
+
+
+### ✨　Features
+
+*  support proxy prop of AbortSignal ([41b9ef5](https://github.com/bluelovers/ws-http/commit/41b9ef519dc5fe0e3501e90f5d3ca14227514ce6))
+
+
+
+
+
 ## [1.0.5](https://github.com/bluelovers/ws-http/compare/abort-controller-timer@1.0.4...abort-controller-timer@1.0.5) (2020-06-16)
 
 
