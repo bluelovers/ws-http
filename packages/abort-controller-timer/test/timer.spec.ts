@@ -1,7 +1,7 @@
 import AbortControllerTimer from '../index';
 import AbortController2 from 'abort-controller';
 
-test(`base`, async (done) =>
+test(`base`, (done) =>
 {
 	expect.assertions(8);
 
@@ -37,7 +37,7 @@ test(`base`, async (done) =>
 
 });
 
-test(`refresh`, async (done) =>
+test(`refresh`, (done) =>
 {
 	expect.assertions(12);
 
@@ -104,7 +104,7 @@ test(`not throw when 0`, () =>
 	}).not.toThrow()
 })
 
-test(`throw when try refresh after aborted`, async (done) =>
+test(`throw when try refresh after aborted`, (done) =>
 {
 	expect.assertions(5);
 
@@ -124,7 +124,7 @@ test(`throw when try refresh after aborted`, async (done) =>
 	done();
 })
 
-test(`throw when try reset after aborted`, async (done) =>
+test(`throw when try reset after aborted`, (done) =>
 {
 	expect.assertions(5);
 
