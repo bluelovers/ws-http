@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.14](https://github.com/bluelovers/ws-http/compare/original-url2@1.2.13...original-url2@1.2.14) (2021-07-08)
+
+
+### 🚨　Tests
+
+* fix test ([6f53e7c](https://github.com/bluelovers/ws-http/commit/6f53e7c2dd37784ee2a299fcc5efd00ba77f3047))
+
+
+### 🛠　Build System
+
+* use tslib ([fc3a75b](https://github.com/bluelovers/ws-http/commit/fc3a75b0aa7335cebc58b0640a42fcb1c65c00bc))
+
+
+
+
+
 ## [1.2.13](https://github.com/bluelovers/ws-http/compare/original-url2@1.2.12...original-url2@1.2.13) (2020-06-16)
 
 
