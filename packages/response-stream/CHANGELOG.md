@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.6](https://github.com/bluelovers/ws-http/compare/http-response-stream@1.0.5...http-response-stream@1.0.6) (2021-07-08)
+
+
+### 🛠　Build System
+
+* use tslib ([fc3a75b](https://github.com/bluelovers/ws-http/commit/fc3a75b0aa7335cebc58b0640a42fcb1c65c00bc))
+
+
+
+
+
 ## [1.0.5](https://github.com/bluelovers/ws-http/compare/http-response-stream@1.0.4...http-response-stream@1.0.5) (2020-06-16)
 
 

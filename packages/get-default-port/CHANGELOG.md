@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.7](https://github.com/bluelovers/ws-http/compare/get-default-port@1.0.6...get-default-port@1.0.7) (2021-07-08)
+
+
+### 🛠　Build System
+
+* use tslib ([fc3a75b](https://github.com/bluelovers/ws-http/commit/fc3a75b0aa7335cebc58b0640a42fcb1c65c00bc))
+
+
+
+
+
 ## [1.0.6](https://github.com/bluelovers/ws-http/compare/get-default-port@1.0.5...get-default-port@1.0.6) (2020-06-16)
 
 

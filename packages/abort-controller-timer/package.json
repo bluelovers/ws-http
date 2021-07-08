@@ -1,6 +1,6 @@
 {
   "name": "abort-controller-timer",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "An AbortController that aborts after a specified timeout",
   "keywords": [
     "timeout",
