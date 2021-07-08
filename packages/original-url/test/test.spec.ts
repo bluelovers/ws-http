@@ -2,6 +2,8 @@
 
 import pem from 'https-pem';
 import originalUrl from '../index';
+import { Server } from 'https';
+import { AddressInfo } from 'net';
 
 /**
  * Basic HTTP
@@ -10,7 +12,7 @@ import originalUrl from '../index';
 test('http - root, no special http headers', function (done)
 {
 	expect.assertions(1)
-	return http(function (result, port)
+	http(function (result, port)
 	{
 		expect(result).toEqual({
 			protocol: 'http:',
@@ -853,24 +855,24 @@ test('No Host header', function (done)
  * Utils
  */
 
-function http(opts, onRequest?)
+function http(opts: any, onRequest?: any): Server
 {
 	if (typeof opts === 'function') return http({}, opts)
 
 	const _http = require('http')
 
-	const server = _http.createServer(function (req, res)
+	const server: Server = _http.createServer(function (req, res)
 	{
 		let result = originalUrl(req)
 		delete result.host;
 
-		onRequest(result, server.address().port)
+		onRequest(result, (server.address() as AddressInfo).port)
 		res.end()
 	})
 
 	server.listen(function ()
 	{
-		opts.port = server.address().port
+		opts.port = (server.address() as AddressInfo).port
 		const req = _http.request(opts, function (res)
 		{
 			res.resume()
