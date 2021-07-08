@@ -1,5 +1,5 @@
 import AbortControllerTimer from '../index';
-import AbortController2 from 'abort-controller';
+//import AbortController2 from 'abort-controller';
 
 test(`base`, (done) =>
 {
@@ -16,7 +16,7 @@ test(`base`, (done) =>
 		console.dir(d);
 
 		expect(d).toBeGreaterThanOrEqual(100);
-		expect(d).toBeLessThanOrEqual(110);
+		expect(d).toBeLessThanOrEqual(120);
 	})
 
 	setTimeout(() =>
@@ -52,7 +52,7 @@ test(`refresh`, (done) =>
 		console.dir(d);
 
 		expect(d).toBeGreaterThanOrEqual(170);
-		expect(d).toBeLessThanOrEqual(180);
+		expect(d).toBeLessThanOrEqual(190);
 	})
 
 	setTimeout(() =>
@@ -113,7 +113,7 @@ test(`throw when try refresh after aborted`, (done) =>
 	expect(actual.aborted).toBeFalsy();
 	expect(actual.timer).toBeTruthy();
 
-	AbortController2.prototype.abort.call(actual);
+	AbortController.prototype.abort.call(actual);
 
 	expect(actual.aborted).toBeTruthy();
 	expect(actual.timer).toBeUndefined();
@@ -133,7 +133,7 @@ test(`throw when try reset after aborted`, (done) =>
 	expect(actual.aborted).toBeFalsy();
 	expect(actual.timer).toBeTruthy();
 
-	AbortController2.prototype.abort.call(actual);
+	AbortController.prototype.abort.call(actual);
 
 	expect(actual.aborted).toBeTruthy();
 	expect(actual.timer).toBeUndefined();

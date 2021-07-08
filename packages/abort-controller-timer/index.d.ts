@@ -2,8 +2,11 @@
  * Created by user on 2020/6/16.
  */
 /// <reference types="node" />
-import AbortController2 from 'abort-controller';
 import Timeout = NodeJS.Timeout;
+declare const AbortController2: {
+    new (): AbortController;
+    prototype: AbortController;
+};
 export { AbortController2 as AbortController };
 declare const AbortControllerTimer_base: {
     new (): AbortController;
