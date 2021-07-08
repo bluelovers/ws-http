@@ -1,15 +1,13 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.originalUrl = void 0;
+const tslib_1 = require("tslib");
 const url_1 = require("url");
-const forwarded_parse_1 = __importDefault(require("forwarded-parse"));
+const forwarded_parse_1 = (0, tslib_1.__importDefault)(require("forwarded-parse"));
 const util_1 = require("./util");
 function originalUrl(req) {
     const raw = req.originalUrl || req.url;
-    const url = url_1.parse(raw || '');
+    const url = (0, url_1.parse)(raw || '');
     const secure = req.secure || (req.connection && req.connection.encrypted);
     const result = {
         raw: raw,
@@ -19,8 +17,8 @@ function originalUrl(req) {
         try {
             // Always choose the original (first) Forwarded pair in case the request
             // passed through multiple proxies
-            let forwarded = forwarded_parse_1.default(util_1.getFirstHeader(req, 'forwarded'))[0];
-            host = util_1.parsePartialURL(forwarded.host);
+            let forwarded = (0, forwarded_parse_1.default)((0, util_1.getFirstHeader)(req, 'forwarded'))[0];
+            host = (0, util_1.parsePartialURL)(forwarded.host);
             if (forwarded.for) {
                 const conn = forwarded.for.split(']'); // in case of IPv6 addr: [2001:db8:cafe::17]:1337
                 const port = conn[conn.length - 1].split(':')[1];
@@ -34,11 +32,11 @@ function originalUrl(req) {
         catch (e) { }
     }
     else if (req.headers['x-forwarded-host']) {
-        host = util_1.parsePartialURL(util_1.getFirstHeader(req, 'x-forwarded-host'));
+        host = (0, util_1.parsePartialURL)((0, util_1.getFirstHeader)(req, 'x-forwarded-host'));
     }
     if (!host) {
         if (typeof req.headers.host === 'string') {
-            host = util_1.parsePartialURL(req.headers.host);
+            host = (0, util_1.parsePartialURL)(req.headers.host);
         }
         else {
             host = {};
@@ -49,21 +47,21 @@ function originalUrl(req) {
         result.protocol = url.protocol;
     }
     else if (req.headers['x-forwarded-proto']) {
-        result.protocol = util_1.getFirstHeader(req, 'x-forwarded-proto') + ':';
+        result.protocol = (0, util_1.getFirstHeader)(req, 'x-forwarded-proto') + ':';
     }
     else if (req.headers['x-forwarded-protocol']) {
-        result.protocol = util_1.getFirstHeader(req, 'x-forwarded-protocol') + ':';
+        result.protocol = (0, util_1.getFirstHeader)(req, 'x-forwarded-protocol') + ':';
     }
     else if (req.headers['x-url-scheme']) {
-        result.protocol = util_1.getFirstHeader(req, 'x-url-scheme') + ':';
+        result.protocol = (0, util_1.getFirstHeader)(req, 'x-url-scheme') + ':';
     }
     else if (req.headers['front-end-https']) {
-        result.protocol = util_1.getFirstHeader(req, 'front-end-https') === 'on'
+        result.protocol = (0, util_1.getFirstHeader)(req, 'front-end-https') === 'on'
             ? 'https:'
             : 'http:';
     }
     else if (req.headers['x-forwarded-ssl']) {
-        result.protocol = util_1.getFirstHeader(req, 'x-forwarded-ssl') === 'on'
+        result.protocol = (0, util_1.getFirstHeader)(req, 'x-forwarded-ssl') === 'on'
             ? 'https:'
             : 'http:';
     }
@@ -83,14 +81,14 @@ function originalUrl(req) {
     else if (host.hostname)
         result.hostname = host.hostname;
     // fix for IPv6 literal bug in legacy url - see https://github.com/watson/original-url/issues/3
-    if (util_1.isIPv6(result.hostname))
+    if ((0, util_1.isIPv6)(result.hostname))
         result.hostname = '[' + result.hostname + ']';
     // port
     if (url.port) {
         result.port = Number(url.port);
     }
     else if (req.headers['x-forwarded-port']) {
-        result.port = Number(util_1.getFirstHeader(req, 'x-forwarded-port'));
+        result.port = Number((0, util_1.getFirstHeader)(req, 'x-forwarded-port'));
     }
     else if (host.port)
         result.port = Number(host.port);

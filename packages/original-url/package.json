@@ -35,8 +35,8 @@
     "test": "jest",
     "test:mocha": "npx mocha --require ts-node/register \"!(node_modules)/**/*.{test,spec}.{ts,tsx}\"",
     "npm:publish": "npm publish",
+    "preversion": "yarn run test",
     "prepublish:lockfile": "npx sync-lockfile .",
-    "prepublishOnly": "yarn run test",
     "postpublish_": "git commit -m \"chore(release): publish\" .",
     "bench": "node benchmark/benchmark.js",
     "ncu": "npx yarn-tool ncu -u",
@@ -45,8 +45,9 @@
     "tsc:esm": "tsc -p tsconfig.esm.json"
   },
   "dependencies": {
-    "forwarded-parse": "^2.1.0",
-    "ip-regex": "^4.1.0"
+    "forwarded-parse": "^2.1.1",
+    "ip-regex": "^4.3.0",
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
     "https-pem": "^2.0.0"

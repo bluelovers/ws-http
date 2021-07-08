@@ -9,8 +9,7 @@ export { AbortController2 as AbortController }
 
 export class AbortControllerTimer extends (AbortController2 as typeof AbortController)
 {
-	// @ts-ignore
-	readonly signal: AbortSignal
+	override readonly signal: AbortSignal
 
 	#timer?: Timeout | number
 	#ms: number
@@ -178,7 +177,7 @@ export class AbortControllerTimer extends (AbortController2 as typeof AbortContr
 		return this.#timer
 	}
 
-	abort()
+	override abort()
 	{
 		this.clear();
 		super.abort();

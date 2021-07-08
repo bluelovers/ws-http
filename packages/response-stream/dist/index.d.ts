@@ -1,7 +1,4 @@
-/**
- * Created by user on 2020/2/26.
- */
 /// <reference types="node" />
 import { ServerResponse } from "http";
-export declare function responseStream(serverResponse: ServerResponse, data: any): ServerResponse;
+export declare function responseStream<T>(serverResponse: ServerResponse, data: T): ServerResponse;
 export default responseStream;

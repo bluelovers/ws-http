@@ -1,3 +1,6 @@
 {
-  "extends": "@bluelovers/tsconfig/esm/module"
+  "extends": "@bluelovers/tsconfig/tsdx/index.json",
+  "compilerOptions": {
+    "declaration": true
+  }
 }

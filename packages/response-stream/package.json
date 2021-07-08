@@ -9,11 +9,15 @@
   "module": "dist/response-stream.esm.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "ynpx tsdx -- build",
+    "test": "echo \"Error: no test specified\"",
+    "build": "tsdx build --target node",
+    "preversion": "yarn run build && yarn run test",
     "prepublishOnly_": "yarn run ncu && yarn run sort-package-json && yarn run test",
     "ncu": "npx yarn-tool ncu -u",
     "sort-package-json": "npx yarn-tool sort"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
   },
   "gitHead": "603941de35a5c34f1a89c25fe6bdf0028742c533"
 }

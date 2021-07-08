@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.isIPv6 = exports.parsePartialURL = exports.getFirstHeader = void 0;
 const url_1 = require("url");
 const ip_regex_1 = require("ip-regex");
-const re_v6 = ip_regex_1.v6({ exact: true });
+const re_v6 = (0, ip_regex_1.v6)({ exact: true });
 /**
  * In case there's more than one header of a given name, we want the first one
  * as it should be the one that was added by the first proxy in the chain
@@ -15,7 +15,7 @@ function getFirstHeader(req, header) {
 exports.getFirstHeader = getFirstHeader;
 function parsePartialURL(url) {
     const containsProtocol = url.indexOf('://') !== -1;
-    const result = url_1.parse(containsProtocol ? url : 'invalid://' + url);
+    const result = (0, url_1.parse)(containsProtocol ? url : 'invalid://' + url);
     if (!containsProtocol)
         result.protocol = '';
     return result;

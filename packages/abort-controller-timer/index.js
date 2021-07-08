@@ -2,33 +2,18 @@
 /**
  * Created by user on 2020/6/16.
  */
-var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, privateMap, value) {
-    if (!privateMap.has(receiver)) {
-        throw new TypeError("attempted to set private field on non-instance");
-    }
-    privateMap.set(receiver, value);
-    return value;
-};
-var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, privateMap) {
-    if (!privateMap.has(receiver)) {
-        throw new TypeError("attempted to get private field on non-instance");
-    }
-    return privateMap.get(receiver);
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-var _timer, _ms;
+var _AbortControllerTimer_timer, _AbortControllerTimer_ms;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AbortControllerTimer = exports.AbortController = void 0;
-const abort_controller_1 = __importDefault(require("abort-controller"));
+const tslib_1 = require("tslib");
+const abort_controller_1 = (0, tslib_1.__importDefault)(require("abort-controller"));
 exports.AbortController = abort_controller_1.default;
 class AbortControllerTimer extends abort_controller_1.default {
     constructor(ms) {
         super();
-        _timer.set(this, void 0);
-        _ms.set(this, void 0);
-        __classPrivateFieldSet(this, _ms, ms);
+        _AbortControllerTimer_timer.set(this, void 0);
+        _AbortControllerTimer_ms.set(this, void 0);
+        (0, tslib_1.__classPrivateFieldSet)(this, _AbortControllerTimer_ms, ms, "f");
         this.reset();
         this.on('abort', (ev) => {
             this.clear();
@@ -58,11 +43,11 @@ class AbortControllerTimer extends abort_controller_1.default {
         return this.signal.aborted;
     }
     get timer() {
-        return __classPrivateFieldGet(this, _timer);
+        return (0, tslib_1.__classPrivateFieldGet)(this, _AbortControllerTimer_timer, "f");
     }
     get timeout() {
-        if (__classPrivateFieldGet(this, _ms) > 0) {
-            return __classPrivateFieldGet(this, _ms);
+        if ((0, tslib_1.__classPrivateFieldGet)(this, _AbortControllerTimer_ms, "f") > 0) {
+            return (0, tslib_1.__classPrivateFieldGet)(this, _AbortControllerTimer_ms, "f");
         }
     }
     set timeout(ms) {
@@ -71,7 +56,7 @@ class AbortControllerTimer extends abort_controller_1.default {
             this.abort();
             throw new TypeError(`ms should be greater than 0, but got {${ms}}`);
         }
-        __classPrivateFieldSet(this, _ms, ms);
+        (0, tslib_1.__classPrivateFieldSet)(this, _AbortControllerTimer_ms, ms, "f");
     }
     /**
      * warning: reset the timer will not abort signal
@@ -83,21 +68,21 @@ class AbortControllerTimer extends abort_controller_1.default {
         if (this.aborted) {
             throw new Error(`signal already aborted, can't be refresh`);
         }
-        const ms = __classPrivateFieldGet(this, _ms);
-        __classPrivateFieldSet(this, _ms, __classPrivateFieldGet(this, _ms) | 0);
-        if (__classPrivateFieldGet(this, _ms) > 0) {
-            __classPrivateFieldSet(this, _timer, setTimeout(() => this.abort(), __classPrivateFieldGet(this, _ms)));
+        const ms = (0, tslib_1.__classPrivateFieldGet)(this, _AbortControllerTimer_ms, "f");
+        (0, tslib_1.__classPrivateFieldSet)(this, _AbortControllerTimer_ms, (0, tslib_1.__classPrivateFieldGet)(this, _AbortControllerTimer_ms, "f") | 0, "f");
+        if ((0, tslib_1.__classPrivateFieldGet)(this, _AbortControllerTimer_ms, "f") > 0) {
+            (0, tslib_1.__classPrivateFieldSet)(this, _AbortControllerTimer_timer, setTimeout(() => this.abort(), (0, tslib_1.__classPrivateFieldGet)(this, _AbortControllerTimer_ms, "f")), "f");
         }
-        else if (__classPrivateFieldGet(this, _ms) < 0) {
+        else if ((0, tslib_1.__classPrivateFieldGet)(this, _AbortControllerTimer_ms, "f") < 0) {
             try {
                 super.abort();
             }
             catch (e) {
                 console.trace(e);
             }
-            throw new TypeError(`ms should be greater than or equal to 0, but got {${ms} => ${__classPrivateFieldGet(this, _ms)}}`);
+            throw new TypeError(`ms should be greater than or equal to 0, but got {${ms} => ${(0, tslib_1.__classPrivateFieldGet)(this, _AbortControllerTimer_ms, "f")}}`);
         }
-        return __classPrivateFieldGet(this, _timer);
+        return (0, tslib_1.__classPrivateFieldGet)(this, _AbortControllerTimer_timer, "f");
     }
     /**
      * warning: clear the timer will not abort signal
@@ -105,10 +90,10 @@ class AbortControllerTimer extends abort_controller_1.default {
      * @internal
      */
     clear() {
-        if (typeof __classPrivateFieldGet(this, _timer) !== 'undefined') {
-            clearTimeout(__classPrivateFieldGet(this, _timer));
+        if (typeof (0, tslib_1.__classPrivateFieldGet)(this, _AbortControllerTimer_timer, "f") !== 'undefined') {
+            clearTimeout((0, tslib_1.__classPrivateFieldGet)(this, _AbortControllerTimer_timer, "f"));
         }
-        __classPrivateFieldSet(this, _timer, void 0);
+        (0, tslib_1.__classPrivateFieldSet)(this, _AbortControllerTimer_timer, void 0, "f");
     }
     /**
      * refresh the timer will throw error when signal is aborted
@@ -117,13 +102,13 @@ class AbortControllerTimer extends abort_controller_1.default {
         if (this.aborted) {
             throw new Error(`signal already aborted, can't be refresh`);
         }
-        if (typeof __classPrivateFieldGet(this, _timer) === 'number') {
+        if (typeof (0, tslib_1.__classPrivateFieldGet)(this, _AbortControllerTimer_timer, "f") === 'number') {
             this.reset();
         }
-        else if (typeof __classPrivateFieldGet(this, _timer) !== 'undefined') {
-            __classPrivateFieldSet(this, _timer, __classPrivateFieldGet(this, _timer).refresh());
+        else if (typeof (0, tslib_1.__classPrivateFieldGet)(this, _AbortControllerTimer_timer, "f") !== 'undefined') {
+            (0, tslib_1.__classPrivateFieldSet)(this, _AbortControllerTimer_timer, (0, tslib_1.__classPrivateFieldGet)(this, _AbortControllerTimer_timer, "f").refresh(), "f");
         }
-        return __classPrivateFieldGet(this, _timer);
+        return (0, tslib_1.__classPrivateFieldGet)(this, _AbortControllerTimer_timer, "f");
     }
     abort() {
         this.clear();
@@ -131,6 +116,6 @@ class AbortControllerTimer extends abort_controller_1.default {
     }
 }
 exports.AbortControllerTimer = AbortControllerTimer;
-_timer = new WeakMap(), _ms = new WeakMap();
+_AbortControllerTimer_timer = new WeakMap(), _AbortControllerTimer_ms = new WeakMap();
 exports.default = AbortControllerTimer;
 //# sourceMappingURL=index.js.map
