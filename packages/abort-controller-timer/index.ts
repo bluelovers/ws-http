@@ -3,12 +3,11 @@
  */
 
 import Timeout = NodeJS.Timeout;
+import AbortController from './lib/abort-controller';
 
-const AbortController2 = AbortController;
+export { AbortController }
 
-export { AbortController2 as AbortController }
-
-export class AbortControllerTimer extends (AbortController)
+export class AbortControllerTimer extends AbortController
 {
 	override readonly signal: AbortSignal
 

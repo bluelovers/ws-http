@@ -6,9 +6,9 @@ var _AbortControllerTimer_timer, _AbortControllerTimer_ms;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AbortControllerTimer = exports.AbortController = void 0;
 const tslib_1 = require("tslib");
-const AbortController2 = AbortController;
-exports.AbortController = AbortController2;
-class AbortControllerTimer extends (AbortController) {
+const abort_controller_1 = (0, tslib_1.__importDefault)(require("./lib/abort-controller"));
+exports.AbortController = abort_controller_1.default;
+class AbortControllerTimer extends abort_controller_1.default {
     constructor(ms) {
         super();
         _AbortControllerTimer_timer.set(this, void 0);

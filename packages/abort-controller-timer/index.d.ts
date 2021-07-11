@@ -3,16 +3,9 @@
  */
 /// <reference types="node" />
 import Timeout = NodeJS.Timeout;
-declare const AbortController2: {
-    new (): AbortController;
-    prototype: AbortController;
-};
-export { AbortController2 as AbortController };
-declare const AbortControllerTimer_base: {
-    new (): AbortController;
-    prototype: AbortController;
-};
-export declare class AbortControllerTimer extends AbortControllerTimer_base {
+import AbortController from './lib/abort-controller';
+export { AbortController };
+export declare class AbortControllerTimer extends AbortController {
     #private;
     readonly signal: AbortSignal;
     constructor(ms?: number);
