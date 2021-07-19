@@ -1,5 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`lazy baseURL 1`] = `"https://gitee.com/api/api/v5/repos/xxxx/xxxx/contents"`;
+
+exports[`lazy baseURL 2`] = `"https://gitee.com/api/v5/repos/xxxx/xxxx/contents"`;
+
+exports[`lazy baseURL 3`] = `"https://gitee.com/api/v5/api/v5/repos/xxxx/xxxx/contents"`;
+
 exports[`lazy blob: 1`] = `"blob:https://user:pass@developer.mozilla.org:999/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/parseInt?file=333#7777?file=222"`;
 
 exports[`lazy blob: 2`] = `

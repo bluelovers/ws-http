@@ -7,6 +7,20 @@ yarn add lazy-url
 ```
 
 see [index.test.ts](./test/index.test.ts)
+see [lazy.spec.ts.snap](./test/lazy.spec.ts.snap)
+
+---
+
+```ts
+let actual = new LazyURL('api/v5/repos/xxxx/xxxx/contents', 'https://gitee.com/api/v5');
+// => https://gitee.com/api/api/v5/repos/xxxx/xxxx/contents
+let actual2 = new LazyURL('/api/v5/repos/xxxx/xxxx/contents', 'https://gitee.com/api/v5');
+// => https://gitee.com/api/v5/repos/xxxx/xxxx/contents
+let actual3 = new LazyURL('api/v5/repos/xxxx/xxxx/contents', 'https://gitee.com/api/v5/');
+// => https://gitee.com/api/v5/api/v5/repos/xxxx/xxxx/contents
+```
+
+---
 
 ```ts
 // @ts-ignore

@@ -71,6 +71,21 @@ describe(`lazy`, () =>
 		expect(() => new LazyURL(null, href)).toThrowErrorMatchingSnapshot();
 	})
 
+	test(`baseURL`, () =>
+	{
+		let actual = new LazyURL('api/v5/repos/xxxx/xxxx/contents', 'https://gitee.com/api/v5');
+		let actual2 = new LazyURL('/api/v5/repos/xxxx/xxxx/contents', 'https://gitee.com/api/v5');
+		let actual3 = new LazyURL('api/v5/repos/xxxx/xxxx/contents', 'https://gitee.com/api/v5/');
+
+		expect(actual).toMatchSnapshot();
+		expect(actual2).toMatchSnapshot();
+		expect(actual3).toMatchSnapshot();
+
+		expect(actual.pathname).not.toStrictEqual(actual2.pathname);
+		expect(actual.pathname).not.toStrictEqual(actual3.pathname);
+		expect(actual2.pathname).not.toStrictEqual(actual3.pathname);
+	});
+
 })
 
 describe(`hostname`, () =>
