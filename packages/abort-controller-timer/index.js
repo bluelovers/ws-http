@@ -8,6 +8,7 @@ exports.AbortControllerTimer = exports.AbortController = void 0;
 const tslib_1 = require("tslib");
 const abort_controller_1 = (0, tslib_1.__importDefault)(require("./lib/abort-controller"));
 exports.AbortController = abort_controller_1.default;
+const index_1 = require("abort-controller-util/index");
 class AbortControllerTimer extends abort_controller_1.default {
     constructor(ms) {
         super();
@@ -15,11 +16,17 @@ class AbortControllerTimer extends abort_controller_1.default {
         _AbortControllerTimer_ms.set(this, void 0);
         (0, tslib_1.__classPrivateFieldSet)(this, _AbortControllerTimer_ms, ms, "f");
         this.reset();
+        (0, index_1.linkAbortSignalWithController)(this.signal, this);
         this.on('abort', (ev) => {
             this.clear();
         }, {
             once: true,
         });
+    }
+    child(ms) {
+        const child = new AbortControllerTimer(ms);
+        (0, index_1.linkAbortChildWithParent)(child, this);
+        return child;
     }
     addEventListener(type, listener, options) {
         this.signal.addEventListener(type, listener, options);

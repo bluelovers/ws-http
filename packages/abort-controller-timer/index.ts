@@ -4,12 +4,17 @@
 
 import Timeout = NodeJS.Timeout;
 import AbortController from './lib/abort-controller';
+import {
+	IAbortSignalWithController,
+	linkAbortChildWithParent,
+	linkAbortSignalWithController,
+} from 'abort-controller-util/index';
 
 export { AbortController }
 
 export class AbortControllerTimer extends AbortController
 {
-	override readonly signal: AbortSignal
+	override readonly signal: IAbortSignalWithController<AbortSignal, AbortControllerTimer>
 
 	#timer?: Timeout | number
 	#ms: number
@@ -20,12 +25,23 @@ export class AbortControllerTimer extends AbortController
 		this.#ms = ms;
 		this.reset()
 
+		linkAbortSignalWithController(this.signal, this);
+
 		this.on('abort', (ev) =>
 		{
 			this.clear();
 		}, {
 			once: true,
 		})
+	}
+
+	child(ms?: number)
+	{
+		const child = new AbortControllerTimer(ms);
+
+		linkAbortChildWithParent(child, this);
+
+		return child
 	}
 
 	addEventListener<K extends keyof AbortSignalEventMap>(type: K,

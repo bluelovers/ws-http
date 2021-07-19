@@ -4,11 +4,13 @@
 /// <reference types="node" />
 import Timeout = NodeJS.Timeout;
 import AbortController from './lib/abort-controller';
+import { IAbortSignalWithController } from 'abort-controller-util/index';
 export { AbortController };
 export declare class AbortControllerTimer extends AbortController {
     #private;
-    readonly signal: AbortSignal;
+    readonly signal: IAbortSignalWithController<AbortSignal, AbortControllerTimer>;
     constructor(ms?: number);
+    child(ms?: number): AbortControllerTimer;
     addEventListener<K extends keyof AbortSignalEventMap>(type: K, listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof AbortSignalEventMap>(type: K, listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     on<K extends keyof AbortSignalEventMap>(type: K, listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
