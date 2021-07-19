@@ -1,6 +1,6 @@
 {
   "name": "lazy-url",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "a more easy use URL",
   "keywords": [
     "URL",
@@ -43,6 +43,7 @@
     "test": "jest",
     "npm:publish": "yarn run preversion && npm publish",
     "npm:publish:bump": "yarn run preversion && yarn-tool version && npm publish",
+    "preversion": "yarn test",
     "postpublish": "yarn run postpublish:changelog && yarn run postpublish:git:commit && yarn run postpublish:git:tag && yarn run postpublish:git:push",
     "postpublish:changelog": "ynpx --quiet @yarn-tool/changelog && git add ./CHANGELOG.md",
     "postpublish:git:commit": "git commit -m \"chore(release): publish\" . & echo postpublish:git:commit",
