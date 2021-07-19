@@ -20,6 +20,9 @@ const SymbolContext = findSymbolContext();
 
 export class LazyURL extends URL implements URL
 {
+	/**
+	 * @deprecated
+	 */
 	protected [SYM_URL]?: URL;
 	protected [SYM_HIDDEN]: Partial<URL>;
 
@@ -225,16 +228,21 @@ export class LazyURL extends URL implements URL
 		this[SYM_URL].pathname = value
 	}
 
-	get port()
+	 */
+
+	override get port(): string
 	{
-		return this[SYM_URL].port
+		return super.port
 	}
 
-	set port(value)
+	override set port(value: string | number)
 	{
-		this[SYM_URL].port = value
+		if (typeof value === 'number')
+		{
+			value = value.toString();
+		}
+		super.port = value ?? ''
 	}
-	 */
 
 	override get protocol()
 	{
