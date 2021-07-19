@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.12](https://github.com/bluelovers/lazy-url/compare/lazy-url@1.0.11...lazy-url@1.0.12) (2021-07-19)
+
+
+### 🔖　Miscellaneous
+
+* update readme ([37dd3d6](https://github.com/bluelovers/lazy-url/commit/37dd3d6666d08cd73caea346cb29168500ebe697))
+
+
+
+
+
 ## 1.0.11 (2021-07-19)
 
 
