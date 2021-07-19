@@ -73,3 +73,5 @@ coverage
 /.nycrc
 /tsconfig.tsbuildinfo
 /tsconfig.esm.tsbuildinfo
+*.map
+

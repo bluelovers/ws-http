@@ -141,7 +141,7 @@ export class LazyURL extends URL implements URL
 		return this.href;
 	}
 
-	toString()
+	override toString()
 	{
 		return this.href;
 	}
@@ -177,12 +177,12 @@ export class LazyURL extends URL implements URL
 	}
 	 */
 
-	get hostname()
+	override get hostname()
 	{
 		return super.hostname
 	}
 
-	set hostname(value)
+	override set hostname(value)
 	{
 		delete this[SYM_HIDDEN].hostname;
 
@@ -236,12 +236,12 @@ export class LazyURL extends URL implements URL
 	}
 	 */
 
-	get protocol()
+	override get protocol()
 	{
 		return super.protocol
 	}
 
-	set protocol(value)
+	override set protocol(value)
 	{
 		delete this[SYM_HIDDEN].protocol;
 

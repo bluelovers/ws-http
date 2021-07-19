@@ -34,37 +34,34 @@
   "author": "bluelovers",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "typings": "lib/index.d.ts",
   "directories": {
     "lib": "lib",
     "test": "test"
   },
   "scripts": {
-    "coverage": "npx nyc npm run test",
-    "lint": "npx eslint **/*.ts",
-    "test": "jest --coverage",
-    "build": "yarn run build:before & yarn run build:tsc & yarn run build:after",
-    "build:after": "git add ./esm & git add ./lib & echo build:after",
-    "build:before": "git rm ./esm -r -f & echo build:before",
-    "build:tsc": "tsc -p tsconfig.esm.json && tsc -p tsconfig.json",
-    "npm:publish": "npm publish",
-    "npm:publish:lerna": "npx lerna publish --yes --cd-version patch",
-    "prepublish:lockfile": "npx sync-lockfile .",
-    "prepublishOnly": "yarn run ncu && yarn run sort-package-json && yarn run build",
-    "prepublishOnly_": "yarn run ncu && yarn run sort-package-json && yarn run test",
-    "postpublish": "git commit -m \"chore(release): publish\" .",
-    "ncu": "npx yarn-tool ncu -u",
-    "sort-package-json": "npx yarn-tool sort"
+    "test": "jest",
+    "npm:publish": "yarn run preversion && npm publish",
+    "npm:publish:bump": "yarn run preversion && yarn-tool version && npm publish",
+    "postpublish": "yarn run postpublish:changelog && yarn run postpublish:git:commit && yarn run postpublish:git:tag && yarn run postpublish:git:push",
+    "postpublish:changelog": "ynpx --quiet @yarn-tool/changelog && git add ./CHANGELOG.md",
+    "postpublish:git:commit": "git commit -m \"chore(release): publish\" . & echo postpublish:git:commit",
+    "postpublish:git:push": "git push --follow-tags",
+    "postpublish:git:tag": "ynpx --quiet @yarn-tool/tag",
+    "ncu": "yarn-tool ncu -u",
+    "sort-package-json": "yarn-tool sort"
   },
   "dependencies": {
     "symbol.inspect": "^1.0.1",
-    "url-parse": "^1.4.7"
+    "tslib": "^2.3.0",
+    "url-parse": "^1.5.1"
   },
   "devDependencies": {
-    "@bluelovers/tsconfig": "^1.0.19",
-    "@types/jest": "^25.2.3",
-    "@types/node": "^14.0.5",
+    "@bluelovers/tsconfig": "^1.0.25",
+    "@types/jest": "^26.0.24",
+    "@types/node": "^16.3.3",
     "@types/url-parse": "^1.4.3",
-    "jest": "^26.0.1",
-    "ts-jest": "^26.0.0"
+    "jest": "^27.0.6",
+    "ts-jest": "^27.0.3"
   }
 }

@@ -12,7 +12,7 @@ export declare class LazyURL extends URL implements URL {
     get paths(): string[];
     fakeExists(): number;
     fakeKeys(): string[];
-    fakeEntries(): [string, string | (() => string) | URLSearchParams | (() => string)][];
+    fakeEntries(): [string, string | URLSearchParams | (() => string) | (() => string)][];
     /**
      * get the real url (remove fake value)
      * throw error if not a valid url
