@@ -5,6 +5,9 @@ export declare type IURLLike = string | URL | IURLObjectLike;
 export declare const SYM_URL: unique symbol;
 export declare const SYM_HIDDEN: unique symbol;
 export declare class LazyURL extends URL implements URL {
+    /**
+     * @deprecated
+     */
     protected [SYM_URL]?: URL;
     protected [SYM_HIDDEN]: Partial<URL>;
     static create(url: IURLLike | [IURLLike, IURLLike?], base?: IURLLike): LazyURL;
@@ -12,7 +15,7 @@ export declare class LazyURL extends URL implements URL {
     get paths(): string[];
     fakeExists(): number;
     fakeKeys(): string[];
-    fakeEntries(): [string, string | URLSearchParams | (() => string) | (() => string)][];
+    fakeEntries(): [string, string | (() => string) | URLSearchParams | (() => string)][];
     /**
      * get the real url (remove fake value)
      * throw error if not a valid url
@@ -23,6 +26,8 @@ export declare class LazyURL extends URL implements URL {
     toString(): string;
     get hostname(): string;
     set hostname(value: string);
+    get port(): string;
+    set port(value: string | number);
     get protocol(): string;
     set protocol(value: string);
     /**
@@ -84,8 +89,18 @@ export interface IURLObject {
     searchParams: URLSearchParams;
     hash: string;
 }
+/**
+ * @private
+ */
 export declare function _core(url: IURLLike | [IURLLike, IURLLike?], base?: IURLLike): {
     url: URL;
     hidden: Partial<URL>;
 };
+export interface IURLErrorNode extends Error {
+    code: 'ERR_INVALID_URL' | string;
+    input: IURLLike;
+}
+export interface IURLError extends IURLErrorNode {
+    baseURL: IURLLike;
+}
 export default LazyURL;

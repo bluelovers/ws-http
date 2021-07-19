@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`lazy blob: 1`] = `"blob:https://user:pass@developer.mozilla.org:999/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/parseInt?file=333#7777?file=222"`;
+
+exports[`lazy blob: 2`] = `
+Object {
+  "hash": "#7777?file=222",
+  "host": "",
+  "hostname": "",
+  "href": "blob:https://user:pass@developer.mozilla.org:999/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/parseInt?file=333#7777?file=222",
+  "password": "",
+  "pathname": "https://user:pass@developer.mozilla.org:999/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/parseInt",
+  "port": "",
+  "protocol": "blob:",
+  "search": "?file=333",
+  "searchParams": URLSearchParams {
+    Symbol(query): Array [
+      "file",
+      "333",
+    ],
+    Symbol(context): null,
+  },
+  "username": "",
+}
+`;
+
+exports[`lazy blob: 3`] = `"blob:https://user:pass@developer.mozilla.org:999/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/parseInt?file=333#7777?file=222"`;
+
+exports[`lazy blob: 4`] = `"blob:https://user:pass@developer.mozilla.org:999/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/parseInt?file=333#7777?file=222"`;
+
+exports[`lazy check 1`] = `"Argument 'null' is not assignable to url like."`;
+
+exports[`lazy check 2`] = `"Argument '1' is not assignable to url like."`;
+
+exports[`lazy check 3`] = `
+"Invalid URL
+    TypeError [ERR_INVALID_URL]: Invalid URL
+    { input: '', baseURL: undefined }"
+`;
+
+exports[`lazy check 4`] = `"Argument 'undefined' is not assignable to url like."`;
+
+exports[`lazy check 5`] = `"Argument 'undefined' is not assignable to url like."`;
+
+exports[`lazy check 6`] = `"Argument 'null' is not assignable to url like."`;
+
+exports[`lazy lazy 1`] = `"https://user:pass@developer.mozilla.org:999/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/parseInt?file=333#7777?file=222"`;
+
+exports[`lazy lazy 2`] = `
+Object {
+  "hash": "#7777?file=222",
+  "host": "developer.mozilla.org:999",
+  "hostname": "developer.mozilla.org",
+  "href": "https://user:pass@developer.mozilla.org:999/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/parseInt?file=333#7777?file=222",
+  "password": "pass",
+  "pathname": "/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/parseInt",
+  "port": "999",
+  "protocol": "https:",
+  "search": "?file=333",
+  "searchParams": URLSearchParams {
+    Symbol(query): Array [
+      "file",
+      "333",
+    ],
+    Symbol(context): null,
+  },
+  "username": "user",
+}
+`;
+
+exports[`lazy lazy 3`] = `"https://user:pass@developer.mozilla.org:999/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/parseInt?file=333#7777?file=222"`;
+
+exports[`lazy lazy 4`] = `"https://user:pass@developer.mozilla.org:999/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/parseInt?file=333#7777?file=222"`;
+
+exports[`port invalid 1`] = `"Invalid port range: -1"`;
+
+exports[`port invalid 2`] = `"Invalid port range: -1"`;
+
+exports[`port invalid 3`] = `"Invalid port range: NaN"`;
+
+exports[`port invalid 4`] = `"Invalid port range: 9007199254740991"`;
+
+exports[`port invalid 5`] = `"Invalid port range: Infinity"`;
+
+exports[`port invalid 6`] = `"Invalid port range: -Infinity"`;
+
+exports[`port invalid 7`] = `"Invalid port input: { '0xF' => 15 }"`;
+
+exports[`port invalid 8`] = `"Invalid port input: { '0123' => 123 }"`;

@@ -52,7 +52,11 @@
     "sort-package-json": "yarn-tool sort"
   },
   "dependencies": {
+    "clean-stack": ">=3 <4",
+    "err-code": "^3.0.1",
+    "indent-string": ">=4.0.0 <5",
     "symbol.inspect": "^1.0.1",
+    "ts-type-predicates": "^1.0.3",
     "tslib": "^2.3.0",
     "url-parse": "^1.5.1"
   },

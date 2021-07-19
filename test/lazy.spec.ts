@@ -1,70 +1,166 @@
 import LazyURL from '../lib/index';
 
-describe(`describe`, () =>
+describe(`lazy`, () =>
 {
 
-	test(`reset port`, () =>
+	test(`lazy`, () =>
 	{
-		let actual = new LazyURL('https://gitee.com:3000/api/v5/');
+		let actual = new LazyURL('docs/Web/JavaScript/Reference/Global_Objects/parseInt?file=333#7777?file=222', 'https://user:pass@developer.mozilla.org:999/zh-TW/');
 
-		expect(actual.port).toStrictEqual('3000');
+		let u = new LazyURL(['docs/Web/JavaScript/Reference/Global_Objects/parseInt?file=333#7777?file=222', 'https://user:pass@developer.mozilla.org:999/zh-TW/']);
 
-		actual.port = 456;
+		expect(actual).toStrictEqual(u);
 
-		actual.port = null as null;
+		expect(actual).toMatchSnapshot();
+		expect(actual.toObject()).toMatchSnapshot();
+		expect(actual.toString()).toMatchSnapshot();
+		expect(actual.toRealString()).toMatchSnapshot();
 
-		expect(actual.port).toStrictEqual('');
+		expect(actual.scheme).toStrictEqual(actual.protocol);
+		expect(actual.scheme).toStrictEqual("https:");
 
-		actual.port = 456;
+		expect(actual.fragment).toStrictEqual(actual.hash);
+		expect(actual.fragment).toStrictEqual('#7777?file=222');
 
-		actual.port = void 0;
+		expect(actual.query).toStrictEqual(actual.search);
+		expect(actual.query).toStrictEqual("?file=333");
 
-		expect(actual.port).toStrictEqual('');
+		expect(actual.pathname).toStrictEqual("/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/parseInt");
 
-		actual.port = 456;
+		expect(actual.port).toStrictEqual("999");
 
-		actual.port = '';
+		expect(actual.origin).toStrictEqual("https://developer.mozilla.org:999");
 
-		expect(actual.port).toStrictEqual('');
+		expect(actual.host).toStrictEqual("developer.mozilla.org:999");
+		expect(actual.hostname).toStrictEqual("developer.mozilla.org");
+
+	});
+
+	test(`blob:`, () =>
+	{
+		let actual = new LazyURL('blob:https://user:pass@developer.mozilla.org:999/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/parseInt?file=333#7777?file=222');
+
+		expect(actual.origin).toStrictEqual("https://developer.mozilla.org:999");
+
+		expect(actual.scheme).toStrictEqual("blob:");
+
+		expect(actual).toMatchSnapshot();
+		expect(actual.toObject()).toMatchSnapshot();
+		expect(actual.toString()).toMatchSnapshot();
+		expect(actual.toRealString()).toMatchSnapshot();
 	})
 
-	test(`port:0`, () =>
+	test(`check`, () =>
 	{
-		let actual = new LazyURL('https://gitee.com:0/api/v5/');
+		let href = 'blob:https://user:pass@developer.mozilla.org:999/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/parseInt?file=333#7777?file=222';
 
-		expect(actual.port).toStrictEqual('0');
+		let u = new LazyURL(href);
+		let actual = new LazyURL(u);
 
-		actual.port = '';
+		expect(actual).toStrictEqual(u);
+		expect(new LazyURL(new URL(href))).toStrictEqual(u);
+		expect(new LazyURL({ href })).toStrictEqual(u);
+		expect(new LazyURL({ href }, '')).toStrictEqual(u);
+		expect(new LazyURL('', { href: actual.pathname }).toString()).toStrictEqual(actual.pathname);
 
-		expect(actual.port).toStrictEqual('');
-
-		actual.port = 456;
-
-		actual.port = 0;
-
-		expect(actual.port).toStrictEqual('0');
-
-		actual.port = 456;
-
-		actual.port = '0';
-
-		expect(actual.port).toStrictEqual('0');
+		expect(() => new LazyURL(null)).toThrowErrorMatchingSnapshot();
+		expect(() => new LazyURL(1 as any)).toThrowErrorMatchingSnapshot();
+		expect(() => new LazyURL('')).toThrowErrorMatchingSnapshot();
+		expect(() => new LazyURL(void 0)).toThrowErrorMatchingSnapshot();
+		expect(() => new LazyURL(void 0, href)).toThrowErrorMatchingSnapshot();
+		expect(() => new LazyURL(null, href)).toThrowErrorMatchingSnapshot();
 	})
 
-	test(`port:number`, () =>
+})
+
+describe(`hostname`, () =>
+{
+	test(`fake`, () =>
 	{
 		let actual = new LazyURL('zh-TW/scripts');
 
-		expect(actual.port).toStrictEqual('');
-		//expect(actual).toMatchSnapshot();
+		expect(actual.fakeExists()).toBeTruthy();
 
-		actual.port = '123';
+		expect(actual.fakeEntries()).toContainEqual(["hostname", "url-fake-hostname"]);
 
-		expect(actual.port).toStrictEqual('123');
+		actual.hostname = 'developer.mozilla.org';
 
-		actual.port = 456;
+		expect(actual.fakeEntries()).not.toContainEqual('hostname');
 
-		expect(actual.port).toStrictEqual('456');
+		expect(actual.toString()).toContain('developer.mozilla.org');
+	});
+})
+
+describe(`port`, () =>
+{
+
+	test(`reset`, () =>
+	{
+		let actual = new LazyURL('https://gitee.com:3000/api/v5/');
+
+		_checkPort(actual, '3000');
+
+		_checkPortSet(actual, 456);
+
+		_checkPortSet(actual, null, '');
+
+		_checkPortSet(actual, 456);
+
+		_checkPortSet(actual, void 0, '');
+
+		_checkPortSet(actual, 456);
+
+		_checkPortSet(actual, '');
+	})
+
+	test(`zero`, () =>
+	{
+		let actual = new LazyURL('https://gitee.com:0/api/v5/');
+
+		_checkPort(actual, '0');
+
+		_checkPortSet(actual, 456);
+		_checkPortSet(actual, 0);
+
+		_checkPortSet(actual, 456);
+		_checkPortSet(actual, '0');
+	})
+
+	test(`number`, () =>
+	{
+		let actual = new LazyURL('zh-TW/scripts');
+
+		_checkPort(actual, '');
+
+		_checkPortSet(actual, '123');
+		_checkPortSet(actual, 456);
+	});
+
+	test(`invalid`, () =>
+	{
+		let actual = new LazyURL('zh-TW/scripts');
+
+		expect(() => actual.port = -1).toThrowErrorMatchingSnapshot()
+		expect(() => actual.port = '-1').toThrowErrorMatchingSnapshot()
+		expect(() => actual.port = Number.NaN).toThrowErrorMatchingSnapshot()
+		expect(() => actual.port = Number.MAX_SAFE_INTEGER).toThrowErrorMatchingSnapshot()
+		expect(() => actual.port = Infinity).toThrowErrorMatchingSnapshot()
+		expect(() => actual.port = -Infinity).toThrowErrorMatchingSnapshot()
+		expect(() => actual.port = ' 0xF').toThrowErrorMatchingSnapshot()
+		expect(() => actual.port = ' 0123').toThrowErrorMatchingSnapshot()
+
 	});
 
 })
+
+function _checkPort(actual: LazyURL, port: string)
+{
+	expect(actual.port).toStrictEqual(port);
+	expect(actual.toString()).toContain(`:${port}/`);
+}
+
+function _checkPortSet(actual: LazyURL, port: string | number, expected?: string)
+{
+	actual.port = port;
+	_checkPort(actual, (expected ?? port).toString())
+}

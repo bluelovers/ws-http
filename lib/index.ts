@@ -4,7 +4,11 @@
 
 import urlParse from 'url-parse';
 import SymbolInspect from 'symbol.inspect';
-import util from 'util';
+import { inspect } from 'util';
+import { typePredicates } from 'ts-type-predicates';
+import errcode from 'err-code';
+import indentString from 'indent-string';
+import cleanStack from 'clean-stack';
 
 export type IURLLike = string | URL | IURLObjectLike;
 export const SYM_URL = Symbol('url');
@@ -81,7 +85,7 @@ export class LazyURL extends URL implements URL
 
 		return this.pathname
 			.split('/')
-			.filter(v => v != '')
+			.filter(v => v !== '')
 	}
 
 	fakeExists()
@@ -127,7 +131,9 @@ export class LazyURL extends URL implements URL
 			{
 				if (u.username !== '' || u.password !== '' || u.port !== '' || u.protocol !== '')
 				{
-					throw new TypeError(`Invalid URL ${u}`)
+					//throw new TypeError(`Invalid URL ${u}`)
+
+					throw _wrapError(new TypeError(`Invalid URL`), u)
 				}
 			}
 
@@ -237,10 +243,28 @@ export class LazyURL extends URL implements URL
 
 	override set port(value: string | number)
 	{
+		if (typeof value === 'string' && value !== '')
+		{
+			let old = value.toString().trim();
+
+			value = parseInt(value)
+
+			if (old !== value.toString())
+			{
+				throw new TypeError(`Invalid port input: { '${old}' => ${value} }`)
+			}
+		}
+
 		if (typeof value === 'number')
 		{
+			if (Number.isNaN(value) || !Number.isFinite(value) || value < 0 || value > 65535)
+			{
+				throw new RangeError(`Invalid port range: ${value}`)
+			}
+
 			value = value.toString();
 		}
+
 		super.port = value ?? ''
 	}
 
@@ -462,7 +486,7 @@ export type IUrlKeys =
 
 export function findSymbolContext(): symbol
 {
-	let u = new URL(`https://localhost`);
+	let u = _newURL(`https://localhost`);
 
 	const SymbolContext = Object.getOwnPropertySymbols(u)
 		.filter(sym => u[sym].host == 'localhost')[0]
@@ -491,6 +515,9 @@ export interface IURLObject
 	hash: string;
 }
 
+/**
+ * @private
+ */
 export function _core(url: IURLLike | [IURLLike, IURLLike?], base?: IURLLike)
 {
 	if (Array.isArray(url))
@@ -515,7 +542,7 @@ export function _core(url: IURLLike | [IURLLike, IURLLike?], base?: IURLLike)
 	}
 	else if (typeof url !== 'string')
 	{
-		throw new TypeError(`Argument '${url}' is not assignable to url like.`)
+		throw _wrapError(new TypeError(`Argument '${url}' is not assignable to url like.`), url, base)
 	}
 
 	let _url: URL;
@@ -533,13 +560,15 @@ export function _core(url: IURLLike | [IURLLike, IURLLike?], base?: IURLLike)
 
 	try
 	{
-		_url = new URL(url, base as string)
+		_url = _newURL(url, base as string)
 	}
-	catch (e)
+	catch (e: unknown)
 	{
 		let ok: boolean;
 
-		if (/Invalid URL/.test(e.message))
+		typePredicates<IURLError>(e);
+
+		if (e.code === 'ERR_INVALID_URL' || /Invalid URL/.test(e.message))
 		{
 			if (typeof base === 'string')
 			{
@@ -595,16 +624,20 @@ export function _core(url: IURLLike | [IURLLike, IURLLike?], base?: IURLLike)
 						u.set('pathname', '/' + u.pathname);
 					}
 
-					_url = new URL(url, u.toString());
+					_url = _newURL(url, u.toString());
 
 					ok = true;
 				}
 			}
-			else if (base == null)
+			else if ((url == null || url === '') && base == null)
+			{
+
+			}
+			else if (url != null && base == null)
 			{
 				base = `${ENUM_FAKE.protocol}//${ENUM_FAKE.hostname}`;
 
-				_url = new URL(url, base);
+				_url = _newURL(url, base);
 
 				_hidden_.protocol = ENUM_FAKE.protocol;
 				_hidden_.hostname = ENUM_FAKE.hostname;
@@ -623,6 +656,80 @@ export function _core(url: IURLLike | [IURLLike, IURLLike?], base?: IURLLike)
 		url: _url,
 		hidden: _hidden_,
 	}
+}
+
+export interface IURLErrorNode extends Error
+{
+	code: 'ERR_INVALID_URL' | string,
+	input: IURLLike,
+}
+
+export interface IURLError extends IURLErrorNode
+{
+	baseURL: IURLLike,
+}
+
+function _wrapError<T extends Error>(e: T, input: IURLLike | [IURLLike, IURLLike?], baseURL?: IURLLike): T & IURLError
+{
+	typePredicates<IURLError>(e);
+
+	let message = e.message;
+
+	if (message === 'Invalid URL' || e.code === 'ERR_INVALID_URL')
+	{
+		message = _messageWithErrors(e, [
+			e,
+			{
+				input,
+				baseURL,
+			},
+		])
+	}
+
+	if (e.message !== message)
+	{
+		e.message = message;
+	}
+
+	let err = errcode(e, e.code ?? 'ERR_INVALID_URL', {
+		input,
+		baseURL,
+	});
+
+	return err as any
+}
+
+function _newURL(input: string | URL, baseURL?: string | URL)
+{
+	try
+	{
+		return new URL(input, baseURL)
+	}
+	catch (e: unknown)
+	{
+		throw _wrapError(e as IURLError, input, baseURL);
+	}
+}
+
+function _messageWithErrors(e: Error, errors: any[])
+{
+	let sub_message = (errors as Error[])
+		.map((error) =>
+		{
+			if (e === error)
+			{
+				return String(error)
+			}
+			else if (typeof error?.stack === 'string')
+			{
+				return cleanStack(error.stack)
+			}
+
+			return inspect(error);
+		})
+		.join('\n')
+	;
+	return String(e.message) + '\n' + indentString(sub_message, 4);
 }
 
 export default LazyURL
