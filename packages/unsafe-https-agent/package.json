@@ -1,6 +1,6 @@
 {
   "name": "unsafe-https-agent",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "https agent with rejectUnauthorized = false",
   "homepage": "https://github.com/bluelovers/ws-http/tree/master/packages/unsafe-https-agent#readme",
   "bugs": {
@@ -34,6 +34,5 @@
   "devDependencies": {
     "@types/node-fetch": "^2.5.12",
     "cross-fetch": "^3.1.4"
-  },
-  "peerDependencies": {}
+  }
 }
