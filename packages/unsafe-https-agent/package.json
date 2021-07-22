@@ -1,0 +1,39 @@
+{
+  "name": "unsafe-https-agent",
+  "version": "1.0.0",
+  "description": "https agent with rejectUnauthorized = false",
+  "homepage": "https://github.com/bluelovers/ws-http/tree/master/packages/unsafe-https-agent#readme",
+  "bugs": {
+    "url": "https://github.com/bluelovers/ws-http/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bluelovers/ws-http.git"
+  },
+  "keywords": [
+    "https",
+    "agent",
+    "rejectUnauthorized",
+    "unsafe",
+    "http",
+    "NODE_TLS_REJECT_UNAUTHORIZED",
+    "ERR_CERT_AUTHORITY_INVALID"
+  ],
+  "license": "ISC",
+  "author": "bluelovers",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "preversion": "yarn run test",
+    "ncu": "yarn-tool ncu -u",
+    "sort-package-json": "yarn-tool sort"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@types/node-fetch": "^2.5.12",
+    "cross-fetch": "^3.1.4"
+  },
+  "peerDependencies": {}
+}
