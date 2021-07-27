@@ -23,6 +23,14 @@
     "x-forwarded-host",
     "x-forwarded-port"
   ],
+  "homepage": "https://github.com/bluelovers/ws-http/tree/master/packages/original-url#readme",
+  "bugs": {
+    "url": "https://github.com/bluelovers/ws-http/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bluelovers/ws-http.git"
+  },
   "license": "MIT",
   "author": "Thomas Watson <w@tson.dk> (https://twitter.com/wa7son)",
   "main": "index.js",
@@ -37,6 +45,8 @@
     "npm:publish": "npm publish",
     "preversion": "yarn run test",
     "prepublish:lockfile": "npx sync-lockfile .",
+    "prepublishOnly:check-bin": "ynpx --quiet @yarn-tool/check-pkg-bin",
+    "prepublishOnly:update": "yarn run ncu && yarn run sort-package-json",
     "postpublish_": "git commit -m \"chore(release): publish\" .",
     "bench": "node benchmark/benchmark.js",
     "ncu": "npx yarn-tool ncu -u",
