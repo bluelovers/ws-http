@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.15](https://github.com/bluelovers/ws-http/compare/original-url2@1.2.14...original-url2@1.2.15) (2021-07-27)
+
+
+### ♻️　Chores
+
+* fix meta ([f083028](https://github.com/bluelovers/ws-http/commit/f0830289acdd609c0a2570c05286486b9e5ac4a6))
+
+
+
+
+
 ## [1.2.14](https://github.com/bluelovers/ws-http/compare/original-url2@1.2.13...original-url2@1.2.14) (2021-07-08)
 
 
