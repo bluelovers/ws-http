@@ -105,6 +105,7 @@ class AbortControllerTimer extends abort_controller_1.default {
             throw new TypeError(`ms should be greater than 0, but got {${ms}}`);
         }
         (0, tslib_1.__classPrivateFieldSet)(this, _AbortControllerTimer_ms, ms, "f");
+        this.reset();
     }
     /**
      * warning: reset the timer will not abort signal

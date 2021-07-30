@@ -177,6 +177,8 @@ export class AbortControllerTimer extends AbortController
 		}
 
 		this.#ms = ms;
+
+		this.reset();
 	}
 
 	/**
