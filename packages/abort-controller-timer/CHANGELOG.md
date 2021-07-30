@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.13](https://github.com/bluelovers/ws-http/compare/abort-controller-timer@1.0.12...abort-controller-timer@1.0.13) (2021-07-30)
+
+
+### 🐛　Bug Fixes
+
+* not allow set timeout after abort ([f155130](https://github.com/bluelovers/ws-http/commit/f15513062d674dffe3ff449a9c087b4d996a360a))
+
+
+
+
+
 ## [1.0.12](https://github.com/bluelovers/ws-http/compare/abort-controller-timer@1.0.11...abort-controller-timer@1.0.12) (2021-07-30)
 
 
