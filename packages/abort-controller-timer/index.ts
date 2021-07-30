@@ -5,12 +5,19 @@
 import Timeout = NodeJS.Timeout;
 import AbortController from './lib/abort-controller';
 import {
+	_getControllerFromSignal,
+	_setControllerFromSignal,
 	IAbortSignalWithController,
-	linkAbortChildWithParent,
 	linkAbortSignalWithController,
 } from 'abort-controller-util/index';
 
 export { AbortController }
+
+const SymbolChildren = Symbol.for('AbortControllerTimer#children');
+const SymbolParents = Symbol.for('AbortControllerTimer#parents');
+const SymbolAbortController = Symbol.for('controller');
+
+type ISetAllowedValue = AbortSignal | AbortControllerTimer | AbortController;
 
 export class AbortControllerTimer extends AbortController
 {
@@ -19,29 +26,84 @@ export class AbortControllerTimer extends AbortController
 	#timer?: Timeout | number
 	#ms: number
 
+	[SymbolChildren]: Set<ISetAllowedValue>;
+	[SymbolParents]: Set<ISetAllowedValue>;
+
+	readonly [SymbolAbortController]: AbortControllerTimer;
+
 	constructor(ms?: number)
 	{
 		super();
+
+		this._init(ms)
+	}
+
+	protected _init(ms: number)
+	{
+		// @ts-ignore
+		this[SymbolAbortController] = this;
+
 		this.#ms = ms;
 		this.reset()
 
-		linkAbortSignalWithController(this.signal, this);
+		_setControllerFromSignal(this.signal, this);
 
 		this.on('abort', (ev) =>
 		{
 			this.clear();
+			this._removeMeFromParents();
+
+			this.abortChildrenAll();
+
 		}, {
 			once: true,
 		})
 	}
 
-	child(ms?: number)
+	protected _addChildren(child: ISetAllowedValue)
 	{
-		const child = new AbortControllerTimer(ms);
+		if (!(child as AbortControllerTimer).aborted)
+		{
+			child[SymbolParents] ??= new Set();
+			child[SymbolParents].add(this);
 
-		linkAbortChildWithParent(child, this);
+			this[SymbolChildren] ??= new Set();
+			this[SymbolChildren].add(child);
+		}
 
 		return child
+	}
+
+	protected _removeChildren(child: ISetAllowedValue)
+	{
+		child?.[SymbolParents]?.delete(this);
+		this?.[SymbolChildren]?.delete(child);
+	}
+
+	abortChildrenAll()
+	{
+		return this[SymbolChildren]?.forEach(c => {
+			(_getControllerFromSignal(c as any) ?? c)?.abort?.();
+			this._removeChildren(c);
+		});
+	}
+
+	protected _removeMeFromParents()
+	{
+		return this[SymbolParents]?.forEach(p => this._removeChildren.call(p, this))
+	}
+
+	attachToParent(parent: ISetAllowedValue)
+	{
+		let p: AbortControllerTimer = (_getControllerFromSignal<AbortControllerTimer>(parent as any) ?? parent) as any
+		this._addChildren.call(p, this);
+
+		return this;
+	}
+
+	child(ms?: number)
+	{
+		return this._addChildren(new AbortControllerTimer(ms))
 	}
 
 	addEventListener<K extends keyof AbortSignalEventMap>(type: K,

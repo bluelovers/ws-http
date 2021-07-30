@@ -4,6 +4,9 @@ export type IAbortSignalWithController<Signal, Controller = AbortController> = S
 	readonly [SymbolAbortController]: Controller
 }
 
+/**
+ * @deprecated
+ */
 export interface IEventAbort extends Omit<Event, 'type'>
 {
 	type: 'abort',
@@ -35,6 +38,9 @@ export function linkAbortSignalWithController<T extends AbortController>(signal:
 	_setControllerFromSignal(signal, controller)
 }
 
+/**
+ * @deprecated
+ */
 export function _addEventListener(target: AbortController | AbortSignal, fn: (...argv: any) => any)
 {
 	if (typeof _getControllerFromSignal(target as AbortSignal)?.addEventListener !== 'undefined')
@@ -53,6 +59,7 @@ export function _addEventListener(target: AbortController | AbortSignal, fn: (..
 
 /**
  * when parent aborted, child will abort too
+ * @deprecated
  */
 export function linkAbortChildWithParent(child: AbortController | AbortSignal, parent: AbortController | AbortSignal)
 {
@@ -69,6 +76,9 @@ export function linkAbortChildWithParent(child: AbortController | AbortSignal, p
 	return fn
 }
 
+/**
+ * @deprecated
+ */
 export function unlinkAbortChildWithParent(parent: AbortController | AbortSignal, fn: (...argv: any) => any)
 {
 	_getControllerFromSignal(parent as AbortSignal)?.removeEventListener('abort', fn);

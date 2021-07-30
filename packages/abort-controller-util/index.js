@@ -21,6 +21,9 @@ function linkAbortSignalWithController(signal, controller, ignoreExists) {
     _setControllerFromSignal(signal, controller);
 }
 exports.linkAbortSignalWithController = linkAbortSignalWithController;
+/**
+ * @deprecated
+ */
 function _addEventListener(target, fn) {
     var _a;
     if (typeof ((_a = _getControllerFromSignal(target)) === null || _a === void 0 ? void 0 : _a.addEventListener) !== 'undefined') {
@@ -36,6 +39,7 @@ function _addEventListener(target, fn) {
 exports._addEventListener = _addEventListener;
 /**
  * when parent aborted, child will abort too
+ * @deprecated
  */
 function linkAbortChildWithParent(child, parent) {
     var _a;
@@ -48,6 +52,9 @@ function linkAbortChildWithParent(child, parent) {
     return fn;
 }
 exports.linkAbortChildWithParent = linkAbortChildWithParent;
+/**
+ * @deprecated
+ */
 function unlinkAbortChildWithParent(parent, fn) {
     var _a, _b, _c, _d;
     (_a = _getControllerFromSignal(parent)) === null || _a === void 0 ? void 0 : _a.removeEventListener('abort', fn);
