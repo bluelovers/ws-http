@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.12](https://github.com/bluelovers/ws-http/compare/abort-controller-timer@1.0.11...abort-controller-timer@1.0.12) (2021-07-30)
+
+
+### 🐛　Bug Fixes
+
+* avoid setMaxListeners warn ([4565233](https://github.com/bluelovers/ws-http/commit/4565233fbb7d0ae8a12dd11fc2883468838d0cb3))
+
+
+
+
+
 ## [1.0.11](https://github.com/bluelovers/ws-http/compare/abort-controller-timer@1.0.10...abort-controller-timer@1.0.11) (2021-07-19)
 
 
