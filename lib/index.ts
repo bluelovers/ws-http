@@ -350,7 +350,7 @@ export class LazyURL extends URL implements URL
 
 		let ls = value?.split(':')
 
-		if (ls.length)
+		if (ls?.length)
 		{
 			this.username = ls.shift();
 			this.password = ls.join(':');

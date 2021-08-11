@@ -263,6 +263,26 @@ describe(`auth`, () =>
 
 	});
 
+	test(`void`, () =>
+	{
+		let actual = new LazyURL('zh-TW/scripts');
+
+		actual.auth = void 0;
+
+		expect(actual).toMatchSnapshot();
+		expect(actual).toHaveProperty('username', '');
+		expect(actual).toHaveProperty('password', '');
+		expect(actual).toHaveProperty('auth', '');
+
+		expect(actual.toObject()).toMatchSnapshot();
+		expect(actual.toString()).toMatchSnapshot();
+		expect(actual.toRealString()).toMatchSnapshot();
+		expect(actual.toRealString({
+			ignoreInvalid: true,
+		})).toMatchSnapshot();
+
+	});
+
 });
 
 function _checkPort(actual: LazyURL, port: string)
