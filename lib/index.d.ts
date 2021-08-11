@@ -32,6 +32,7 @@ export declare class LazyURL extends URL implements URL {
     set hostname(value: string);
     get href(): string;
     set href(value: string);
+    get origin(): string;
     get port(): string;
     set port(value: string | number);
     get protocol(): string;

@@ -222,6 +222,21 @@ export class LazyURL extends URL implements URL
 		}
 	}
 
+	override get origin(): string
+	{
+		let origin = super.origin;
+
+		if (origin === 'null' && super.protocol.length)
+		{
+			/**
+			 * @see https://github.com/nodejs/node/issues/39732#issuecomment-896624653
+			 */
+			origin = super.protocol + '//' + super.hostname;
+		}
+
+		return origin
+	}
+
 	/*
 
 	get password()
