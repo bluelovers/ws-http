@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.15](https://github.com/bluelovers/lazy-url/compare/lazy-url@1.0.14...lazy-url@1.0.15) (2021-08-11)
+
+
+### ✨　Features
+
+* support auth ([8e537fe](https://github.com/bluelovers/lazy-url/commit/8e537fe258660844f5b22d2abd5306ef91feb0ea))
+
+
+### 🚨　Tests
+
+* update test ([e530690](https://github.com/bluelovers/lazy-url/commit/e53069062dfde7e9b34fc2326370c36887e336e5))
+
+
+
+
+
 ## [1.0.14](https://github.com/bluelovers/lazy-url/compare/lazy-url@1.0.13...lazy-url@1.0.14) (2021-08-11)
 
 
