@@ -202,6 +202,11 @@ export class LazyURL extends URL implements URL
 		super.hostname = value
 	}
 
+	override get href()
+	{
+		return super.href
+	}
+
 	override set href(value: string)
 	{
 		super.href = value
@@ -218,15 +223,6 @@ export class LazyURL extends URL implements URL
 	}
 
 	/*
-	get href()
-	{
-		return this[SYM_URL].href
-	}
-
-	get origin()
-	{
-		return this[SYM_URL].origin
-	}
 
 	get password()
 	{
