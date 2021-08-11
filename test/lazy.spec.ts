@@ -130,6 +130,32 @@ describe(`protocol`, () =>
 	});
 })
 
+describe(`origin`, () =>
+{
+	test(`fake`, () =>
+	{
+		let actual = new LazyURL('zh-TW/scripts');
+
+		expect(actual.fakeExists()).toBeTruthy();
+
+		expect(actual.fakeEntries()).toContainEqual(["protocol", ENUM_FAKE.protocol]);
+
+		expect(actual).not.toHaveProperty('origin', 'null');
+		expect(actual).toHaveProperty('origin', `${ENUM_FAKE.protocol}//${ENUM_FAKE.hostname}`);
+
+		actual.protocol = 'http:';
+
+		expect(actual).toHaveProperty('origin', `http://${ENUM_FAKE.hostname}`);
+		expect(actual).toHaveProperty('origin', new URL(actual.toString()).origin);
+
+		actual.hostname = 'developer.mozilla.org';
+
+		expect(actual).toHaveProperty('origin', `http://developer.mozilla.org`);
+		expect(actual).toHaveProperty('origin', new URL(actual.toString()).origin);
+
+	});
+})
+
 describe(`port`, () =>
 {
 

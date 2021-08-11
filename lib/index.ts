@@ -226,7 +226,7 @@ export class LazyURL extends URL implements URL
 	{
 		let origin = super.origin;
 
-		if (origin === 'null' && super.protocol.length)
+		if ((typeof origin === 'undefined' || origin === null || origin === 'null' || origin === 'undefined') && super.protocol.length)
 		{
 			/**
 			 * @see https://github.com/nodejs/node/issues/39732#issuecomment-896624653
