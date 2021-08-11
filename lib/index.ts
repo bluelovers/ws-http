@@ -10,6 +10,8 @@ import errcode from 'err-code';
 import indentString from 'indent-string';
 import cleanStack from 'clean-stack';
 import { _fixReplaceURLProtocol } from 'replace-url-protocol';
+import { errorsToMessageList, messageWithSubErrors } from 'err-indent';
+import { errStackMeta, stringifyStackMeta } from 'err-stack-meta';
 
 export type IURLLike = string | URL | IURLObjectLike;
 export const SYM_URL = Symbol('url');
@@ -571,21 +573,26 @@ export function _core(url: IURLLike | [IURLLike, IURLLike?], base?: IURLLike)
 		}
 	}
 
-	if (url && url instanceof LazyURL)
+	if (typeof url !== 'undefined' && url !== null)
 	{
-		url = url.toRealString();
+		if (url instanceof LazyURL)
+		{
+			url = url.toRealString();
+		}
+		else if (url instanceof URL)
+		{
+			url = url.href;
+		}
+		else if (typeof (url as IURLObjectLike).href === 'string')
+		{
+			url = (url as IURLObjectLike).href;
+			base ??= (url as any as HTMLLinkElement).baseURI;
+		}
 	}
-	else if (url && url instanceof URL)
+
+	if (typeof url !== 'string')
 	{
-		url = url.href;
-	}
-	else if (url != null && typeof (url as IURLObjectLike).href === 'string')
-	{
-		url = (url as IURLObjectLike).href;
-	}
-	else if (typeof url !== 'string')
-	{
-		throw _wrapError(new TypeError(`Argument '${url}' is not assignable to url like.`), url, base)
+		throw _wrapError(new TypeError(`Argument '${inspect(url)}' is not assignable to url like.`), url, base)
 	}
 
 	let _url: URL;
@@ -712,21 +719,32 @@ export interface IURLError extends IURLErrorNode
 	baseURL: IURLLike,
 }
 
-function _wrapError<T extends Error>(e: T, input: IURLLike | [IURLLike, IURLLike?], baseURL?: IURLLike): T & IURLError
+function _wrapError<T extends Error>(e: T, input: IURLLike | [IURLLike, IURLLike?], baseURL?: IURLLike, errInvalidUrl?: boolean): T & IURLError
 {
 	typePredicates<IURLError>(e);
 
 	let message = e.message;
 
-	if (message === 'Invalid URL' || e.code === 'ERR_INVALID_URL')
+	if (message === 'Invalid URL' || e.code === 'ERR_INVALID_URL' || errInvalidUrl)
 	{
-		message = _messageWithErrors(e, [
+		message = messageWithSubErrors(e, [
 			e,
 			{
 				input,
 				baseURL,
 			},
 		])
+
+		let meta = errStackMeta(e);
+
+		e.stack = errorsToMessageList([
+			e,
+			{
+				input,
+				baseURL,
+			},
+		], {}, e).concat([meta.stack]).join('\n');
+
 	}
 
 	if (e.message !== message)
@@ -752,27 +770,6 @@ function _newURL(input: string | URL, baseURL?: string | URL)
 	{
 		throw _wrapError(e as IURLError, input, baseURL);
 	}
-}
-
-function _messageWithErrors(e: Error, errors: any[])
-{
-	let sub_message = (errors as Error[])
-		.map((error) =>
-		{
-			if (e === error)
-			{
-				return String(error)
-			}
-			else if (typeof error?.stack === 'string')
-			{
-				return cleanStack(error.stack)
-			}
-
-			return inspect(error);
-		})
-		.join('\n')
-	;
-	return String(e.message) + '\n' + indentString(sub_message, 4);
 }
 
 export function isFakeProtocol(protocol: string): protocol is ENUM_FAKE.protocol

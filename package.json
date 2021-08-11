@@ -53,9 +53,8 @@
     "sort-package-json": "yarn-tool sort"
   },
   "dependencies": {
-    "clean-stack": ">=3 <4",
     "err-code": "^3.0.1",
-    "indent-string": ">=4.0.0 <5",
+    "err-indent": "^1.0.1",
     "replace-url-protocol": "^1.0.2",
     "symbol.inspect": "^1.0.1",
     "ts-type-predicates": "^1.0.5",
