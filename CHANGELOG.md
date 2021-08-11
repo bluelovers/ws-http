@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.17](https://github.com/bluelovers/lazy-url/compare/lazy-url@1.0.16...lazy-url@1.0.17) (2021-08-11)
+
+
+### 🐛　Bug Fixes
+
+* Cannot read property 'split' of undefined ([24d33a5](https://github.com/bluelovers/lazy-url/commit/24d33a553f8784772aac3f5d35715aba23518978))
+
+
+
+
+
 ## [1.0.16](https://github.com/bluelovers/lazy-url/compare/lazy-url@1.0.15...lazy-url@1.0.16) (2021-08-11)
 
 
