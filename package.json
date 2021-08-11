@@ -10,6 +10,8 @@
     "lerna:publish": "npx lerna publish",
     "lerna:publish:yes": "npx lerna publish --yes --cd-version patch",
     "prepublish:lockfile": "npx sync-lockfile .",
+    "prepublishOnly:check-bin": "ynpx --quiet @yarn-tool/check-pkg-bin",
+    "prepublishOnly:update": "yarn run ncu && yarn run sort-package-json",
     "ncu": "yarn run ncu:root && yarn run ncu:ws",
     "ncu:root": "npx yarn-tool ncu -u",
     "ncu:ws": "npx yarn-tool ws exec yarn-tool ncu -- -u",
@@ -19,6 +21,7 @@
   },
   "resolutions": {},
   "dependencies": {
+    "axios": "^0.21.1",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
