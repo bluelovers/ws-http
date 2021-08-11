@@ -1,6 +1,6 @@
 {
   "name": "img-better-quality-url",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "try to get better quality / full size / original image from given url",
   "keywords": [
     "better quality",
@@ -42,7 +42,5 @@
     "mitemin": "^1.0.9",
     "parse-domain": "^3.0.3",
     "tslib": "^2.3.0"
-  },
-  "devDependencies": {},
-  "peerDependencies": {}
+  }
 }
