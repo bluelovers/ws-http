@@ -194,20 +194,33 @@ export class LazyURL extends URL implements URL
 
 	override set hostname(value)
 	{
-		delete this[SYM_HIDDEN].hostname;
+		if (!isFakeHostname(value))
+		{
+			delete this[SYM_HIDDEN].hostname;
+		}
 
 		super.hostname = value
+	}
+
+	override set href(value: string)
+	{
+		super.href = value
+
+		if (isFakeProtocol(super.protocol))
+		{
+			this[SYM_HIDDEN].protocol = ENUM_FAKE.protocol
+		}
+
+		if (isFakeHostname(super.hostname))
+		{
+			this[SYM_HIDDEN].hostname = ENUM_FAKE.hostname
+		}
 	}
 
 	/*
 	get href()
 	{
 		return this[SYM_URL].href
-	}
-
-	set href(value)
-	{
-		this[SYM_URL].href = value
 	}
 
 	get origin()
