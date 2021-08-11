@@ -83,9 +83,11 @@ describe(`suite`, () =>
 					if (typeof actual[name] === 'string' && !['origin'].includes(name))
 					{
 						// name
-						expect(actual[name]).toEqual(up[name]);
+						expect(actual).toHaveProperty(name, up[name]);
 
-						expect(actual[name]).toMatchSnapshot();
+						expect({
+							[name]: actual[name],
+						}).toMatchSnapshot();
 					}
 
 				})
