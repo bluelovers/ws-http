@@ -1,4 +1,4 @@
-import LazyURL from '../lib/index';
+import LazyURL, { ENUM_FAKE } from '../lib/index';
 
 describe(`lazy`, () =>
 {
@@ -96,13 +96,37 @@ describe(`hostname`, () =>
 
 		expect(actual.fakeExists()).toBeTruthy();
 
-		expect(actual.fakeEntries()).toContainEqual(["hostname", "url-fake-hostname"]);
+		expect(actual.fakeEntries()).toContainEqual(["hostname", ENUM_FAKE.hostname]);
 
 		actual.hostname = 'developer.mozilla.org';
 
-		expect(actual.fakeEntries()).not.toContainEqual('hostname');
+		expect(actual).toHaveProperty('hostname', 'developer.mozilla.org');
+
+		expect(actual.fakeKeys()).toContainEqual('protocol');
+		expect(actual.fakeKeys()).not.toContainEqual('hostname');
 
 		expect(actual.toString()).toContain('developer.mozilla.org');
+	});
+})
+
+describe(`protocol`, () =>
+{
+	test(`fake`, () =>
+	{
+		let actual = new LazyURL('zh-TW/scripts');
+
+		expect(actual.fakeExists()).toBeTruthy();
+
+		expect(actual.fakeEntries()).toContainEqual(["protocol", ENUM_FAKE.protocol]);
+
+		actual.protocol = 'http:';
+
+		expect(actual).toHaveProperty('protocol', 'http:');
+
+		expect(actual.fakeKeys()).not.toContainEqual('protocol');
+		expect(actual.fakeKeys()).toContainEqual('hostname');
+
+		expect(actual.toString()).not.toContain(ENUM_FAKE.protocol);
 	});
 })
 

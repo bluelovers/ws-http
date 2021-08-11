@@ -9,12 +9,13 @@ import { typePredicates } from 'ts-type-predicates';
 import errcode from 'err-code';
 import indentString from 'indent-string';
 import cleanStack from 'clean-stack';
+import { _fixReplaceURLProtocol } from 'replace-url-protocol';
 
 export type IURLLike = string | URL | IURLObjectLike;
 export const SYM_URL = Symbol('url');
 export const SYM_HIDDEN = Symbol('hidden');
 
-const enum ENUM_FAKE
+export const enum ENUM_FAKE
 {
 	protocol = 'fake+http:',
 	hostname = 'url-fake-hostname',
@@ -275,9 +276,27 @@ export class LazyURL extends URL implements URL
 
 	override set protocol(value)
 	{
-		delete this[SYM_HIDDEN].protocol;
+		if (typeof value !== 'string' || value.length < 2 || !value.endsWith(':'))
+		{
+			throw new TypeError(`Invalid protocol input: ${value}`)
+		}
 
-		super.protocol = value
+		if (!isFakeProtocol(value))
+		{
+			delete this[SYM_HIDDEN].protocol;
+		}
+
+		const old = super.protocol;
+
+		if (old !== value)
+		{
+			super.protocol = value;
+
+			/**
+			 * avoid bug of https://github.com/nodejs/node/issues/39732
+			 */
+			_fixReplaceURLProtocol(this, old, value);
+		}
 	}
 
 	/*
@@ -730,6 +749,16 @@ function _messageWithErrors(e: Error, errors: any[])
 		.join('\n')
 	;
 	return String(e.message) + '\n' + indentString(sub_message, 4);
+}
+
+export function isFakeProtocol(protocol: string): protocol is ENUM_FAKE.protocol
+{
+	return protocol === ENUM_FAKE.protocol
+}
+
+export function isFakeHostname(hostname: string): hostname is ENUM_FAKE.protocol
+{
+	return hostname === ENUM_FAKE.hostname
 }
 
 export default LazyURL

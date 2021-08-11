@@ -2,7 +2,7 @@
  * Created by User on 2019/6/6.
  */
 
-import LazyURL from '../lib/index';
+import LazyURL, { ENUM_FAKE } from '../lib/index';
 // @ts-ignore
 import SymbolInspect from 'symbol.inspect';
 // @ts-ignore
@@ -14,12 +14,12 @@ describe(`suite`, () =>
 	[
 		[
 			['zh-TW/scripts', 'zh-TW:8080'],
-			`fake+http://zh-tw:8080/zh-TW/scripts`,
+			`${ENUM_FAKE.protocol}//zh-tw:8080/zh-TW/scripts`,
 			`//zh-tw:8080/zh-TW/scripts`,
 		],
 		[
 			['zh-TW/scripts', 'zh-TW'],
-			`fake+http://zh-tw/zh-TW/scripts`,
+			`${ENUM_FAKE.protocol}//zh-tw/zh-TW/scripts`,
 			`//zh-tw/zh-TW/scripts`,
 		],
 		[
@@ -29,7 +29,7 @@ describe(`suite`, () =>
 		],
 		[
 			['zh-TW/scripts'],
-			`fake+http://url-fake-hostname/zh-TW/scripts`,
+			`${ENUM_FAKE.protocol}//${ENUM_FAKE.hostname}/zh-TW/scripts`,
 			`/zh-TW/scripts`,
 		],
 		[
@@ -39,7 +39,7 @@ describe(`suite`, () =>
 		],
 		[
 			['/api/v5/repos/xxxx/xxxx/contents', '/api/v5/'],
-			'fake+http://url-fake-hostname/api/v5/repos/xxxx/xxxx/contents',
+			`${ENUM_FAKE.protocol}//${ENUM_FAKE.hostname}/api/v5/repos/xxxx/xxxx/contents`,
 			'/api/v5/repos/xxxx/xxxx/contents',
 		],
 	].forEach(test =>

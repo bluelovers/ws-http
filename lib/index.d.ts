@@ -4,6 +4,10 @@
 export declare type IURLLike = string | URL | IURLObjectLike;
 export declare const SYM_URL: unique symbol;
 export declare const SYM_HIDDEN: unique symbol;
+export declare const enum ENUM_FAKE {
+    protocol = "fake+http:",
+    hostname = "url-fake-hostname"
+}
 export declare class LazyURL extends URL implements URL {
     /**
      * @deprecated
@@ -103,4 +107,6 @@ export interface IURLErrorNode extends Error {
 export interface IURLError extends IURLErrorNode {
     baseURL: IURLLike;
 }
+export declare function isFakeProtocol(protocol: string): protocol is ENUM_FAKE.protocol;
+export declare function isFakeHostname(hostname: string): hostname is ENUM_FAKE.protocol;
 export default LazyURL;
