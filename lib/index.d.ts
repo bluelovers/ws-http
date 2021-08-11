@@ -26,7 +26,7 @@ export declare class LazyURL extends URL implements URL {
      *
      * @returns {string}
      */
-    toRealString(): string;
+    toRealString(ignoreInvalid?: boolean): string;
     toString(): string;
     get hostname(): string;
     set hostname(value: string);
@@ -37,6 +37,8 @@ export declare class LazyURL extends URL implements URL {
     set port(value: string | number);
     get protocol(): string;
     set protocol(value: string);
+    get auth(): string;
+    set auth(value: string);
     /**
      * @alias protocol
      */

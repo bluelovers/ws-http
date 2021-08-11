@@ -112,7 +112,7 @@ export class LazyURL extends URL implements URL
 	 *
 	 * @returns {string}
 	 */
-	toRealString()
+	toRealString(ignoreInvalid?: boolean)
 	{
 		let ks = this.fakeEntries();
 
@@ -132,7 +132,14 @@ export class LazyURL extends URL implements URL
 
 			if (u.host === '')
 			{
-				if (u.username !== '' || u.password !== '' || u.port !== '' || u.protocol !== '')
+				if (ignoreInvalid)
+				{
+					u.set('username', '');
+					u.set('password', '');
+					u.set('port', '');
+					u.set('protocol', '');
+				}
+				else if (u.username !== '' || u.password !== '' || u.port !== '' || u.protocol !== '')
 				{
 					//throw new TypeError(`Invalid URL ${u}`)
 
@@ -323,6 +330,27 @@ export class LazyURL extends URL implements URL
 			 */
 			_fixReplaceURLProtocol(this, old, value);
 		}
+	}
+
+	get auth(): string
+	{
+		if (this.username?.length)
+		{
+			return `${this.username}:${this.password ?? ''}`
+		}
+
+		return ''
+	}
+
+	set auth(value: string)
+	{
+		this.username = '';
+		this.password = '';
+
+		let ls = value.split(':')
+
+		this.username = ls.shift();
+		this.password = ls.join(':');
 	}
 
 	/*

@@ -218,6 +218,49 @@ describe(`port`, () =>
 
 })
 
+describe(`auth`, () =>
+{
+	const username = 'username';
+	const password = 'password';
+
+	test(`${username}:${password}`, () =>
+	{
+		let actual = new LazyURL('zh-TW/scripts');
+
+		actual.auth = `${username}:${password}`;
+
+		expect(actual).toMatchSnapshot();
+		expect(actual).toHaveProperty('username', username);
+		expect(actual).toHaveProperty('password', password);
+		expect(actual).toHaveProperty('auth', `${username}:${password}`);
+
+		expect(actual.toObject()).toMatchSnapshot();
+		expect(actual.toString()).toMatchSnapshot();
+		expect(() => actual.toRealString()).toThrowErrorMatchingSnapshot();
+		expect(actual.toRealString(true)).toMatchSnapshot();
+
+	});
+
+	test(`${username}:`, () =>
+	{
+		let actual = new LazyURL('zh-TW/scripts');
+
+		actual.auth = `${username}:`;
+
+		expect(actual).toMatchSnapshot();
+		expect(actual).toHaveProperty('username', username);
+		expect(actual).toHaveProperty('password', '');
+		expect(actual).toHaveProperty('auth', `${username}:`);
+
+		expect(actual.toObject()).toMatchSnapshot();
+		expect(actual.toString()).toMatchSnapshot();
+		expect(() => actual.toRealString()).toThrowErrorMatchingSnapshot();
+		expect(actual.toRealString(true)).toMatchSnapshot();
+
+	});
+
+});
+
 function _checkPort(actual: LazyURL, port: string)
 {
 	expect(actual.port).toStrictEqual(port);

@@ -1,5 +1,101 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`auth username: 1`] = `"fake+http://username@url-fake-hostname/zh-TW/scripts"`;
+
+exports[`auth username: 2`] = `
+Object {
+  "hash": "",
+  "host": "url-fake-hostname",
+  "hostname": "url-fake-hostname",
+  "href": "fake+http://username@url-fake-hostname/zh-TW/scripts",
+  "password": "",
+  "pathname": "/zh-TW/scripts",
+  "port": "",
+  "protocol": "fake+http:",
+  "search": "",
+  "searchParams": URLSearchParams {
+    Symbol(query): Array [],
+    Symbol(context): null,
+  },
+  "username": "username",
+}
+`;
+
+exports[`auth username: 3`] = `"fake+http://username@url-fake-hostname/zh-TW/scripts"`;
+
+exports[`auth username: 4`] = `
+"Invalid URL
+    TypeError: Invalid URL
+    {
+      input: {
+        slashes: true,
+        protocol: '',
+        hash: '',
+        query: '',
+        pathname: '/zh-TW/scripts',
+        auth: 'username',
+        host: '',
+        port: '',
+        hostname: '',
+        password: '',
+        username: 'username',
+        origin: 'null',
+        href: '//username@/zh-TW/scripts'
+      },
+      baseURL: undefined
+    }"
+`;
+
+exports[`auth username: 5`] = `"/zh-TW/scripts"`;
+
+exports[`auth username:password 1`] = `"fake+http://username:password@url-fake-hostname/zh-TW/scripts"`;
+
+exports[`auth username:password 2`] = `
+Object {
+  "hash": "",
+  "host": "url-fake-hostname",
+  "hostname": "url-fake-hostname",
+  "href": "fake+http://username:password@url-fake-hostname/zh-TW/scripts",
+  "password": "password",
+  "pathname": "/zh-TW/scripts",
+  "port": "",
+  "protocol": "fake+http:",
+  "search": "",
+  "searchParams": URLSearchParams {
+    Symbol(query): Array [],
+    Symbol(context): null,
+  },
+  "username": "username",
+}
+`;
+
+exports[`auth username:password 3`] = `"fake+http://username:password@url-fake-hostname/zh-TW/scripts"`;
+
+exports[`auth username:password 4`] = `
+"Invalid URL
+    TypeError: Invalid URL
+    {
+      input: {
+        slashes: true,
+        protocol: '',
+        hash: '',
+        query: '',
+        pathname: '/zh-TW/scripts',
+        auth: 'username:password',
+        host: '',
+        port: '',
+        hostname: '',
+        password: 'password',
+        username: 'username',
+        origin: 'null',
+        href: '//username:password@/zh-TW/scripts'
+      },
+      baseURL: undefined
+    }"
+`;
+
+exports[`auth username:password 5`] = `"/zh-TW/scripts"`;
+
 exports[`lazy baseURL 1`] = `"https://gitee.com/api/api/v5/repos/xxxx/xxxx/contents"`;
 
 exports[`lazy baseURL 2`] = `"https://gitee.com/api/v5/repos/xxxx/xxxx/contents"`;
