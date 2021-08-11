@@ -96,6 +96,33 @@ exports[`auth username:password 4`] = `
 
 exports[`auth username:password 5`] = `"/zh-TW/scripts"`;
 
+exports[`auth void 1`] = `"fake+http://url-fake-hostname/zh-TW/scripts"`;
+
+exports[`auth void 2`] = `
+Object {
+  "hash": "",
+  "host": "url-fake-hostname",
+  "hostname": "url-fake-hostname",
+  "href": "fake+http://url-fake-hostname/zh-TW/scripts",
+  "password": "",
+  "pathname": "/zh-TW/scripts",
+  "port": "",
+  "protocol": "fake+http:",
+  "search": "",
+  "searchParams": URLSearchParams {
+    Symbol(query): Array [],
+    Symbol(context): null,
+  },
+  "username": "",
+}
+`;
+
+exports[`auth void 3`] = `"fake+http://url-fake-hostname/zh-TW/scripts"`;
+
+exports[`auth void 4`] = `"/zh-TW/scripts"`;
+
+exports[`auth void 5`] = `"/zh-TW/scripts"`;
+
 exports[`lazy baseURL 1`] = `"https://gitee.com/api/api/v5/repos/xxxx/xxxx/contents"`;
 
 exports[`lazy baseURL 2`] = `"https://gitee.com/api/v5/repos/xxxx/xxxx/contents"`;
