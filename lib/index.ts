@@ -348,10 +348,13 @@ export class LazyURL extends URL implements URL
 		this.username = '';
 		this.password = '';
 
-		let ls = value.split(':')
+		let ls = value?.split(':')
 
-		this.username = ls.shift();
-		this.password = ls.join(':');
+		if (ls.length)
+		{
+			this.username = ls.shift();
+			this.password = ls.join(':');
+		}
 	}
 
 	/*
