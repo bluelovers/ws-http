@@ -1,6 +1,7 @@
 /**
  * Created by user on 2019/6/6.
  */
+import { StringifyQuery, URLPart } from 'url-parse';
 export declare type IURLLike = string | URL | IURLObjectLike;
 export declare const SYM_URL: unique symbol;
 export declare const SYM_HIDDEN: unique symbol;
@@ -26,7 +27,10 @@ export declare class LazyURL extends URL implements URL {
      *
      * @returns {string}
      */
-    toRealString(ignoreInvalid?: boolean): string;
+    toRealString(options?: {
+        ignoreInvalid?: boolean;
+        stringify?: StringifyQuery;
+    }): string;
     toString(): string;
     get hostname(): string;
     set hostname(value: string);
@@ -77,6 +81,8 @@ export declare class LazyURL extends URL implements URL {
     static values(url: URL): (string | URLSearchParams)[];
     static entries(url: URL): IEntries;
     createURLSearchParams(init?: string[][] | Record<string, string> | string | URLSearchParams | URL): URLSearchParams;
+    set<K extends Extract<URLPart, keyof LazyURL>>(part: K, value: LazyURL[K]): void;
+    get<K extends Extract<URLPart, keyof LazyURL>>(part: K): LazyURL[K];
 }
 export declare type IEntries = (["hash" | "host" | "hostname" | "href" | "password" | "pathname" | "port" | "protocol" | "search" | "username", string] | ["searchParams", URLSearchParams])[];
 export declare type IEntriesRow<T extends IUrlKeys> = [T, URL[T]];

@@ -2,13 +2,11 @@
  * Created by user on 2019/6/6.
  */
 
-import urlParse from 'url-parse';
+import urlParse, { StringifyQuery, URLPart } from 'url-parse';
 import SymbolInspect from 'symbol.inspect';
 import { inspect } from 'util';
 import { typePredicates } from 'ts-type-predicates';
 import errcode from 'err-code';
-import indentString from 'indent-string';
-import cleanStack from 'clean-stack';
 import { _fixReplaceURLProtocol } from 'replace-url-protocol';
 import { errorsToMessageList, messageWithSubErrors } from 'err-indent';
 import { errStackMeta, stringifyStackMeta } from 'err-stack-meta';
@@ -112,7 +110,10 @@ export class LazyURL extends URL implements URL
 	 *
 	 * @returns {string}
 	 */
-	toRealString(ignoreInvalid?: boolean)
+	toRealString(options?: {
+		ignoreInvalid?: boolean,
+		stringify?: StringifyQuery,
+	})
 	{
 		let ks = this.fakeEntries();
 
@@ -132,7 +133,7 @@ export class LazyURL extends URL implements URL
 
 			if (u.host === '')
 			{
-				if (ignoreInvalid)
+				if (options?.ignoreInvalid)
 				{
 					u.set('username', '');
 					u.set('password', '');
@@ -147,7 +148,7 @@ export class LazyURL extends URL implements URL
 				}
 			}
 
-			let s = u.toString();
+			let s = u.toString(options?.stringify);
 
 			if (u.protocol === '' && u.host === '')
 			{
@@ -506,6 +507,16 @@ export class LazyURL extends URL implements URL
 		}
 
 		return new URLSearchParams(init)
+	}
+
+	set<K extends Extract<URLPart, keyof LazyURL>>(part: K, value: LazyURL[K])
+	{
+		this[part] = value
+	}
+
+	get<K extends Extract<URLPart, keyof LazyURL>>(part: K): LazyURL[K]
+	{
+		return this[part]
 	}
 
 }

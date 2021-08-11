@@ -237,7 +237,9 @@ describe(`auth`, () =>
 		expect(actual.toObject()).toMatchSnapshot();
 		expect(actual.toString()).toMatchSnapshot();
 		expect(() => actual.toRealString()).toThrowErrorMatchingSnapshot();
-		expect(actual.toRealString(true)).toMatchSnapshot();
+		expect(actual.toRealString({
+			ignoreInvalid: true,
+		})).toMatchSnapshot();
 
 	});
 
@@ -255,7 +257,9 @@ describe(`auth`, () =>
 		expect(actual.toObject()).toMatchSnapshot();
 		expect(actual.toString()).toMatchSnapshot();
 		expect(() => actual.toRealString()).toThrowErrorMatchingSnapshot();
-		expect(actual.toRealString(true)).toMatchSnapshot();
+		expect(actual.toRealString({
+			ignoreInvalid: true,
+		})).toMatchSnapshot();
 
 	});
 
