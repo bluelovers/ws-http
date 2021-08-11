@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.13](https://github.com/bluelovers/lazy-url/compare/lazy-url@1.0.12...lazy-url@1.0.13) (2021-08-11)
+
+
+### 🐛　Bug Fixes
+
+* avoid `origin` to be `null` https://github.com/nodejs/node/issues/39732#issuecomment-896624653 ([4e03764](https://github.com/bluelovers/lazy-url/commit/4e03764c00aa5535685694e7a1f0ff84c9f2023f)), closes [/github.com/nodejs/node/issues/39732#issuecomment-896624653](https://github.com//github.com/nodejs/node/issues/39732/issues/issuecomment-896624653)
+* origin should not be `null` https://github.com/nodejs/node/issues/39732#issuecomment-896624653 ([7780cbc](https://github.com/bluelovers/lazy-url/commit/7780cbc06691ec7242846c38d399cc96c3d1ef2a)), closes [/github.com/nodejs/node/issues/39732#issuecomment-896624653](https://github.com//github.com/nodejs/node/issues/39732/issues/issuecomment-896624653)
+* href is undefined ([5116455](https://github.com/bluelovers/lazy-url/commit/511645592f06a693f2c22c3ef8c91c3a92421a20))
+* **protocol:** avoid bug of https://github.com/nodejs/node/issues/39732 ([7d03026](https://github.com/bluelovers/lazy-url/commit/7d03026e1cab6a052a09b2dccfcbd2fde8ce0001))
+
+
+### ✨　Features
+
+* detect fake after set href ([72f15fc](https://github.com/bluelovers/lazy-url/commit/72f15fc191cb8e45924d00439ecfc719a71e7c46))
+
+
+### 🚨　Tests
+
+* **url-parse:** update snapshot https://github.com/unshiftio/url-parse/commit/fb128af4f43fa17f351d50cf615c7598c751f50a ([8d9f2de](https://github.com/bluelovers/lazy-url/commit/8d9f2dedc2cd4fdc5ea56de2d6c9bf75fbd86d5c))
+
+
+### ♻️　Chores
+
+* **deps:** update deps ([7121272](https://github.com/bluelovers/lazy-url/commit/7121272f8d583583863a843926b0fedea17061d2))
+
+
+
+
+
 ## [1.0.12](https://github.com/bluelovers/lazy-url/compare/lazy-url@1.0.11...lazy-url@1.0.12) (2021-07-19)
 
 
