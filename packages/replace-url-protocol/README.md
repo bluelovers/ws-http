@@ -13,7 +13,7 @@ yt add replace-url-protocol
 ```
 
 ```typescript
-import replaceURLProtocol, { replaceProtocol } from 'replace-url-protocol';
+import { replaceURLProtocol, replaceProtocol } from 'replace-url-protocol';
 
 describe('node.js#39732', () =>
 {
