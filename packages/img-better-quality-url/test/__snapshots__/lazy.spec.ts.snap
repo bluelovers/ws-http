@@ -1,0 +1,164 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`suppertd can be changed https://12243.mitemin.net/userpageimage/viewimagebig/icode/i366014/ 1`] = `
+Object {
+  "changed": true,
+  "not_suppertd": false,
+  "pd": Object {
+    "domain": "mitemin",
+    "hostname": "12243.mitemin.net",
+    "icann": Object {
+      "domain": "mitemin",
+      "subDomains": Array [
+        "12243",
+      ],
+      "topLevelDomains": Array [
+        "net",
+      ],
+    },
+    "labels": Array [
+      "12243",
+      "mitemin",
+      "net",
+    ],
+    "subDomains": Array [
+      "12243",
+    ],
+    "topLevelDomains": Array [
+      "net",
+    ],
+    "type": "LISTED",
+  },
+  "url": "https://12243.mitemin.net/userpageimage/viewimage/icode/i366014/",
+}
+`;
+
+exports[`suppertd can be changed https://img1.mitemin.net/cv/po/bcxka2bnheig0k9hc67bh6orl_177v_1kw_146_7bey.jpg.580.jpg 1`] = `
+Object {
+  "changed": true,
+  "not_suppertd": false,
+  "pd": Object {
+    "domain": "mitemin",
+    "hostname": "img1.mitemin.net",
+    "icann": Object {
+      "domain": "mitemin",
+      "subDomains": Array [
+        "img1",
+      ],
+      "topLevelDomains": Array [
+        "net",
+      ],
+    },
+    "labels": Array [
+      "img1",
+      "mitemin",
+      "net",
+    ],
+    "subDomains": Array [
+      "img1",
+    ],
+    "topLevelDomains": Array [
+      "net",
+    ],
+    "type": "LISTED",
+  },
+  "url": "https://img1.mitemin.net/cv/po/bcxka2bnheig0k9hc67bh6orl_177v_1kw_146_7bey.jpg",
+}
+`;
+
+exports[`suppertd can be changed https://masiro.me/images/encode/other-210619172125-yXNz.jpg?quality=80 1`] = `
+Object {
+  "changed": true,
+  "not_suppertd": false,
+  "pd": Object {
+    "domain": "masiro",
+    "hostname": "masiro.me",
+    "icann": Object {
+      "domain": "masiro",
+      "subDomains": Array [],
+      "topLevelDomains": Array [
+        "me",
+      ],
+    },
+    "labels": Array [
+      "masiro",
+      "me",
+    ],
+    "subDomains": Array [],
+    "topLevelDomains": Array [
+      "me",
+    ],
+    "type": "LISTED",
+  },
+  "url": "https://masiro.me/images/encode/other-210619172125-yXNz.jpg",
+}
+`;
+
+exports[`suppertd can be changed https://www.novelstar.com.tw/cache/cutw_300h_450/821739d2e7af6219b020ffabf4ca49371530349123.jpg.png 1`] = `
+Object {
+  "changed": true,
+  "not_suppertd": false,
+  "pd": Object {
+    "domain": "novelstar",
+    "hostname": "www.novelstar.com.tw",
+    "icann": Object {
+      "domain": "novelstar",
+      "subDomains": Array [
+        "www",
+      ],
+      "topLevelDomains": Array [
+        "com",
+        "tw",
+      ],
+    },
+    "labels": Array [
+      "www",
+      "novelstar",
+      "com",
+      "tw",
+    ],
+    "subDomains": Array [
+      "www",
+    ],
+    "topLevelDomains": Array [
+      "com",
+      "tw",
+    ],
+    "type": "LISTED",
+  },
+  "url": "https://www.novelstar.com.tw/cache/cutw_460h_690/821739d2e7af6219b020ffabf4ca49371530349123.jpg.png",
+}
+`;
+
+exports[`suppertd maybe not changed https://img1.mitemin.net/k0/78/84kqizdv2mupf8n135o55zfol2wb_xan_by_go_2f0x.jpg 1`] = `
+Object {
+  "changed": false,
+  "not_suppertd": false,
+  "pd": Object {
+    "domain": "mitemin",
+    "hostname": "img1.mitemin.net",
+    "icann": Object {
+      "domain": "mitemin",
+      "subDomains": Array [
+        "img1",
+      ],
+      "topLevelDomains": Array [
+        "net",
+      ],
+    },
+    "labels": Array [
+      "img1",
+      "mitemin",
+      "net",
+    ],
+    "subDomains": Array [
+      "img1",
+    ],
+    "topLevelDomains": Array [
+      "net",
+    ],
+    "type": "LISTED",
+  },
+  "url": "https://img1.mitemin.net/k0/78/84kqizdv2mupf8n135o55zfol2wb_xan_by_go_2f0x.jpg",
+}
+`;
