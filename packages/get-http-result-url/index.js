@@ -50,10 +50,12 @@ function _requestToURL(req, res) {
     }
     else if (!href && ((_l = res.config) === null || _l === void 0 ? void 0 : _l.url)) {
         href = new lazy_url_1.LazyURL(res.config.url, res.config.baseURL);
-        let sp = new http_form_urlencoded_1.LazyURLSearchParams(res.config.params);
-        sp.forEach((value, key) => {
-            href.searchParams.set(key, value);
-        });
+        if (typeof res.config.params !== 'undefined') {
+            let sp = new http_form_urlencoded_1.LazyURLSearchParams(res.config.params);
+            sp.forEach((value, key) => {
+                href.searchParams.set(key, value);
+            });
+        }
     }
     return new lazy_url_1.LazyURL(href);
 }

@@ -82,10 +82,13 @@ export function _requestToURL(req, res)
 	{
 		href = new LazyURL(res.config.url, res.config.baseURL);
 
-		let sp = new LazyURLSearchParams(res.config.params);
-		sp.forEach((value, key) => {
-			(href as LazyURL).searchParams.set(key, value);
-		})
+		if (typeof res.config.params !== 'undefined')
+		{
+			let sp = new LazyURLSearchParams(res.config.params);
+			sp.forEach((value, key) => {
+				(href as LazyURL).searchParams.set(key, value);
+			})
+		}
 	}
 
 	return new LazyURL(href)
