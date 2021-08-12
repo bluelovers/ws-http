@@ -10,7 +10,7 @@ describe('axios', () =>
 	{
 		let actual = await axios.get('user?ID=12345', {
 			baseURL: 'https://user@mozilla.org:8989/tw/',
-			timeout: 1000,
+			timeout: 10,
 		}).catch(error => resultToURL(error));
 		let expected = 'https://user@mozilla.org:8989/tw/user?ID=12345';
 
@@ -22,7 +22,7 @@ describe('axios', () =>
 	test(`error2:timeout`, async () =>
 	{
 		let actual = await axios.get('/tw/user?ID=12345', {
-			timeout: 1000,
+			timeout: 10,
 		}).catch(error => resultToURL(error));
 		let expected = 'http://localhost/tw/user?ID=12345';
 
@@ -35,10 +35,10 @@ describe('axios', () =>
 	{
 		let actual = await axios.get('user?ID=12345', {
 			baseURL: 'https://mozilla.org:443/tw/',
-			timeout: 1000,
+			timeout: 10,
 		})
 			.catch(error => resultToURL(error));
-		let expected = 'https://www.mozilla.org/tw/user?ID=12345';
+		let expected = 'https://mozilla.org/tw/user?ID=12345';
 
 		expect(actual).toHaveProperty('href', expected);
 		expect(actual).toMatchSnapshot();
