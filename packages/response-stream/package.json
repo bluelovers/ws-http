@@ -10,9 +10,9 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\"",
-    "build": "tsdx build --target node",
-    "preversion": "yarn run build && yarn run test",
-    "prepublishOnly_": "yarn run ncu && yarn run sort-package-json && yarn run test",
+    "build": "ynpx @bluelovers/tsdx build --target node",
+    "preversion": "yarn run build && yarn run test && yarn run postpublish:git:commit",
+    "postpublish:git:commit": "git commit -m \"build(release): build new release\" ./dist & echo postpublish:git:commit",
     "ncu": "npx yarn-tool ncu -u",
     "sort-package-json": "npx yarn-tool sort"
   },
