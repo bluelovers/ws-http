@@ -22,7 +22,7 @@ export function resultToURL<T extends {
 	request?: any;
 }>(result: T, options?: IOptions, res?)
 {
-	return requestToURL(result.request, options, res ?? options?.response ?? result)
+	return requestToURL(result?.request, options, res ?? options?.response ?? result)
 }
 
 export function requestToURL(req, options?: IOptions, res?)
