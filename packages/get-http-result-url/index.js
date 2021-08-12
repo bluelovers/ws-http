@@ -2,14 +2,15 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports._requestToURL = exports.requestToURL = exports.resultToURL = void 0;
 const lazy_url_1 = require("lazy-url");
-function resultToURL(result, options) {
-    return requestToURL(result.request, options);
+function resultToURL(result, options, res) {
+    var _a;
+    return requestToURL(result.request, options, (_a = res !== null && res !== void 0 ? res : options === null || options === void 0 ? void 0 : options.response) !== null && _a !== void 0 ? _a : result);
 }
 exports.resultToURL = resultToURL;
-function requestToURL(req, options) {
+function requestToURL(req, options, res) {
     var _a, _b, _c;
     try {
-        return new lazy_url_1.LazyURL((_c = (_a = req.url) !== null && _a !== void 0 ? _a : (_b = req.res) === null || _b === void 0 ? void 0 : _b.responseUrl) !== null && _c !== void 0 ? _c : _requestToURL(req));
+        return new lazy_url_1.LazyURL((_c = (_a = req.url) !== null && _a !== void 0 ? _a : (_b = req.res) === null || _b === void 0 ? void 0 : _b.responseUrl) !== null && _c !== void 0 ? _c : _requestToURL(req, res !== null && res !== void 0 ? res : options === null || options === void 0 ? void 0 : options.response));
     }
     catch (e) {
         if (!(options === null || options === void 0 ? void 0 : options.ignoreError)) {
@@ -18,11 +19,12 @@ function requestToURL(req, options) {
     }
 }
 exports.requestToURL = requestToURL;
-function _requestToURL(req) {
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
+function _requestToURL(req, res) {
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
     let href = req._currentUrl;
     let _currentRequest = (_b = (_a = req._currentRequest) !== null && _a !== void 0 ? _a : req) !== null && _b !== void 0 ? _b : {};
     let _options = (_c = req._options) !== null && _c !== void 0 ? _c : {};
+    res !== null && res !== void 0 ? res : (res = {});
     if ((_d = _options.protocol) === null || _d === void 0 ? void 0 : _d.length) {
         let u;
         if (_options.protocol && _options.hostname) {
@@ -45,8 +47,8 @@ function _requestToURL(req) {
         u.protocol = req.protocol;
         href = u;
     }
-    else {
-        //req;
+    else if (!href && ((_l = res.config) === null || _l === void 0 ? void 0 : _l.url)) {
+        href = new lazy_url_1.LazyURL(res.config.url, res.config.baseURL);
     }
     return new lazy_url_1.LazyURL(href);
 }

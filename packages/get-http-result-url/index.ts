@@ -14,20 +14,21 @@ export interface IReqInfo
 export interface IOptions
 {
 	ignoreError?: boolean
+	response?
 }
 
 export function resultToURL<T extends {
 	request: any;
-}>(result, options?: IOptions)
+}>(result, options?: IOptions, res?)
 {
-	return requestToURL(result.request, options)
+	return requestToURL(result.request, options, res ?? options?.response ?? result)
 }
 
-export function requestToURL(req, options?: IOptions)
+export function requestToURL(req, options?: IOptions, res?)
 {
 	try
 	{
-		return new LazyURL(req.url ?? req.res?.responseUrl ?? _requestToURL(req))
+		return new LazyURL(req.url ?? req.res?.responseUrl ?? _requestToURL(req, res ?? options?.response))
 	}
 	catch (e)
 	{
@@ -38,11 +39,12 @@ export function requestToURL(req, options?: IOptions)
 	}
 }
 
-export function _requestToURL(req)
+export function _requestToURL(req, res)
 {
 	let href: string | URL = req._currentUrl;
 	let _currentRequest: ClientRequest = req._currentRequest ?? req ?? {};
 	let _options: IReqInfo = req._options ?? {};
+	res ??= {};
 
 	if (_options.protocol?.length)
 	{
@@ -75,9 +77,9 @@ export function _requestToURL(req)
 
 		href = u;
 	}
-	else
+	else if (!href && res.config?.url)
 	{
-		//req;
+		href = new LazyURL(res.config.url, res.config.baseURL);
 	}
 
 	return new LazyURL(href)
