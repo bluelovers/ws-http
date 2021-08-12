@@ -41,7 +41,7 @@ export function requestToURL(req, options?: IOptions)
 export function _requestToURL(req)
 {
 	let href: string | URL = req._currentUrl;
-	let _currentRequest: ClientRequest = req._currentRequest ?? {};
+	let _currentRequest: ClientRequest = req._currentRequest ?? req ?? {};
 	let _options: IReqInfo = req._options ?? {};
 
 	if (_options.protocol?.length)
