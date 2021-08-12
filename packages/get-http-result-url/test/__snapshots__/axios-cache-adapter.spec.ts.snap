@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`axios-cache-adapter.spec fromCache 1`] = `"https://www.novelstar.com.tw/books/?p=1"`;

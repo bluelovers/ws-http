@@ -1,5 +1,6 @@
 import { LazyURL } from 'lazy-url';
 import type { ClientRequest } from 'http';
+import { LazyURLSearchParams } from 'http-form-urlencoded';
 
 export interface IReqInfo
 {
@@ -18,8 +19,8 @@ export interface IOptions
 }
 
 export function resultToURL<T extends {
-	request: any;
-}>(result, options?: IOptions, res?)
+	request?: any;
+}>(result: T, options?: IOptions, res?)
 {
 	return requestToURL(result.request, options, res ?? options?.response ?? result)
 }
@@ -80,6 +81,11 @@ export function _requestToURL(req, res)
 	else if (!href && res.config?.url)
 	{
 		href = new LazyURL(res.config.url, res.config.baseURL);
+
+		let sp = new LazyURLSearchParams(res.config.params);
+		sp.forEach((value, key) => {
+			(href as LazyURL).searchParams.set(key, value);
+		})
 	}
 
 	return new LazyURL(href)

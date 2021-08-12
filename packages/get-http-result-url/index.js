@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports._requestToURL = exports.requestToURL = exports.resultToURL = void 0;
 const lazy_url_1 = require("lazy-url");
+const http_form_urlencoded_1 = require("http-form-urlencoded");
 function resultToURL(result, options, res) {
     var _a;
     return requestToURL(result.request, options, (_a = res !== null && res !== void 0 ? res : options === null || options === void 0 ? void 0 : options.response) !== null && _a !== void 0 ? _a : result);
@@ -49,6 +50,10 @@ function _requestToURL(req, res) {
     }
     else if (!href && ((_l = res.config) === null || _l === void 0 ? void 0 : _l.url)) {
         href = new lazy_url_1.LazyURL(res.config.url, res.config.baseURL);
+        let sp = new http_form_urlencoded_1.LazyURLSearchParams(res.config.params);
+        sp.forEach((value, key) => {
+            href.searchParams.set(key, value);
+        });
     }
     return new lazy_url_1.LazyURL(href);
 }

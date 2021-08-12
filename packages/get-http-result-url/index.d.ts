@@ -12,8 +12,8 @@ export interface IOptions {
     response?: any;
 }
 export declare function resultToURL<T extends {
-    request: any;
-}>(result: any, options?: IOptions, res?: any): LazyURL;
+    request?: any;
+}>(result: T, options?: IOptions, res?: any): LazyURL;
 export declare function requestToURL(req: any, options?: IOptions, res?: any): LazyURL;
 export declare function _requestToURL(req: any, res: any): LazyURL;
 export default requestToURL;
