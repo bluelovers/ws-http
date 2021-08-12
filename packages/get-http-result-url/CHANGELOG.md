@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.5](https://github.com/bluelovers/ws-http/compare/get-http-result-url@1.0.4...get-http-result-url@1.0.5) (2021-08-12)
+
+
+### 🐛　Bug Fixes
+
+* avoid _currentRequest not exists ([604a2a0](https://github.com/bluelovers/ws-http/commit/604a2a0d0d8bf36820e9274538b5661db4ae4906))
+
+
+
+
+
 ## [1.0.4](https://github.com/bluelovers/ws-http/compare/get-http-result-url@1.0.3...get-http-result-url@1.0.4) (2021-08-12)
 
 
