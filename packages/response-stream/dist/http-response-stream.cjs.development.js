@@ -8,6 +8,6 @@ function responseStream(serverResponse, data) {
   return readStream.pipe(serverResponse);
 }
 
-exports.default = responseStream;
+exports['default'] = responseStream;
 exports.responseStream = responseStream;
 //# sourceMappingURL=http-response-stream.cjs.development.js.map

@@ -6,6 +6,5 @@ function responseStream(serverResponse, data) {
   return readStream.pipe(serverResponse);
 }
 
-export default responseStream;
-export { responseStream };
+export { responseStream as default, responseStream };
 //# sourceMappingURL=http-response-stream.esm.js.map
