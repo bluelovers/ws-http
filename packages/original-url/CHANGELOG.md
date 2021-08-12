@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.18](https://github.com/bluelovers/ws-http/compare/original-url2@1.2.17...original-url2@1.2.18) (2021-08-12)
+
+
+### 🔖　Miscellaneous
+
+* . ([d640e42](https://github.com/bluelovers/ws-http/commit/d640e429aa213cf37993aac4a44dbc162bc368b4))
+
+
+
+
+
 ## [1.2.17](https://github.com/bluelovers/ws-http/compare/original-url2@1.2.15...original-url2@1.2.17) (2021-08-12)
 
 

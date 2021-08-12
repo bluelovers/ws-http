@@ -1,6 +1,6 @@
 {
   "name": "replace-url-protocol",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "helper for avoid node.js can't update protocol for some url",
   "homepage": "https://github.com/bluelovers/ws-http/tree/master/packages/replace-url-protocol#readme",
   "bugs": {
