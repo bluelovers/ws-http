@@ -1,6 +1,6 @@
 {
   "name": "get-default-port",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "get port from environment and give ports, default is 3000",
   "keywords": [
     "environment",

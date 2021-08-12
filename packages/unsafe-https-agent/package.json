@@ -1,6 +1,6 @@
 {
   "name": "unsafe-https-agent",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "https agent with rejectUnauthorized = false",
   "homepage": "https://github.com/bluelovers/ws-http/tree/master/packages/unsafe-https-agent#readme",
   "bugs": {

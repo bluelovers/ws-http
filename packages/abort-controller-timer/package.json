@@ -1,6 +1,6 @@
 {
   "name": "abort-controller-timer",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "An AbortController that aborts after a specified timeout",
   "keywords": [
     "timeout",
@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "abort-controller": "^3.0.0",
-    "abort-controller-util": "^1.0.2",
+    "abort-controller-util": "^1.0.4",
     "tslib": "^2.3.1"
   },
   "devDependencies": {
