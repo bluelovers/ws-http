@@ -22,9 +22,10 @@
   "resolutions": {},
   "dependencies": {
     "axios": "^0.21.1",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.1"
   },
   "devDependencies": {
+    "@types/url-parse": "^1.4.3",
     "@bluelovers/tsconfig": "^1.0.25",
     "@types/jest": "^27.0.0",
     "@types/node": "*",
