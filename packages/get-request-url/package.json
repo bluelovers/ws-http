@@ -1,0 +1,33 @@
+{
+  "name": "get-request-url",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/bluelovers/ws-http/tree/master/packages/get-request-url#readme",
+  "bugs": {
+    "url": "https://github.com/bluelovers/ws-http/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bluelovers/ws-http.git"
+  },
+  "license": "ISC",
+  "author": "bluelovers",
+  "main": "index.js",
+  "scripts": {
+    "coverage": "yarn run test -- --coverage",
+    "lint": "ynpx --quiet eslint -- **/*.ts",
+    "test": "jest --passWithNoTests",
+    "test:jest": "jest --passWithNoTests",
+    "test:mocha": "ynpx --quiet -p ts-node -p mocha mocha -- --require ts-node/register \"!(node_modules)/**/*.{test,spec}.{ts,tsx}\"",
+    "preversion": "echo preversion && yarn run test",
+    "prepublishOnly:update": "yarn run ncu && yarn run sort-package-json",
+    "ncu": "yarn-tool ncu -u",
+    "sort-package-json": "yarn-tool sort"
+  },
+  "dependencies": {
+    "lazy-url": "^1.0.18",
+    "tslib": "^2.3.1"
+  },
+  "devDependencies": {},
+  "peerDependencies": {}
+}
