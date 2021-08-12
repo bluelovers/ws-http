@@ -2,13 +2,20 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports._requestToURL = exports.requestToURL = exports.resultToURL = void 0;
 const lazy_url_1 = require("lazy-url");
-function resultToURL(result) {
-    return requestToURL(result.request);
+function resultToURL(result, options) {
+    return requestToURL(result.request, options);
 }
 exports.resultToURL = resultToURL;
-function requestToURL(req) {
+function requestToURL(req, options) {
     var _a, _b, _c;
-    return new lazy_url_1.LazyURL((_c = (_a = req.url) !== null && _a !== void 0 ? _a : (_b = req.res) === null || _b === void 0 ? void 0 : _b.responseUrl) !== null && _c !== void 0 ? _c : _requestToURL(req));
+    try {
+        return new lazy_url_1.LazyURL((_c = (_a = req.url) !== null && _a !== void 0 ? _a : (_b = req.res) === null || _b === void 0 ? void 0 : _b.responseUrl) !== null && _c !== void 0 ? _c : _requestToURL(req));
+    }
+    catch (e) {
+        if (!(options === null || options === void 0 ? void 0 : options.ignoreError)) {
+            throw e;
+        }
+    }
 }
 exports.requestToURL = requestToURL;
 function _requestToURL(req) {

@@ -11,16 +11,31 @@ export interface IReqInfo
 	search?: string
 }
 
-export function resultToURL<T extends {
-	request: any;
-}>(result)
+export interface IOptions
 {
-	return requestToURL(result.request)
+	ignoreError?: boolean
 }
 
-export function requestToURL(req)
+export function resultToURL<T extends {
+	request: any;
+}>(result, options?: IOptions)
 {
-	return new LazyURL(req.url ?? req.res?.responseUrl ?? _requestToURL(req))
+	return requestToURL(result.request, options)
+}
+
+export function requestToURL(req, options?: IOptions)
+{
+	try
+	{
+		return new LazyURL(req.url ?? req.res?.responseUrl ?? _requestToURL(req))
+	}
+	catch (e)
+	{
+		if (!options?.ignoreError)
+		{
+			throw e
+		}
+	}
 }
 
 export function _requestToURL(req)

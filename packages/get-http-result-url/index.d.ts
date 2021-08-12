@@ -7,9 +7,12 @@ export interface IReqInfo {
     pathname?: string;
     search?: string;
 }
+export interface IOptions {
+    ignoreError?: boolean;
+}
 export declare function resultToURL<T extends {
     request: any;
-}>(result: any): LazyURL;
-export declare function requestToURL(req: any): LazyURL;
+}>(result: any, options?: IOptions): LazyURL;
+export declare function requestToURL(req: any, options?: IOptions): LazyURL;
 export declare function _requestToURL(req: any): LazyURL;
 export default requestToURL;
