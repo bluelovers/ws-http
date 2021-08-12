@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.7](https://github.com/bluelovers/ws-http/compare/get-http-result-url@1.0.6...get-http-result-url@1.0.7) (2021-08-12)
+
+
+### 🐛　Bug Fixes
+
+* **axios-cache-adapter:** support `params` ([61605dc](https://github.com/bluelovers/ws-http/commit/61605dc88cada911b6203671f08c0eebb4c5e12c))
+
+
+
+
+
 ## [1.0.6](https://github.com/bluelovers/ws-http/compare/get-http-result-url@1.0.5...get-http-result-url@1.0.6) (2021-08-12)
 
 
