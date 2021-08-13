@@ -1,0 +1,72 @@
+{
+  "name": "lazy-url",
+  "version": "1.0.18",
+  "description": "a more easy use URL",
+  "keywords": [
+    "URL",
+    "WHATWG",
+    "address",
+    "canonical",
+    "normalisation",
+    "normalization",
+    "normalize",
+    "parse",
+    "parser",
+    "query",
+    "querystring",
+    "simplify",
+    "string",
+    "stringify",
+    "strip",
+    "trim",
+    "uri",
+    "url"
+  ],
+  "homepage": "https://github.com/bluelovers/lazy-url#readme",
+  "bugs": {
+    "url": "https://github.com/bluelovers/lazy-url/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bluelovers/lazy-url.git"
+  },
+  "license": "ISC",
+  "author": "bluelovers",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "typings": "lib/index.d.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest",
+    "npm:publish": "yarn run preversion && npm publish",
+    "npm:publish:bump": "yarn run preversion && yarn-tool version && npm publish",
+    "preversion": "yarn test",
+    "postpublish": "yarn run postpublish:changelog && yarn run postpublish:git:commit && yarn run postpublish:git:tag && yarn run postpublish:git:push",
+    "postpublish:changelog": "ynpx --quiet @yarn-tool/changelog && git add ./CHANGELOG.md",
+    "postpublish:git:commit": "git commit -m \"chore(release): publish\" . & echo postpublish:git:commit",
+    "postpublish:git:push": "git push --follow-tags",
+    "postpublish:git:tag": "ynpx --quiet @yarn-tool/tag",
+    "ncu": "yarn-tool ncu -u",
+    "sort-package-json": "yarn-tool sort"
+  },
+  "dependencies": {
+    "err-code": "^3.0.1",
+    "err-indent": "^1.0.1",
+    "replace-url-protocol": "^1.0.2",
+    "symbol.inspect": "^1.0.1",
+    "ts-type-predicates": "^1.0.5",
+    "tslib": "^2.3.0",
+    "url-parse": "^1.5.3"
+  },
+  "devDependencies": {
+    "@bluelovers/tsconfig": "^1.0.25",
+    "@types/jest": "^27.0.0",
+    "@types/node": "^16.4.13",
+    "@types/url-parse": "^1.4.3",
+    "jest": "^27.0.6",
+    "ts-jest": "^27.0.4"
+  }
+}

@@ -1,0 +1,625 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`suite [ '/api/v5/repos/xxxx/xxxx/contents', '/api/v5/' ] 1`] = `"fake+http://url-fake-hostname/api/v5/repos/xxxx/xxxx/contents"`;
+
+exports[`suite [ '/api/v5/repos/xxxx/xxxx/contents', '/api/v5/' ] 2`] = `
+Object {
+  "auth": "",
+  "hash": "",
+  "host": "url-fake-hostname",
+  "hostname": "url-fake-hostname",
+  "href": "fake+http://url-fake-hostname/api/v5/repos/xxxx/xxxx/contents",
+  "origin": "null",
+  "password": "",
+  "pathname": "/api/v5/repos/xxxx/xxxx/contents",
+  "port": "",
+  "protocol": "fake+http:",
+  "query": "",
+  "slashes": true,
+  "username": "",
+}
+`;
+
+exports[`suite [ '/api/v5/repos/xxxx/xxxx/contents', '/api/v5/' ] 3`] = `
+Object {
+  "auth": "",
+  "hash": "",
+  "host": "",
+  "hostname": "",
+  "href": "/api/v5/repos/xxxx/xxxx/contents",
+  "origin": "null",
+  "password": "",
+  "pathname": "/api/v5/repos/xxxx/xxxx/contents",
+  "port": "",
+  "protocol": "",
+  "query": "",
+  "slashes": false,
+  "username": "",
+}
+`;
+
+exports[`suite [ '/api/v5/repos/xxxx/xxxx/contents', '/api/v5/' ] 4`] = `
+Object {
+  "protocol": "fake+http:",
+}
+`;
+
+exports[`suite [ '/api/v5/repos/xxxx/xxxx/contents', '/api/v5/' ] 5`] = `
+Object {
+  "hash": "",
+}
+`;
+
+exports[`suite [ '/api/v5/repos/xxxx/xxxx/contents', '/api/v5/' ] 6`] = `
+Object {
+  "query": "",
+}
+`;
+
+exports[`suite [ '/api/v5/repos/xxxx/xxxx/contents', '/api/v5/' ] 7`] = `
+Object {
+  "pathname": "/api/v5/repos/xxxx/xxxx/contents",
+}
+`;
+
+exports[`suite [ '/api/v5/repos/xxxx/xxxx/contents', '/api/v5/' ] 8`] = `
+Object {
+  "auth": "",
+}
+`;
+
+exports[`suite [ '/api/v5/repos/xxxx/xxxx/contents', '/api/v5/' ] 9`] = `
+Object {
+  "host": "url-fake-hostname",
+}
+`;
+
+exports[`suite [ '/api/v5/repos/xxxx/xxxx/contents', '/api/v5/' ] 10`] = `
+Object {
+  "port": "",
+}
+`;
+
+exports[`suite [ '/api/v5/repos/xxxx/xxxx/contents', '/api/v5/' ] 11`] = `
+Object {
+  "hostname": "url-fake-hostname",
+}
+`;
+
+exports[`suite [ '/api/v5/repos/xxxx/xxxx/contents', '/api/v5/' ] 12`] = `
+Object {
+  "password": "",
+}
+`;
+
+exports[`suite [ '/api/v5/repos/xxxx/xxxx/contents', '/api/v5/' ] 13`] = `
+Object {
+  "username": "",
+}
+`;
+
+exports[`suite [ '/api/v5/repos/xxxx/xxxx/contents', '/api/v5/' ] 14`] = `
+Object {
+  "href": "fake+http://url-fake-hostname/api/v5/repos/xxxx/xxxx/contents",
+}
+`;
+
+exports[`suite [ '/api/v5/repos/xxxx/xxxx/contents', 'https://gitee.com/api/v5/' ] 1`] = `"https://gitee.com/api/v5/repos/xxxx/xxxx/contents"`;
+
+exports[`suite [ '/api/v5/repos/xxxx/xxxx/contents', 'https://gitee.com/api/v5/' ] 2`] = `
+Object {
+  "auth": "",
+  "hash": "",
+  "host": "gitee.com",
+  "hostname": "gitee.com",
+  "href": "https://gitee.com/api/v5/repos/xxxx/xxxx/contents",
+  "origin": "https://gitee.com",
+  "password": "",
+  "pathname": "/api/v5/repos/xxxx/xxxx/contents",
+  "port": "",
+  "protocol": "https:",
+  "query": "",
+  "slashes": true,
+  "username": "",
+}
+`;
+
+exports[`suite [ '/api/v5/repos/xxxx/xxxx/contents', 'https://gitee.com/api/v5/' ] 3`] = `
+Object {
+  "auth": "",
+  "hash": "",
+  "host": "gitee.com",
+  "hostname": "gitee.com",
+  "href": "https://gitee.com/api/v5/repos/xxxx/xxxx/contents",
+  "origin": "https://gitee.com",
+  "password": "",
+  "pathname": "/api/v5/repos/xxxx/xxxx/contents",
+  "port": "",
+  "protocol": "https:",
+  "query": "",
+  "slashes": true,
+  "username": "",
+}
+`;
+
+exports[`suite [ '/api/v5/repos/xxxx/xxxx/contents', 'https://gitee.com/api/v5/' ] 4`] = `
+Object {
+  "protocol": "https:",
+}
+`;
+
+exports[`suite [ '/api/v5/repos/xxxx/xxxx/contents', 'https://gitee.com/api/v5/' ] 5`] = `
+Object {
+  "hash": "",
+}
+`;
+
+exports[`suite [ '/api/v5/repos/xxxx/xxxx/contents', 'https://gitee.com/api/v5/' ] 6`] = `
+Object {
+  "query": "",
+}
+`;
+
+exports[`suite [ '/api/v5/repos/xxxx/xxxx/contents', 'https://gitee.com/api/v5/' ] 7`] = `
+Object {
+  "pathname": "/api/v5/repos/xxxx/xxxx/contents",
+}
+`;
+
+exports[`suite [ '/api/v5/repos/xxxx/xxxx/contents', 'https://gitee.com/api/v5/' ] 8`] = `
+Object {
+  "auth": "",
+}
+`;
+
+exports[`suite [ '/api/v5/repos/xxxx/xxxx/contents', 'https://gitee.com/api/v5/' ] 9`] = `
+Object {
+  "host": "gitee.com",
+}
+`;
+
+exports[`suite [ '/api/v5/repos/xxxx/xxxx/contents', 'https://gitee.com/api/v5/' ] 10`] = `
+Object {
+  "port": "",
+}
+`;
+
+exports[`suite [ '/api/v5/repos/xxxx/xxxx/contents', 'https://gitee.com/api/v5/' ] 11`] = `
+Object {
+  "hostname": "gitee.com",
+}
+`;
+
+exports[`suite [ '/api/v5/repos/xxxx/xxxx/contents', 'https://gitee.com/api/v5/' ] 12`] = `
+Object {
+  "password": "",
+}
+`;
+
+exports[`suite [ '/api/v5/repos/xxxx/xxxx/contents', 'https://gitee.com/api/v5/' ] 13`] = `
+Object {
+  "username": "",
+}
+`;
+
+exports[`suite [ '/api/v5/repos/xxxx/xxxx/contents', 'https://gitee.com/api/v5/' ] 14`] = `
+Object {
+  "href": "https://gitee.com/api/v5/repos/xxxx/xxxx/contents",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts' ] 1`] = `"fake+http://url-fake-hostname/zh-TW/scripts"`;
+
+exports[`suite [ 'zh-TW/scripts' ] 2`] = `
+Object {
+  "auth": "",
+  "hash": "",
+  "host": "url-fake-hostname",
+  "hostname": "url-fake-hostname",
+  "href": "fake+http://url-fake-hostname/zh-TW/scripts",
+  "origin": "null",
+  "password": "",
+  "pathname": "/zh-TW/scripts",
+  "port": "",
+  "protocol": "fake+http:",
+  "query": "",
+  "slashes": true,
+  "username": "",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts' ] 3`] = `
+Object {
+  "auth": "",
+  "hash": "",
+  "host": "",
+  "hostname": "",
+  "href": "/zh-TW/scripts",
+  "origin": "null",
+  "password": "",
+  "pathname": "/zh-TW/scripts",
+  "port": "",
+  "protocol": "",
+  "query": "",
+  "slashes": false,
+  "username": "",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts' ] 4`] = `
+Object {
+  "protocol": "fake+http:",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts' ] 5`] = `
+Object {
+  "hash": "",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts' ] 6`] = `
+Object {
+  "query": "",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts' ] 7`] = `
+Object {
+  "pathname": "/zh-TW/scripts",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts' ] 8`] = `
+Object {
+  "auth": "",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts' ] 9`] = `
+Object {
+  "host": "url-fake-hostname",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts' ] 10`] = `
+Object {
+  "port": "",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts' ] 11`] = `
+Object {
+  "hostname": "url-fake-hostname",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts' ] 12`] = `
+Object {
+  "password": "",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts' ] 13`] = `
+Object {
+  "username": "",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts' ] 14`] = `
+Object {
+  "href": "fake+http://url-fake-hostname/zh-TW/scripts",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'http://zh-TW' ] 1`] = `"http://zh-tw/zh-TW/scripts"`;
+
+exports[`suite [ 'zh-TW/scripts', 'http://zh-TW' ] 2`] = `
+Object {
+  "auth": "",
+  "hash": "",
+  "host": "zh-tw",
+  "hostname": "zh-tw",
+  "href": "http://zh-tw/zh-TW/scripts",
+  "origin": "http://zh-tw",
+  "password": "",
+  "pathname": "/zh-TW/scripts",
+  "port": "",
+  "protocol": "http:",
+  "query": "",
+  "slashes": true,
+  "username": "",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'http://zh-TW' ] 3`] = `
+Object {
+  "auth": "",
+  "hash": "",
+  "host": "zh-tw",
+  "hostname": "zh-tw",
+  "href": "http://zh-tw/zh-TW/scripts",
+  "origin": "http://zh-tw",
+  "password": "",
+  "pathname": "/zh-TW/scripts",
+  "port": "",
+  "protocol": "http:",
+  "query": "",
+  "slashes": true,
+  "username": "",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'http://zh-TW' ] 4`] = `
+Object {
+  "protocol": "http:",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'http://zh-TW' ] 5`] = `
+Object {
+  "hash": "",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'http://zh-TW' ] 6`] = `
+Object {
+  "query": "",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'http://zh-TW' ] 7`] = `
+Object {
+  "pathname": "/zh-TW/scripts",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'http://zh-TW' ] 8`] = `
+Object {
+  "auth": "",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'http://zh-TW' ] 9`] = `
+Object {
+  "host": "zh-tw",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'http://zh-TW' ] 10`] = `
+Object {
+  "port": "",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'http://zh-TW' ] 11`] = `
+Object {
+  "hostname": "zh-tw",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'http://zh-TW' ] 12`] = `
+Object {
+  "password": "",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'http://zh-TW' ] 13`] = `
+Object {
+  "username": "",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'http://zh-TW' ] 14`] = `
+Object {
+  "href": "http://zh-tw/zh-TW/scripts",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'zh-TW' ] 1`] = `"fake+http://zh-tw/zh-TW/scripts"`;
+
+exports[`suite [ 'zh-TW/scripts', 'zh-TW' ] 2`] = `
+Object {
+  "auth": "",
+  "hash": "",
+  "host": "zh-tw",
+  "hostname": "zh-tw",
+  "href": "fake+http://zh-tw/zh-TW/scripts",
+  "origin": "null",
+  "password": "",
+  "pathname": "/zh-TW/scripts",
+  "port": "",
+  "protocol": "fake+http:",
+  "query": "",
+  "slashes": true,
+  "username": "",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'zh-TW' ] 3`] = `
+Object {
+  "auth": "",
+  "hash": "",
+  "host": "",
+  "hostname": "",
+  "href": "////zh-tw/zh-TW/scripts",
+  "origin": "null",
+  "password": "",
+  "pathname": "//zh-tw/zh-TW/scripts",
+  "port": "",
+  "protocol": "",
+  "query": "",
+  "slashes": true,
+  "username": "",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'zh-TW' ] 4`] = `
+Object {
+  "protocol": "fake+http:",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'zh-TW' ] 5`] = `
+Object {
+  "hash": "",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'zh-TW' ] 6`] = `
+Object {
+  "query": "",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'zh-TW' ] 7`] = `
+Object {
+  "pathname": "/zh-TW/scripts",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'zh-TW' ] 8`] = `
+Object {
+  "auth": "",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'zh-TW' ] 9`] = `
+Object {
+  "host": "zh-tw",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'zh-TW' ] 10`] = `
+Object {
+  "port": "",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'zh-TW' ] 11`] = `
+Object {
+  "hostname": "zh-tw",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'zh-TW' ] 12`] = `
+Object {
+  "password": "",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'zh-TW' ] 13`] = `
+Object {
+  "username": "",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'zh-TW' ] 14`] = `
+Object {
+  "href": "fake+http://zh-tw/zh-TW/scripts",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'zh-TW:8080' ] 1`] = `"fake+http://zh-tw:8080/zh-TW/scripts"`;
+
+exports[`suite [ 'zh-TW/scripts', 'zh-TW:8080' ] 2`] = `
+Object {
+  "auth": "",
+  "hash": "",
+  "host": "zh-tw:8080",
+  "hostname": "zh-tw",
+  "href": "fake+http://zh-tw:8080/zh-TW/scripts",
+  "origin": "null",
+  "password": "",
+  "pathname": "/zh-TW/scripts",
+  "port": "8080",
+  "protocol": "fake+http:",
+  "query": "",
+  "slashes": true,
+  "username": "",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'zh-TW:8080' ] 3`] = `
+Object {
+  "auth": "",
+  "hash": "",
+  "host": "",
+  "hostname": "",
+  "href": "////zh-tw:8080/zh-TW/scripts",
+  "origin": "null",
+  "password": "",
+  "pathname": "//zh-tw:8080/zh-TW/scripts",
+  "port": "",
+  "protocol": "",
+  "query": "",
+  "slashes": true,
+  "username": "",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'zh-TW:8080' ] 4`] = `
+Object {
+  "protocol": "fake+http:",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'zh-TW:8080' ] 5`] = `
+Object {
+  "hash": "",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'zh-TW:8080' ] 6`] = `
+Object {
+  "query": "",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'zh-TW:8080' ] 7`] = `
+Object {
+  "pathname": "/zh-TW/scripts",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'zh-TW:8080' ] 8`] = `
+Object {
+  "auth": "",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'zh-TW:8080' ] 9`] = `
+Object {
+  "host": "zh-tw:8080",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'zh-TW:8080' ] 10`] = `
+Object {
+  "port": "8080",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'zh-TW:8080' ] 11`] = `
+Object {
+  "hostname": "zh-tw",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'zh-TW:8080' ] 12`] = `
+Object {
+  "password": "",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'zh-TW:8080' ] 13`] = `
+Object {
+  "username": "",
+}
+`;
+
+exports[`suite [ 'zh-TW/scripts', 'zh-TW:8080' ] 14`] = `
+Object {
+  "href": "fake+http://zh-tw:8080/zh-TW/scripts",
+}
+`;
