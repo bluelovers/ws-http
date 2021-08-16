@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.0.19 (2021-08-16)
+
+
+### 🔖　Miscellaneous
+
+* . ([2551b02](https://github.com/bluelovers/ws-http/commit/2551b0240b15a24c0853d17221a16077934c9ff1))
+* Add 'packages/lazy-url/' from commit '41268c521048ba4880494d79cd9a11a4d7e4e005' ([e3f4ed3](https://github.com/bluelovers/ws-http/commit/e3f4ed3c434ae1e007d19b75e2b4058cbbca3d64))
+
+
+
+
+
 ## [1.0.18](https://github.com/bluelovers/lazy-url/compare/lazy-url@1.0.17...lazy-url@1.0.18) (2021-08-11)
 
 

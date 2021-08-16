@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.16](https://github.com/bluelovers/ws-http/compare/abort-controller-timer@1.0.15...abort-controller-timer@1.0.16) (2021-08-16)
+
+
+### 🔖　Miscellaneous
+
+* . ([2551b02](https://github.com/bluelovers/ws-http/commit/2551b0240b15a24c0853d17221a16077934c9ff1))
+
+
+
+
+
 ## [1.0.15](https://github.com/bluelovers/ws-http/compare/abort-controller-timer@1.0.14...abort-controller-timer@1.0.15) (2021-08-12)
 
 
