@@ -9,21 +9,22 @@ export { AbortController };
 declare const SymbolChildren: unique symbol;
 declare const SymbolParents: unique symbol;
 declare const SymbolAbortController: unique symbol;
-declare type ISetAllowedValue = AbortSignal | AbortControllerTimer | AbortController;
-export declare class AbortControllerTimer extends AbortController {
+export { SymbolChildren, SymbolParents, SymbolAbortController };
+export declare type ISetAllowedValue<Timer extends number | Timeout = number | Timeout> = AbortSignal | AbortControllerTimer<Timer> | AbortController;
+export declare class AbortControllerTimer<Timer extends number | Timeout = number | Timeout> extends AbortController {
     #private;
-    readonly signal: IAbortSignalWithController<AbortSignal, AbortControllerTimer>;
+    readonly signal: IAbortSignalWithController<AbortSignal, AbortControllerTimer<Timer>>;
     [SymbolChildren]: Set<ISetAllowedValue>;
     [SymbolParents]: Set<ISetAllowedValue>;
-    readonly [SymbolAbortController]: AbortControllerTimer;
+    readonly [SymbolAbortController]: AbortControllerTimer<Timer>;
     constructor(ms?: number);
     protected _init(ms: number): void;
-    protected _addChildren(child: ISetAllowedValue): ISetAllowedValue;
+    protected _addChildren<C extends ISetAllowedValue>(child: C): C;
     protected _removeChildren(child: ISetAllowedValue): void;
     abortChildrenAll(): void;
     protected _removeMeFromParents(): void;
     attachToParent(parent: ISetAllowedValue): this;
-    child(ms?: number): ISetAllowedValue;
+    child(ms?: number): AbortControllerTimer<Timer>;
     addEventListener<K extends keyof AbortSignalEventMap>(type: K, listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof AbortSignalEventMap>(type: K, listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
     on<K extends keyof AbortSignalEventMap>(type: K, listener: (this: AbortSignal, ev: AbortSignalEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
@@ -31,7 +32,7 @@ export declare class AbortControllerTimer extends AbortController {
     get onabort(): ((this: AbortSignal, ev: Event) => any) | null;
     set onabort(value: ((this: AbortSignal, ev: Event) => any) | null);
     get aborted(): boolean;
-    get timer(): number | Timeout;
+    get timer(): Timer;
     get timeout(): number;
     set timeout(ms: number);
     /**
@@ -39,7 +40,7 @@ export declare class AbortControllerTimer extends AbortController {
      *
      * @internal
      */
-    reset(): number | Timeout;
+    reset(): Timer;
     /**
      * warning: clear the timer will not abort signal
      *
@@ -49,7 +50,7 @@ export declare class AbortControllerTimer extends AbortController {
     /**
      * refresh the timer will throw error when signal is aborted
      */
-    refresh(): number | Timeout;
+    refresh(): Timer;
     abort(): void;
 }
 export default AbortControllerTimer;

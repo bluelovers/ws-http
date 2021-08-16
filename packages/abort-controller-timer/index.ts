@@ -17,19 +17,21 @@ const SymbolChildren = Symbol.for('AbortControllerTimer#children');
 const SymbolParents = Symbol.for('AbortControllerTimer#parents');
 const SymbolAbortController = Symbol.for('controller');
 
-type ISetAllowedValue = AbortSignal | AbortControllerTimer | AbortController;
+export { SymbolChildren, SymbolParents, SymbolAbortController }
 
-export class AbortControllerTimer extends AbortController
+export type ISetAllowedValue<Timer extends number | Timeout = number | Timeout> = AbortSignal | AbortControllerTimer<Timer> | AbortController;
+
+export class AbortControllerTimer<Timer extends number | Timeout = number | Timeout> extends AbortController
 {
-	override readonly signal: IAbortSignalWithController<AbortSignal, AbortControllerTimer>
+	override readonly signal: IAbortSignalWithController<AbortSignal, AbortControllerTimer<Timer>>
 
-	#timer?: Timeout | number
+	#timer?: Timer
 	#ms: number
 
 	[SymbolChildren]: Set<ISetAllowedValue>;
 	[SymbolParents]: Set<ISetAllowedValue>;
 
-	readonly [SymbolAbortController]: AbortControllerTimer;
+	readonly [SymbolAbortController]: AbortControllerTimer<Timer>;
 
 	constructor(ms?: number)
 	{
@@ -60,7 +62,7 @@ export class AbortControllerTimer extends AbortController
 		})
 	}
 
-	protected _addChildren(child: ISetAllowedValue)
+	protected _addChildren<C extends ISetAllowedValue>(child: C)
 	{
 		if (!(child as AbortControllerTimer).aborted)
 		{
@@ -103,7 +105,7 @@ export class AbortControllerTimer extends AbortController
 
 	child(ms?: number)
 	{
-		return this._addChildren(new AbortControllerTimer(ms))
+		return this._addChildren(new AbortControllerTimer<Timer>(ms))
 	}
 
 	addEventListener<K extends keyof AbortSignalEventMap>(type: K,
@@ -201,7 +203,7 @@ export class AbortControllerTimer extends AbortController
 
 		if (this.#ms > 0)
 		{
-			this.#timer = setTimeout(() => this.abort(), this.#ms)
+			this.#timer = setTimeout(() => this.abort(), this.#ms) as Timer
 		}
 		else if (this.#ms < 0)
 		{
@@ -251,7 +253,7 @@ export class AbortControllerTimer extends AbortController
 		}
 		else if (typeof this.#timer !== 'undefined')
 		{
-			this.#timer = this.#timer.refresh()
+			this.#timer = this.#timer.refresh() as Timer
 		}
 
 		return this.#timer

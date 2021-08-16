@@ -75,3 +75,4 @@ coverage
 /tsconfig.esm.tsbuildinfo
 *.map
 
+/test/tsconfig.json.tpl

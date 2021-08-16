@@ -4,14 +4,17 @@
  */
 var _AbortControllerTimer_timer, _AbortControllerTimer_ms;
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AbortControllerTimer = exports.AbortController = void 0;
+exports.AbortControllerTimer = exports.SymbolAbortController = exports.SymbolParents = exports.SymbolChildren = exports.AbortController = void 0;
 const tslib_1 = require("tslib");
 const abort_controller_1 = (0, tslib_1.__importDefault)(require("./lib/abort-controller"));
 exports.AbortController = abort_controller_1.default;
 const index_1 = require("abort-controller-util/index");
 const SymbolChildren = Symbol.for('AbortControllerTimer#children');
+exports.SymbolChildren = SymbolChildren;
 const SymbolParents = Symbol.for('AbortControllerTimer#parents');
+exports.SymbolParents = SymbolParents;
 const SymbolAbortController = Symbol.for('controller');
+exports.SymbolAbortController = SymbolAbortController;
 class AbortControllerTimer extends abort_controller_1.default {
     constructor(ms) {
         super();
