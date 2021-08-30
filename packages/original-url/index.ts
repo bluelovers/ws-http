@@ -1,6 +1,7 @@
 import { parse as parseUrl, UrlWithStringQuery } from 'url';
 import parseForwarded from 'forwarded-parse';
 import { parsePartialURL, getFirstHeader, isIPv6 } from './util';
+import { valueFromRecord, keyFromRecord, IRecordLike } from 'value-from-record';
 
 export interface IResult
 {
@@ -22,13 +23,15 @@ export function originalUrl(req)
 {
 	const raw: string = req.originalUrl || req.url
 	const url = parseUrl(raw || '')
-	const secure: boolean = req.secure || (req.connection && req.connection.encrypted)
+	const secure: boolean = req.secure || req.connection?.encrypted
 	const result: IResult = {
 		raw: raw,
 	} as any
 	let host: UrlWithStringQuery
 
-	if (req.headers.forwarded)
+	const headers: IRecordLike<any, string> = req.headers;
+
+	if (valueFromRecord('forwarded', headers))
 	{
 		try
 		{
@@ -53,16 +56,18 @@ export function originalUrl(req)
 		catch (e)
 		{}
 	}
-	else if (req.headers['x-forwarded-host'])
+	else if (valueFromRecord('x-forwarded-host', headers))
 	{
 		host = parsePartialURL(getFirstHeader(req, 'x-forwarded-host'))
 	}
 
 	if (!host)
 	{
-		if (typeof req.headers.host === 'string')
+		const _host = valueFromRecord('host', headers);
+
+		if (typeof _host === 'string')
 		{
-			host = parsePartialURL(req.headers.host)
+			host = parsePartialURL(_host)
 		}
 		else
 		{
@@ -75,25 +80,25 @@ export function originalUrl(req)
 	{
 		result.protocol = url.protocol
 	}
-	else if (req.headers['x-forwarded-proto'])
+	else if (valueFromRecord('x-forwarded-proto', headers))
 	{
 		result.protocol = getFirstHeader(req, 'x-forwarded-proto') + ':'
 	}
-	else if (req.headers['x-forwarded-protocol'])
+	else if (valueFromRecord('x-forwarded-protocol', headers))
 	{
 		result.protocol = getFirstHeader(req, 'x-forwarded-protocol') + ':'
 	}
-	else if (req.headers['x-url-scheme'])
+	else if (valueFromRecord('x-url-scheme', headers))
 	{
 		result.protocol = getFirstHeader(req, 'x-url-scheme') + ':'
 	}
-	else if (req.headers['front-end-https'])
+	else if (valueFromRecord('front-end-https', headers))
 	{
 		result.protocol = getFirstHeader(req, 'front-end-https') === 'on'
 			? 'https:'
 			: 'http:'
 	}
-	else if (req.headers['x-forwarded-ssl'])
+	else if (valueFromRecord('x-forwarded-ssl', headers))
 	{
 		result.protocol = getFirstHeader(req, 'x-forwarded-ssl') === 'on'
 			? 'https:'
@@ -127,7 +132,7 @@ export function originalUrl(req)
 	{
 		result.port = Number(url.port)
 	}
-	else if (req.headers['x-forwarded-port'])
+	else if (valueFromRecord('x-forwarded-port', headers))
 	{
 		result.port = Number(getFirstHeader(req, 'x-forwarded-port'))
 	}

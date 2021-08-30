@@ -5,15 +5,18 @@ const tslib_1 = require("tslib");
 const url_1 = require("url");
 const forwarded_parse_1 = (0, tslib_1.__importDefault)(require("forwarded-parse"));
 const util_1 = require("./util");
+const value_from_record_1 = require("value-from-record");
 function originalUrl(req) {
+    var _a;
     const raw = req.originalUrl || req.url;
     const url = (0, url_1.parse)(raw || '');
-    const secure = req.secure || (req.connection && req.connection.encrypted);
+    const secure = req.secure || ((_a = req.connection) === null || _a === void 0 ? void 0 : _a.encrypted);
     const result = {
         raw: raw,
     };
     let host;
-    if (req.headers.forwarded) {
+    const headers = req.headers;
+    if ((0, value_from_record_1.valueFromRecord)('forwarded', headers)) {
         try {
             // Always choose the original (first) Forwarded pair in case the request
             // passed through multiple proxies
@@ -31,12 +34,13 @@ function originalUrl(req) {
         }
         catch (e) { }
     }
-    else if (req.headers['x-forwarded-host']) {
+    else if ((0, value_from_record_1.valueFromRecord)('x-forwarded-host', headers)) {
         host = (0, util_1.parsePartialURL)((0, util_1.getFirstHeader)(req, 'x-forwarded-host'));
     }
     if (!host) {
-        if (typeof req.headers.host === 'string') {
-            host = (0, util_1.parsePartialURL)(req.headers.host);
+        const _host = (0, value_from_record_1.valueFromRecord)('host', headers);
+        if (typeof _host === 'string') {
+            host = (0, util_1.parsePartialURL)(_host);
         }
         else {
             host = {};
@@ -46,21 +50,21 @@ function originalUrl(req) {
     if (url.protocol) {
         result.protocol = url.protocol;
     }
-    else if (req.headers['x-forwarded-proto']) {
+    else if ((0, value_from_record_1.valueFromRecord)('x-forwarded-proto', headers)) {
         result.protocol = (0, util_1.getFirstHeader)(req, 'x-forwarded-proto') + ':';
     }
-    else if (req.headers['x-forwarded-protocol']) {
+    else if ((0, value_from_record_1.valueFromRecord)('x-forwarded-protocol', headers)) {
         result.protocol = (0, util_1.getFirstHeader)(req, 'x-forwarded-protocol') + ':';
     }
-    else if (req.headers['x-url-scheme']) {
+    else if ((0, value_from_record_1.valueFromRecord)('x-url-scheme', headers)) {
         result.protocol = (0, util_1.getFirstHeader)(req, 'x-url-scheme') + ':';
     }
-    else if (req.headers['front-end-https']) {
+    else if ((0, value_from_record_1.valueFromRecord)('front-end-https', headers)) {
         result.protocol = (0, util_1.getFirstHeader)(req, 'front-end-https') === 'on'
             ? 'https:'
             : 'http:';
     }
-    else if (req.headers['x-forwarded-ssl']) {
+    else if ((0, value_from_record_1.valueFromRecord)('x-forwarded-ssl', headers)) {
         result.protocol = (0, util_1.getFirstHeader)(req, 'x-forwarded-ssl') === 'on'
             ? 'https:'
             : 'http:';
@@ -87,7 +91,7 @@ function originalUrl(req) {
     if (url.port) {
         result.port = Number(url.port);
     }
-    else if (req.headers['x-forwarded-port']) {
+    else if ((0, value_from_record_1.valueFromRecord)('x-forwarded-port', headers)) {
         result.port = Number((0, util_1.getFirstHeader)(req, 'x-forwarded-port'));
     }
     else if (host.port)

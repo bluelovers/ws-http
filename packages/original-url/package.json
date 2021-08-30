@@ -57,7 +57,8 @@
   "dependencies": {
     "forwarded-parse": "^2.1.1",
     "ip-regex": "^4.3.0",
-    "tslib": "^2.3.1"
+    "tslib": "^2.3.1",
+    "value-from-record": "^2.0.2"
   },
   "devDependencies": {
     "https-pem": "^2.0.0"

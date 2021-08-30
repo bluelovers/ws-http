@@ -1,5 +1,6 @@
 import { parse as parseUrl } from "url";
 import { v6 } from 'ip-regex';
+import { valueFromRecord, keyFromRecord, IRecordLike } from 'value-from-record';
 
 const re_v6 = v6({ exact: true });
 
@@ -8,10 +9,10 @@ const re_v6 = v6({ exact: true });
  * as it should be the one that was added by the first proxy in the chain
  */
 export function getFirstHeader(req: {
-	headers: Record<any, any>
+	headers: IRecordLike<any, any>
 }, header: string): string
 {
-	const value = req.headers[header]
+	const value = valueFromRecord<string>(header, req.headers)
 	return (Array.isArray(value) ? value[0] : value).split(', ')[0]
 }
 
