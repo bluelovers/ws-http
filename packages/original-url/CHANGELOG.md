@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.19](https://github.com/bluelovers/ws-http/compare/original-url2@1.2.18...original-url2@1.2.19) (2021-08-30)
+
+
+### 📦　Code Refactoring
+
+* use `value-from-record` ([7865df0](https://github.com/bluelovers/ws-http/commit/7865df0aa3d9fbdbc9c042fc2751aecb9b221a5d))
+
+
+
+
+
 ## [1.2.18](https://github.com/bluelovers/ws-http/compare/original-url2@1.2.17...original-url2@1.2.18) (2021-08-12)
 
 

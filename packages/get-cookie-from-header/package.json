@@ -1,6 +1,6 @@
 {
   "name": "get-cookie-from-header",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "homepage": "https://github.com/bluelovers/ws-http/tree/master/packages/get-cookie-from-header#readme",
   "bugs": {
@@ -28,7 +28,5 @@
   "dependencies": {
     "tslib": "^2.3.1",
     "value-from-record": "^2.0.2"
-  },
-  "devDependencies": {},
-  "peerDependencies": {}
+  }
 }
