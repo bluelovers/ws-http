@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.originalUrl = void 0;
 const tslib_1 = require("tslib");
 const url_1 = require("url");
-const forwarded_parse_1 = (0, tslib_1.__importDefault)(require("forwarded-parse"));
+const forwarded_parse_1 = tslib_1.__importDefault(require("forwarded-parse"));
 const util_1 = require("./util");
 const value_from_record_1 = require("value-from-record");
 function originalUrl(req) {

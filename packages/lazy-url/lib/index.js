@@ -5,10 +5,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.isFakeHostname = exports.isFakeProtocol = exports._core = exports.findSymbolContext = exports.LazyURL = exports.ENUM_FAKE = exports.SYM_HIDDEN = exports.SYM_URL = void 0;
 const tslib_1 = require("tslib");
-const url_parse_1 = (0, tslib_1.__importDefault)(require("url-parse"));
+const url_parse_1 = tslib_1.__importDefault(require("url-parse"));
 const util_1 = require("util");
 const ts_type_predicates_1 = require("ts-type-predicates");
-const err_code_1 = (0, tslib_1.__importDefault)(require("err-code"));
+const err_code_1 = tslib_1.__importDefault(require("err-code"));
 const replace_url_protocol_1 = require("replace-url-protocol");
 const err_indent_1 = require("err-indent");
 const err_stack_meta_1 = require("err-stack-meta");
@@ -158,10 +158,10 @@ class LazyURL extends URL {
     set href(value) {
         super.href = value;
         if (isFakeProtocol(super.protocol)) {
-            this[exports.SYM_HIDDEN].protocol = "fake+http:" /* protocol */;
+            this[exports.SYM_HIDDEN].protocol = "fake+http:" /* ENUM_FAKE.protocol */;
         }
         if (isFakeHostname(super.hostname)) {
-            this[exports.SYM_HIDDEN].hostname = "url-fake-hostname" /* hostname */;
+            this[exports.SYM_HIDDEN].hostname = "url-fake-hostname" /* ENUM_FAKE.hostname */;
         }
     }
     get origin() {
@@ -458,9 +458,9 @@ function _core(url, base) {
                     ].includes(old.toLowerCase())) {
                         u = (0, url_parse_1.default)('');
                         u.set('host', old);
-                        u.set('protocol', "fake+http:" /* protocol */);
+                        u.set('protocol', "fake+http:" /* ENUM_FAKE.protocol */);
                         u.set('pathname', '');
-                        _hidden_.protocol = "fake+http:" /* protocol */;
+                        _hidden_.protocol = "fake+http:" /* ENUM_FAKE.protocol */;
                     }
                     if (u.host === '') {
                         if (u.pathname != '' && !u.pathname.includes('/')) {
@@ -468,12 +468,12 @@ function _core(url, base) {
                             u.set('pathname', '');
                         }
                         else {
-                            u.set('host', "url-fake-hostname" /* hostname */);
+                            u.set('host', "url-fake-hostname" /* ENUM_FAKE.hostname */);
                             _hidden_.hostname = u.hostname;
                         }
                     }
                     if (u.protocol === '') {
-                        u.set('protocol', "fake+http:" /* protocol */);
+                        u.set('protocol', "fake+http:" /* ENUM_FAKE.protocol */);
                         _hidden_.protocol = u.protocol;
                     }
                     // @ts-ignore
@@ -488,10 +488,10 @@ function _core(url, base) {
             else if ((url == null || url === '') && base == null) {
             }
             else if (url != null && base == null) {
-                base = `${"fake+http:" /* protocol */}//${"url-fake-hostname" /* hostname */}`;
+                base = `${"fake+http:" /* ENUM_FAKE.protocol */}//${"url-fake-hostname" /* ENUM_FAKE.hostname */}`;
                 _url = _newURL(url, base);
-                _hidden_.protocol = "fake+http:" /* protocol */;
-                _hidden_.hostname = "url-fake-hostname" /* hostname */;
+                _hidden_.protocol = "fake+http:" /* ENUM_FAKE.protocol */;
+                _hidden_.hostname = "url-fake-hostname" /* ENUM_FAKE.hostname */;
                 ok = true;
             }
         }
@@ -544,11 +544,11 @@ function _newURL(input, baseURL) {
     }
 }
 function isFakeProtocol(protocol) {
-    return protocol === "fake+http:" /* protocol */;
+    return protocol === "fake+http:" /* ENUM_FAKE.protocol */;
 }
 exports.isFakeProtocol = isFakeProtocol;
 function isFakeHostname(hostname) {
-    return hostname === "url-fake-hostname" /* hostname */;
+    return hostname === "url-fake-hostname" /* ENUM_FAKE.hostname */;
 }
 exports.isFakeHostname = isFakeHostname;
 exports.default = LazyURL;
