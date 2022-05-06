@@ -3,7 +3,7 @@ export declare function replaceProtocol(href: string, protocol: string): string;
  * @internal
  */
 export declare function _fixReplaceURLProtocol<T extends URL, P extends string = string>(url: T, oldProtocol: string, newProtocol: P): asserts url is T & {
-    protocol: P;
+	protocol: P;
 };
 /**
  * @internal
@@ -19,3 +19,5 @@ export declare function replaceThisProtocol<T extends URL>(this: T, protocol: st
  */
 export declare function replaceURLProtocol<T extends URL, P extends string = string>(url: T, protocol: P): T;
 export default replaceURLProtocol;
+
+export {};

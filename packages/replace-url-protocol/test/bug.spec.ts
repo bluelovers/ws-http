@@ -1,5 +1,4 @@
-import { basename, extname } from 'path';
-import replaceURLProtocol, { replaceProtocol } from '../index';
+import replaceURLProtocol, { replaceProtocol } from '../src/index';
 
 describe('node.js#39732', () =>
 {
