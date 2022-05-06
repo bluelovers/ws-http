@@ -27,7 +27,7 @@
   "dependencies": {
     "http-form-urlencoded": "^1.0.24",
     "lazy-url": "^1.0.20",
-    "tslib": "^2.3.1"
+    "tslib": "^2.4.0"
   },
   "gitHead": "165b4921ea083a55604eaad15f5acce8d914c0e9"
 }

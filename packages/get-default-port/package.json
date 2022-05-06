@@ -35,7 +35,7 @@
     "tsc:esm": "tsc -p tsconfig.esm.json"
   },
   "dependencies": {
-    "tslib": "^2.3.1"
+    "tslib": "^2.4.0"
   },
   "gitHead": "165b4921ea083a55604eaad15f5acce8d914c0e9"
 }

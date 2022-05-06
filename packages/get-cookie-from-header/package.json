@@ -26,7 +26,7 @@
     "tsc:showConfig": "ynpx get-current-tsconfig -p"
   },
   "dependencies": {
-    "tslib": "^2.3.1",
-    "value-from-record": "^2.0.2"
+    "tslib": "^2.4.0",
+    "value-from-record": "^3.0.1"
   }
 }

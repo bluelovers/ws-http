@@ -55,10 +55,10 @@
     "tsc:esm": "tsc -p tsconfig.esm.json"
   },
   "dependencies": {
-    "forwarded-parse": "^2.1.1",
-    "ip-regex": "^4.3.0",
-    "tslib": "^2.3.1",
-    "value-from-record": "^2.0.2"
+    "forwarded-parse": "^2.1.2",
+    "ip-regex": "^5.0.0",
+    "tslib": "^2.4.0",
+    "value-from-record": "^3.0.1"
   },
   "devDependencies": {
     "https-pem": "^2.0.0"

@@ -56,11 +56,11 @@
   },
   "dependencies": {
     "err-code": "^3.0.1",
-    "err-indent": "^1.0.4",
+    "err-indent": "^1.0.6",
     "replace-url-protocol": "^1.0.5",
     "symbol.inspect": "^1.0.1",
-    "ts-type-predicates": "^1.0.5",
-    "tslib": "^2.3.1",
-    "url-parse": "^1.5.3"
+    "ts-type-predicates": "^1.0.6",
+    "tslib": "^2.4.0",
+    "url-parse": "^1.5.10"
   }
 }
