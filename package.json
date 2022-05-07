@@ -2,12 +2,20 @@
   "name": "ws-http",
   "version": "1.0.0",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
   "keywords": [
     "http",
     "url"
+  ],
+  "homepage": "https://github.com/bluelovers/ws-http#readme",
+  "bugs": {
+    "url": "https://github.com/bluelovers/ws-http/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bluelovers/ws-http.git"
+  },
+  "workspaces": [
+    "packages/*"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -21,7 +29,34 @@
     "ncu:ws": "npx yarn-tool ws exec yarn-tool ncu -- -u",
     "sort-package-json": "yarn run sort-package-json:root && yarn run sort-package-json:ws",
     "sort-package-json:root": "npx yarn-tool sort",
-    "sort-package-json:ws": "npx yarn-tool ws exec yarn-tool sort"
+    "sort-package-json:ws": "npx yarn-tool ws exec yarn-tool sort",
+    "ci:install": "yarn install --frozen-lockfile && yarn add -W typescript@next jest ts-jest ts-node ynpx lerna yarn-tool",
+    "test:all": "lerna run test --concurrency 1",
+    "build:all": "lerna run build --concurrency 1",
+    "review:all": "lerna run review --concurrency 1",
+    "coverage:all": "lerna run coverage --concurrency 1",
+    "lint:all": "lerna run lint --concurrency 1",
+    "preversion": "yt ws run test",
+    "prepublishOnly:root": "yarn run prepublishOnly:check-bin && yarn run prepare:fix-ws-links",
+    "prepublishOnly:lockfile": "ynpx --quiet sync-lockfile",
+    "prepare:fix-ws-links": "ynpx --quiet @yarn-tool/fix-ws-links",
+    "postpublishOnly": "yarn run postpublishOnly:ws-root-changelog & echo postpublishOnly",
+    "postpublishOnly:ws-root-changelog": "ynpx ws-root-changelog & git add ./CHANGELOG.md & git commit ./CHANGELOG.md -m \"chore(changelog): update changelog toc in workspaces root\" & echo update changelog toc in workspaces root",
+    "install:reset-lockfile": "yarn-tool install --reset-lockfile",
+    "ws:fix-all": "yarn-tool fix-all  --overwriteHostedGitInfo",
+    "tsc:showConfig": "ynpx get-current-tsconfig -p",
+    "version": "echo version",
+    "prepublishOnly": "echo prepublishOnly",
+    "postversion": "echo postversion",
+    "publish": "echo publish",
+    "prepublish": "echo prepublish",
+    "postpublish": "echo postpublish",
+    "prepare": "echo prepare",
+    "prepack": "echo prepack",
+    "pack": "echo pack",
+    "postpack": "echo postpack",
+    "pretest": "echo pretest",
+    "ci:build": "echo ci:build"
   },
   "resolutions": {},
   "dependencies": {

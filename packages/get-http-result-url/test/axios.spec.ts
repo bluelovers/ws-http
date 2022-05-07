@@ -1,6 +1,6 @@
 import { basename, extname } from 'path';
 import Axios from 'axios';
-import { resultToURL } from '../index';
+import { resultToURL } from '../src/index';
 
 describe('axios', () =>
 {

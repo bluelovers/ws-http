@@ -2,7 +2,7 @@
  * Created by User on 2019/6/6.
  */
 
-import LazyURL, { ENUM_FAKE } from '../lib/index';
+import LazyURL, { ENUM_FAKE } from '../src/index';
 // @ts-ignore
 import SymbolInspect from 'symbol.inspect';
 // @ts-ignore
@@ -15,12 +15,12 @@ describe(`suite`, () =>
 		[
 			['zh-TW/scripts', 'zh-TW:8080'],
 			`${ENUM_FAKE.protocol}//zh-tw:8080/zh-TW/scripts`,
-			`//zh-tw:8080/zh-TW/scripts`,
+			`zh-tw:8080/zh-TW/scripts`,
 		],
 		[
 			['zh-TW/scripts', 'zh-TW'],
 			`${ENUM_FAKE.protocol}//zh-tw/zh-TW/scripts`,
-			`//zh-tw/zh-TW/scripts`,
+			`zh-tw/zh-TW/scripts`,
 		],
 		[
 			['zh-TW/scripts', 'http://zh-TW'],

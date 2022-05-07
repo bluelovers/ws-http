@@ -1,8 +1,8 @@
 import { parse as parseUrl } from "url";
-import { v6 } from 'ip-regex';
+import ipRegex from 'ip-regex';
 import { valueFromRecord, keyFromRecord, IRecordLike } from 'value-from-record';
 
-const re_v6 = v6({ exact: true });
+const re_v6 = ipRegex.v6({ exact: true });
 
 /**
  * In case there's more than one header of a given name, we want the first one

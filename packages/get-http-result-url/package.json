@@ -2,6 +2,12 @@
   "name": "get-http-result-url",
   "version": "1.0.11",
   "description": "",
+  "keywords": [
+    "http",
+    "url",
+    "create-by-yarn-tool",
+    "create-by-tsdx"
+  ],
   "homepage": "https://github.com/bluelovers/ws-http/tree/master/packages/get-http-result-url#readme",
   "bugs": {
     "url": "https://github.com/bluelovers/ws-http/issues"
@@ -12,22 +18,62 @@
   },
   "license": "ISC",
   "author": "bluelovers",
-  "main": "index.js",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.esm.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json",
+    "./src/*": "./src/*"
+  },
+  "main": "dist/index.cjs",
+  "unpkg": "dist/index.umd.production.min.cjs",
+  "module": "dist/index.esm.mjs",
+  "types": "dist/index.d.ts",
+  "typings": "dist/index.d.ts",
+  "directories": {
+    "test": "test"
+  },
   "scripts": {
     "coverage": "yarn run test -- --coverage",
     "lint": "ynpx --quiet eslint -- **/*.ts",
+    "pretest": "echo pretest",
     "test": "jest --passWithNoTests",
     "test:jest": "jest --passWithNoTests",
     "test:mocha": "ynpx --quiet -p ts-node -p mocha mocha -- --require ts-node/register \"!(node_modules)/**/*.{test,spec}.{ts,tsx}\"",
+    "posttest": "yarn run build",
+    "build": "yarn run build:tsdx && yarn run build:dts:tsc",
+    "build:dts:bundle": "ynpx dts-bundle-generator -o ./dist/index.d.ts ./src/index.ts --no-banner --inline-declare-global & echo build:dts:bundle",
+    "build:dts:copy": "copy .\\src\\index.d.ts .\\dist\\index.d.ts & echo build:dts",
+    "build:dts:tsc": "yarn run build:dts:tsc:emit && yarn run build:dts:copy",
+    "build:dts:tsc:emit": "tsc --emitDeclarationOnly --declaration --noEmit false",
+    "build:tsdx": "ynpx @bluelovers/tsdx build --target node --name index",
+    "ci:install": "echo ci:install",
+    "ci:build": "echo ci:build",
     "preversion": "echo preversion && yarn run test",
+    "version": "echo version",
+    "postversion": "echo postversion",
+    "prepublish": "echo prepublish",
+    "prepare": "echo prepare",
+    "prepublishOnly": "echo prepublishOnly",
     "prepublishOnly:update": "yarn run ncu && yarn run sort-package-json",
+    "prepack": "echo prepack",
+    "pack": "echo pack",
+    "postpack": "echo postpack",
+    "publish": "echo publish",
+    "postpublish": "echo postpublish",
+    "postpublishOnly": "echo postpublishOnly",
     "ncu": "yarn-tool ncu -u",
-    "sort-package-json": "yarn-tool sort"
+    "sort-package-json": "yarn-tool sort",
+    "tsc:showConfig": "ynpx get-current-tsconfig -p"
   },
   "dependencies": {
     "http-form-urlencoded": "^1.0.24",
     "lazy-url": "^1.0.20",
     "tslib": "^2.4.0"
   },
-  "gitHead": "165b4921ea083a55604eaad15f5acce8d914c0e9"
+  "gitHead": "165b4921ea083a55604eaad15f5acce8d914c0e9",
+  "packageManager": "yarn@^1.22.11"
 }

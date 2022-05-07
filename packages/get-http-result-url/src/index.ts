@@ -15,17 +15,17 @@ export interface IReqInfo
 export interface IOptions
 {
 	ignoreError?: boolean
-	response?
+	response?: any
 }
 
 export function resultToURL<T extends {
 	request?: any;
-}>(result: T, options?: IOptions, res?)
+}>(result: T, options?: IOptions, res?: any)
 {
 	return requestToURL(result?.request, options, res ?? options?.response ?? result)
 }
 
-export function requestToURL(req, options?: IOptions, res?)
+export function requestToURL(req: any, options?: IOptions, res?: any)
 {
 	try
 	{
@@ -40,7 +40,7 @@ export function requestToURL(req, options?: IOptions, res?)
 	}
 }
 
-export function _requestToURL(req, res)
+export function _requestToURL(req: any, res: any)
 {
 	let href: string | URL = req._currentUrl;
 	let _currentRequest: ClientRequest = req._currentRequest ?? req ?? {};

@@ -40,7 +40,7 @@ exports[`auth username: 4`] = `
         password: '',
         username: 'username',
         origin: 'null',
-        href: '//username@/zh-TW/scripts'
+        href: 'username@/zh-TW/scripts'
       },
       baseURL: undefined
     }"
@@ -88,7 +88,7 @@ exports[`auth username:password 4`] = `
         password: 'password',
         username: 'username',
         origin: 'null',
-        href: '//username:password@/zh-TW/scripts'
+        href: 'username:password@/zh-TW/scripts'
       },
       baseURL: undefined
     }"

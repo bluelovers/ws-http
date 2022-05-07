@@ -2,6 +2,14 @@
   "name": "http-response-stream",
   "version": "1.0.9",
   "description": "",
+  "homepage": "https://github.com/bluelovers/ws-http/tree/master/packages/response-stream#readme",
+  "bugs": {
+    "url": "https://github.com/bluelovers/ws-http/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bluelovers/ws-http.git"
+  },
   "license": "ISC",
   "author": "",
   "main": "dist/index.js",

@@ -1,4 +1,4 @@
-import LazyURL, { ENUM_FAKE } from '../lib/index';
+import LazyURL, { ENUM_FAKE } from '../src/index';
 
 describe(`lazy`, () =>
 {

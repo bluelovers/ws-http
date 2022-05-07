@@ -1,5 +1,5 @@
 import { basename, extname } from 'path';
-import { resultToURL } from '../index';
+import { resultToURL } from '../src/index';
 
 describe(basename(__filename, extname(__filename)), () =>
 {

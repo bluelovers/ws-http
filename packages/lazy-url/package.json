@@ -1,6 +1,6 @@
 {
   "name": "lazy-url",
-  "version": "1.0.20",
+  "version": "2.0.0",
   "description": "a more easy use URL",
   "keywords": [
     "URL",
@@ -20,7 +20,9 @@
     "strip",
     "trim",
     "uri",
-    "url"
+    "url",
+    "create-by-yarn-tool",
+    "create-by-tsdx"
   ],
   "homepage": "https://github.com/bluelovers/ws-http/tree/master/packages/lazy-url#readme",
   "bugs": {
@@ -32,27 +34,61 @@
   },
   "license": "ISC",
   "author": "bluelovers",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "typings": "lib/index.d.ts",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.esm.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json",
+    "./src/*": "./src/*"
+  },
+  "main": "dist/index.cjs",
+  "unpkg": "dist/index.umd.production.min.cjs",
+  "module": "dist/index.esm.mjs",
+  "types": "dist/index.d.ts",
+  "typings": "dist/index.d.ts",
   "directories": {
     "lib": "lib",
     "test": "test"
   },
   "scripts": {
+    "pretest": "echo pretest",
     "test": "jest",
+    "posttest": "yarn run build",
+    "build": "yarn run build:tsdx && yarn run build:dts:bundle",
+    "build:dts:bundle": "ynpx dts-bundle-generator -o ./dist/index.d.ts ./src/index.ts --no-banner --inline-declare-global & echo build:dts:bundle",
+    "build:dts:copy": "copy .\\src\\index.d.ts .\\dist\\index.d.ts & echo build:dts",
+    "build:dts:tsc": "yarn run build:dts:tsc:emit && yarn run build:dts:copy",
+    "build:dts:tsc:emit": "tsc --emitDeclarationOnly --declaration --noEmit false",
+    "build:tsdx": "ynpx @bluelovers/tsdx build --target node --name index",
+    "ci:install": "echo ci:install",
+    "ci:build": "echo ci:build",
     "npm:publish": "yarn run preversion && npm publish",
     "npm:publish:bump": "yarn run preversion && yarn-tool version && npm publish",
     "preversion": "yarn test",
+    "version": "echo version",
+    "postversion": "echo postversion",
+    "prepublish": "echo prepublish",
+    "prepare": "echo prepare",
+    "prepublishOnly": "echo prepublishOnly",
     "prepublishOnly:check-bin": "ynpx --quiet @yarn-tool/check-pkg-bin",
     "prepublishOnly:update": "yarn run ncu && yarn run sort-package-json",
+    "prepack": "echo prepack",
+    "pack": "echo pack",
+    "postpack": "echo postpack",
+    "publish": "echo publish",
+    "postpublish": "echo postpublish",
     "postpublish_": "yarn run postpublish:changelog && yarn run postpublish:git:commit && yarn run postpublish:git:tag && yarn run postpublish:git:push",
     "postpublish:changelog": "ynpx --quiet @yarn-tool/changelog && git add ./CHANGELOG.md",
     "postpublish:git:commit": "git commit -m \"chore(release): publish\" . & echo postpublish:git:commit",
     "postpublish:git:push": "git push --follow-tags",
     "postpublish:git:tag": "ynpx --quiet @yarn-tool/tag",
+    "postpublishOnly": "echo postpublishOnly",
     "ncu": "yarn-tool ncu -u",
-    "sort-package-json": "yarn-tool sort"
+    "sort-package-json": "yarn-tool sort",
+    "tsc:showConfig": "ynpx get-current-tsconfig -p"
   },
   "dependencies": {
     "err-code": "^3.0.1",
@@ -62,5 +98,6 @@
     "ts-type-predicates": "^1.0.6",
     "tslib": "^2.4.0",
     "url-parse": "^1.5.10"
-  }
+  },
+  "packageManager": "yarn@^1.22.11"
 }
