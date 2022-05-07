@@ -1,6 +1,10 @@
 import AbortControllerTimer from '../index';
 //import AbortController2 from 'abort-controller';
 
+jest.useFakeTimers();
+jest.spyOn(global, 'setTimeout');
+jest.setTimeout(10 * 1000);
+
 test(`base`, (done) =>
 {
 	expect.assertions(8);
@@ -32,6 +36,8 @@ test(`base`, (done) =>
 		expect(actual.aborted).toBeTruthy();
 		done();
 	}, 200);
+
+	jest.runAllTimers();
 
 	expect(actual).toHaveProperty('timeout', timeout);
 
@@ -78,6 +84,8 @@ test(`refresh`, (done) =>
 		expect(actual.aborted).toBeTruthy();
 		done();
 	}, 200);
+
+	jest.runAllTimers();
 
 	expect(actual).toHaveProperty('timeout', timeout);
 

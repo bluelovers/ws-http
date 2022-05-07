@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.12](https://github.com/bluelovers/ws-http/compare/get-default-port@1.0.11...get-default-port@1.0.12) (2022-05-07)
+
+
+### ♻️　Chores
+
+* **deps:** update deps ([34a4a73](https://github.com/bluelovers/ws-http/commit/34a4a73455fcde24f299dff1d321020d6d4e8064))
+
+
+
+
+
 ## [1.0.11](https://github.com/bluelovers/ws-http/compare/get-default-port@1.0.10...get-default-port@1.0.11) (2021-08-12)
 
 
