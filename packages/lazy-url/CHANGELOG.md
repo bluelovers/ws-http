@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/bluelovers/ws-http/compare/lazy-url@1.0.20...lazy-url@2.0.1) (2022-05-08)
+
+
+### 📦　Code Refactoring
+
+* use tsdx ([641d794](https://github.com/bluelovers/ws-http/commit/641d79460371bf09c5c1e77790237896a228c85a))
+
+
+### 🛠　Build System
+
+* update typescript ([0461c12](https://github.com/bluelovers/ws-http/commit/0461c12b6d300ab5f4a8bc5c27ef4e6aba516433))
+
+
+### ♻️　Chores
+
+* **deps:** update deps ([34a4a73](https://github.com/bluelovers/ws-http/commit/34a4a73455fcde24f299dff1d321020d6d4e8064))
+
+
+
+
+
 ## [1.0.20](https://github.com/bluelovers/ws-http/compare/lazy-url@1.0.19...lazy-url@1.0.20) (2021-08-30)
 
 

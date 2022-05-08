@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.7](https://github.com/bluelovers/ws-http/compare/replace-url-protocol@1.0.5...replace-url-protocol@1.0.7) (2022-05-08)
+
+
+### 📦　Code Refactoring
+
+* use tsdx ([b988840](https://github.com/bluelovers/ws-http/commit/b9888400f8f133f2bc6fd9dad22130deebdb697b))
+
+
+### ♻️　Chores
+
+* **deps:** update deps ([34a4a73](https://github.com/bluelovers/ws-http/commit/34a4a73455fcde24f299dff1d321020d6d4e8064))
+
+
+### 🔖　Miscellaneous
+
+* . ([b3f1979](https://github.com/bluelovers/ws-http/commit/b3f1979e1c28dfc67017ec8979b031e352a7bf25))
+
+
+
+
+
 ## [1.0.5](https://github.com/bluelovers/ws-http/compare/replace-url-protocol@1.0.4...replace-url-protocol@1.0.5) (2021-08-12)
 
 

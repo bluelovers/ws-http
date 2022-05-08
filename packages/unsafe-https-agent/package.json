@@ -1,6 +1,6 @@
 {
   "name": "unsafe-https-agent",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "https agent with rejectUnauthorized = false",
   "keywords": [
     "https",
