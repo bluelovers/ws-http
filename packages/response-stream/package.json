@@ -1,6 +1,6 @@
 {
   "name": "http-response-stream",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "",
   "homepage": "https://github.com/bluelovers/ws-http/tree/master/packages/response-stream#readme",
   "bugs": {

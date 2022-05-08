@@ -1,6 +1,6 @@
 {
   "name": "replace-url-protocol",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "helper for avoid node.js can't update protocol for some url",
   "keywords": [
     "create-by-yarn-tool",

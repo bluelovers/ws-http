@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.13](https://github.com/bluelovers/ws-http/compare/get-http-result-url@1.0.11...get-http-result-url@1.0.13) (2022-05-08)
+
+
+### 📦　Code Refactoring
+
+* use tsdx ([641d794](https://github.com/bluelovers/ws-http/commit/641d79460371bf09c5c1e77790237896a228c85a))
+
+
+### ♻️　Chores
+
+* **deps:** update deps ([34a4a73](https://github.com/bluelovers/ws-http/commit/34a4a73455fcde24f299dff1d321020d6d4e8064))
+
+
+### 🔖　Miscellaneous
+
+* . ([b3f1979](https://github.com/bluelovers/ws-http/commit/b3f1979e1c28dfc67017ec8979b031e352a7bf25))
+
+
+
+
+
 ## [1.0.11](https://github.com/bluelovers/ws-http/compare/get-http-result-url@1.0.10...get-http-result-url@1.0.11) (2021-08-30)
 
 **Note:** Version bump only for package get-http-result-url
