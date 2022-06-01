@@ -29,7 +29,7 @@
     "sort-package-json": "yarn-tool sort"
   },
   "dependencies": {
-    "tslib": "^2.4.0"
+    "tslib": "^2"
   },
   "devDependencies": {
     "@types/node-fetch": "^2.6.1",

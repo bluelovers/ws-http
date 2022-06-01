@@ -57,11 +57,11 @@
   "dependencies": {
     "forwarded-parse": "^2.1.2",
     "ip-regex": "< 5 >= 4.3.0",
-    "tslib": "^2.4.0",
+    "tslib": "^2",
     "value-from-record": "^3.0.1"
   },
   "devDependencies": {
-    "https-pem": "^2.0.0"
+    "https-pem": "^3.0.0"
   },
   "coordinates": [
     55.778257,

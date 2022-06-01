@@ -36,10 +36,10 @@
     "sort-package-json": "yarn-tool sort"
   },
   "dependencies": {
-    "lazy-url": "^1.0.20",
+    "lazy-url": "^2.0.2",
     "mitemin": "^1.0.9",
     "parse-domain": "< 6 >= 5.0.0",
-    "tslib": "^2.4.0"
+    "tslib": "^2"
   },
   "gitHead": "165b4921ea083a55604eaad15f5acce8d914c0e9"
 }

@@ -72,7 +72,7 @@
   "dependencies": {
     "http-form-urlencoded": "^1.0.24",
     "lazy-url": "^2.0.2",
-    "tslib": "^2.4.0"
+    "tslib": "^2"
   },
   "gitHead": "165b4921ea083a55604eaad15f5acce8d914c0e9",
   "packageManager": "yarn@^1.22.11"

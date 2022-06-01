@@ -41,7 +41,7 @@
   "dependencies": {
     "abort-controller": "^3.0.0",
     "abort-controller-util": "^1.0.9",
-    "tslib": "^2.4.0"
+    "tslib": "^2"
   },
   "devDependencies": {
     "abort-controller": "^3.0.0"
