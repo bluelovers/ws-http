@@ -92,7 +92,7 @@
   },
   "dependencies": {
     "err-code": "^3.0.1",
-    "err-indent": "^1.0.6",
+    "err-indent": "^1.0.8",
     "replace-url-protocol": "^1.0.9",
     "symbol.inspect": "^1.0.1",
     "ts-type-predicates": "^1.0.6",
