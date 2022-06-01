@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.3](https://github.com/bluelovers/ws-http/compare/lazy-url@2.0.2...lazy-url@2.0.3) (2022-06-01)
+
+
+### ♻️　Chores
+
+* **deps:** update deps ([a138a4e](https://github.com/bluelovers/ws-http/commit/a138a4e1eee038076a2c21ef175d86842abaafd8))
+
+
+
+
+
 ## [2.0.2](https://github.com/bluelovers/ws-http/compare/lazy-url@1.0.20...lazy-url@2.0.2) (2022-05-08)
 
 
