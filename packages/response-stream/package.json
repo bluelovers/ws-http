@@ -1,7 +1,13 @@
 {
   "name": "http-response-stream",
   "version": "1.0.11",
-  "description": "",
+  "description": "<description>",
+  "keywords": [
+    "http",
+    "url",
+    "create-by-yarn-tool",
+    "create-by-tsdx"
+  ],
   "homepage": "https://github.com/bluelovers/ws-http/tree/master/packages/response-stream#readme",
   "bugs": {
     "url": "https://github.com/bluelovers/ws-http/issues"
@@ -11,21 +17,56 @@
     "url": "git+https://github.com/bluelovers/ws-http.git"
   },
   "license": "ISC",
-  "author": "",
-  "main": "dist/index.js",
+  "author": "bluelovers",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.esm.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json",
+    "./src/*": "./src/*"
+  },
+  "main": "dist/index.cjs",
   "umd:main": "dist/response-stream.cjs.production.min.js",
-  "module": "dist/response-stream.esm.js",
+  "unpkg": "dist/index.umd.production.min.cjs",
+  "module": "dist/index.esm.mjs",
+  "types": "dist/index.d.ts",
   "typings": "dist/index.d.ts",
   "scripts": {
+    "pretest": "echo pretest",
     "test": "echo \"Error: no test specified\"",
-    "build": "ynpx @bluelovers/tsdx build --target node",
+    "posttest": "yarn run build",
+    "build": "yarn run build:tsdx && yarn run build:dts:bundle",
+    "build:dts:bundle": "ynpx dts-bundle-generator -o ./dist/index.d.ts ./src/index.ts --no-banner --inline-declare-global & echo build:dts:bundle",
+    "build:dts:copy": "copy .\\src\\index.d.ts .\\dist\\index.d.ts & echo build:dts",
+    "build:dts:tsc": "yarn run build:dts:tsc:emit && yarn run build:dts:copy",
+    "build:dts:tsc:emit": "tsc --emitDeclarationOnly --declaration --noEmit false",
+    "build:tsdx": "ynpx @bluelovers/tsdx build --target node --name index",
+    "ci:install": "echo ci:install",
+    "ci:build": "echo ci:build",
     "preversion": "yarn run build && yarn run test && yarn run postpublish:git:commit",
+    "version": "echo version",
+    "postversion": "echo postversion",
+    "prepublish": "echo prepublish",
+    "prepare": "echo prepare",
+    "prepublishOnly": "echo prepublishOnly",
+    "prepublishOnly:update": "yarn run ncu && yarn run sort-package-json",
+    "prepack": "echo prepack",
+    "pack": "echo pack",
+    "postpack": "echo postpack",
+    "publish": "echo publish",
+    "postpublish": "echo postpublish",
     "postpublish:git:commit": "git commit -m \"build(release): build new release\" ./dist & echo postpublish:git:commit",
+    "postpublishOnly": "echo postpublishOnly",
     "ncu": "npx yarn-tool ncu -u",
-    "sort-package-json": "npx yarn-tool sort"
+    "sort-package-json": "npx yarn-tool sort",
+    "tsc:showConfig": "ynpx get-current-tsconfig -p"
   },
   "dependencies": {
-    "tslib": "^2.4.0"
+    "tslib": "^2"
   },
+  "packageManager": "yarn@^1.22.11",
   "gitHead": "165b4921ea083a55604eaad15f5acce8d914c0e9"
 }
