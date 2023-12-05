@@ -10,7 +10,7 @@ declare const SymbolChildren: unique symbol;
 declare const SymbolParents: unique symbol;
 declare const SymbolAbortController: unique symbol;
 export { SymbolChildren, SymbolParents, SymbolAbortController };
-export declare type ISetAllowedValue<Timer extends number | Timeout = number | Timeout> = AbortSignal | AbortControllerTimer<Timer> | AbortController;
+export type ISetAllowedValue<Timer extends number | Timeout = number | Timeout> = AbortSignal | AbortControllerTimer<Timer> | AbortController;
 export declare class AbortControllerTimer<Timer extends number | Timeout = number | Timeout> extends AbortController {
     #private;
     readonly signal: IAbortSignalWithController<AbortSignal, AbortControllerTimer<Timer>>;

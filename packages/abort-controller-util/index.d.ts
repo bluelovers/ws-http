@@ -1,5 +1,5 @@
 declare const SymbolAbortController: unique symbol;
-export declare type IAbortSignalWithController<Signal, Controller = AbortController> = Signal & {
+export type IAbortSignalWithController<Signal, Controller = AbortController> = Signal & {
     readonly [SymbolAbortController]: Controller;
 };
 /**

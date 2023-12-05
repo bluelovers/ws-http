@@ -20,7 +20,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bluelovers/ws-http.git"
+    "url": "git+https://github.com/bluelovers/ws-http.git",
+    "directory": "packages/img-better-quality-url"
   },
   "license": "ISC",
   "author": "bluelovers",
@@ -30,15 +31,20 @@
     "lint": "ynpx --quiet eslint -- **/*.ts",
     "test": "jest --passWithNoTests",
     "test:jest": "jest --passWithNoTests",
+    "test:jest:coverage": "yarn run test:jest -- --coverage",
+    "test:jest:snapshot": "yarn run test:jest -- -u",
     "test:mocha": "ynpx --quiet -p ts-node -p mocha mocha -- --require ts-node/register \"!(node_modules)/**/*.{test,spec}.{ts,tsx}\"",
+    "test:snapshot": "yarn run test -- -u",
+    "test:tsd": "ynpx tsd",
     "preversion": "yarn run test",
     "ncu": "yarn-tool ncu -u",
-    "sort-package-json": "yarn-tool sort"
+    "sort-package-json": "yarn-tool sort",
+    "tsc:showConfig": "ynpx get-current-tsconfig -p"
   },
   "dependencies": {
     "lazy-url": "^2.0.4",
-    "mitemin": "^1.0.9",
-    "parse-domain": "< 6 >= 5.0.0",
+    "mitemin": "^1.0.12",
+    "parse-domain": "<6 >=5.0.0",
     "tslib": "^2"
   },
   "gitHead": "165b4921ea083a55604eaad15f5acce8d914c0e9"

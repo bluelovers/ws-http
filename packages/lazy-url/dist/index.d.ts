@@ -1,6 +1,6 @@
 import { StringifyQuery, URLPart } from 'url-parse';
 
-export declare type IURLLike = string | URL | IURLObjectLike;
+export type IURLLike = string | URL | IURLObjectLike;
 export declare const SYM_URL: unique symbol;
 export declare const SYM_HIDDEN: unique symbol;
 export declare const enum ENUM_FAKE {
@@ -91,18 +91,18 @@ export declare class LazyURL extends URL implements URL {
 	set<K extends Extract<URLPart, keyof LazyURL>>(part: K, value: LazyURL[K]): void;
 	get<K extends Extract<URLPart, keyof LazyURL>>(part: K): LazyURL[K];
 }
-export declare type IEntries = ([
+export type IEntries = ([
 	"hash" | "host" | "hostname" | "href" | "password" | "pathname" | "port" | "protocol" | "search" | "username",
 	string
 ] | [
 	"searchParams",
 	URLSearchParams
 ])[];
-export declare type IEntriesRow<T extends IUrlKeys> = [
+export type IEntriesRow<T extends IUrlKeys> = [
 	T,
 	URL[T]
 ];
-export declare type IUrlKeys = "href" | "username" | "password" | "host" | "hostname" | "port" | "pathname" | "search" | "searchParams" | "protocol" | "hash";
+export type IUrlKeys = "href" | "username" | "password" | "host" | "hostname" | "port" | "pathname" | "search" | "searchParams" | "protocol" | "hash";
 export declare function findSymbolContext(): symbol;
 export interface IURLObjectLike {
 	href: string;
@@ -139,6 +139,9 @@ export interface IURLError extends IURLErrorNode {
 }
 export declare function isFakeProtocol(protocol: string): protocol is ENUM_FAKE.protocol;
 export declare function isFakeHostname(hostname: string): hostname is ENUM_FAKE.protocol;
-export default LazyURL;
+
+export {
+	LazyURL as default,
+};
 
 export {};

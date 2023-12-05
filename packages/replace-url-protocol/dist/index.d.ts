@@ -18,6 +18,9 @@ export declare function replaceThisProtocol<T extends URL>(this: T, protocol: st
  * @see https://github.com/nodejs/node/issues/39732
  */
 export declare function replaceURLProtocol<T extends URL, P extends string = string>(url: T, protocol: P): T;
-export default replaceURLProtocol;
+
+export {
+	replaceURLProtocol as default,
+};
 
 export {};

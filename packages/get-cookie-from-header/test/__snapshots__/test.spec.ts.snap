@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`headerMap 1`] = `
-Array [
+[
   "prov=054870e7-81da-3797-f52f-6177b3a718c5; domain=.stackoverflow.com; expires=Fri, 01-Jan-2055 00:00:00 GMT; path=/; HttpOnly",
 ]
 `;
 
 exports[`headerRecord 1`] = `
-Array [
+[
   "prov=054870e7-81da-3797-f52f-6177b3a718c5; domain=.stackoverflow.com; expires=Fri, 01-Jan-2055 00:00:00 GMT; path=/; HttpOnly",
 ]
 `;

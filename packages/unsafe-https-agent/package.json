@@ -17,23 +17,31 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bluelovers/ws-http.git"
+    "url": "git+https://github.com/bluelovers/ws-http.git",
+    "directory": "packages/unsafe-https-agent"
   },
   "license": "ISC",
   "author": "bluelovers",
   "main": "index.js",
   "scripts": {
+    "coverage": "yarn run test -- --coverage",
     "test": "jest",
+    "test:jest": "jest --passWithNoTests",
+    "test:jest:coverage": "yarn run test:jest -- --coverage",
+    "test:jest:snapshot": "yarn run test:jest -- -u",
+    "test:snapshot": "yarn run test -- -u",
+    "test:tsd": "ynpx tsd",
     "preversion": "yarn run test",
     "ncu": "yarn-tool ncu -u",
-    "sort-package-json": "yarn-tool sort"
+    "sort-package-json": "yarn-tool sort",
+    "tsc:showConfig": "ynpx get-current-tsconfig -p"
   },
   "dependencies": {
     "tslib": "^2"
   },
   "devDependencies": {
-    "@types/node-fetch": "^2.6.1",
-    "cross-fetch": "^3.1.5"
+    "@types/node-fetch": "^2.6.9",
+    "cross-fetch": "^4.0.0"
   },
   "gitHead": "165b4921ea083a55604eaad15f5acce8d914c0e9"
 }

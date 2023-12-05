@@ -14,7 +14,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bluelovers/ws-http.git"
+    "url": "git+https://github.com/bluelovers/ws-http.git",
+    "directory": "packages/response-stream"
   },
   "license": "ISC",
   "author": "bluelovers",
@@ -22,8 +23,8 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.esm.mjs",
-      "require": "./dist/index.cjs"
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.esm.mjs"
     },
     "./package.json": "./package.json",
     "./src/*": "./src/*"
@@ -35,8 +36,14 @@
   "types": "dist/index.d.ts",
   "typings": "dist/index.d.ts",
   "scripts": {
+    "coverage": "yarn run test -- --coverage",
     "pretest": "echo pretest",
     "test": "echo \"Error: no test specified\"",
+    "test:jest": "jest --passWithNoTests",
+    "test:jest:coverage": "yarn run test:jest -- --coverage",
+    "test:jest:snapshot": "yarn run test:jest -- -u",
+    "test:snapshot": "yarn run test -- -u",
+    "test:tsd": "ynpx tsd",
     "posttest": "yarn run build",
     "build": "yarn run build:tsdx && yarn run build:dts:bundle",
     "build:dts:bundle": "ynpx dts-bundle-generator -o ./dist/index.d.ts ./src/index.ts --no-banner --inline-declare-global & echo build:dts:bundle",
@@ -64,9 +71,7 @@
     "sort-package-json": "npx yarn-tool sort",
     "tsc:showConfig": "ynpx get-current-tsconfig -p"
   },
-  "dependencies": {
-    "tslib": "^2"
-  },
+  "dependencies": {},
   "packageManager": "yarn@^1.22.11",
   "gitHead": "165b4921ea083a55604eaad15f5acce8d914c0e9"
 }

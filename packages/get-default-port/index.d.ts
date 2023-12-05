@@ -1,7 +1,7 @@
 /**
  * Created by user on 2020/3/16.
  */
-export declare type IPortsInput = string | number | (number | string)[];
+export type IPortsInput = string | number | (number | string)[];
 export declare function iifFallbackPort(port: string | number, ports: IPortsInput): number;
 /**
  * OPENSHIFT_NODEJS_PORT

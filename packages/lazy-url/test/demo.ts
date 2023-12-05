@@ -27,8 +27,12 @@ u = new LazyURL(a2, a1);
 
 console.dir(u.toRealString());
 
+console.dir(new URL(u).toString());
+
 // @ts-ignore
 u = new URL(a2, a1);
 // => throw error
 
 console.dir(u.toString());
+
+
