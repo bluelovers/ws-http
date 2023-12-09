@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`axios error:timeout 1`] = `"https://user@mozilla.org:8989/tw/user?ID=12345"`;
-
-exports[`axios error2:timeout 1`] = `"http://localhost/tw/user?ID=12345"`;
-
-exports[`axios error3:timeout 1`] = `"https://mozilla.org/tw/user?ID=12345"`;
-
-exports[`axios ok 1`] = `"https://developer.mozilla.org/en-US/docs/Web/API/URL/origin"`;

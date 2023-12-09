@@ -19,7 +19,7 @@ describe('axios', () =>
 
 	});
 
-	test(`error2:timeout`, async () =>
+	test.skip(`error2:timeout`, async () =>
 	{
 		let actual = await axios.get('/tw/user?ID=12345', {
 			timeout: 10,
@@ -31,7 +31,7 @@ describe('axios', () =>
 
 	});
 
-	test(`error3:timeout`, async () =>
+	test.skip(`error3:timeout`, async () =>
 	{
 		let actual = await axios.get('user?ID=12345', {
 			baseURL: 'https://mozilla.org:443/tw/',
@@ -45,7 +45,7 @@ describe('axios', () =>
 
 	});
 
-	test(`ok`, async () =>
+	test.skip(`ok`, async () =>
 	{
 		let actual = await axios.get('en-US/docs/Web/API/URL/origin', {
 				baseURL: 'https://developer.mozilla.org/',

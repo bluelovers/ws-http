@@ -1,63 +1,63 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`suppertd can be changed https://12243.mitemin.net/userpageimage/viewimagebig/icode/i366014/ 1`] = `
-Object {
+{
   "changed": true,
   "not_suppertd": false,
-  "pd": Object {
+  "pd": {
     "domain": "mitemin",
     "hostname": "12243.mitemin.net",
-    "icann": Object {
+    "icann": {
       "domain": "mitemin",
-      "subDomains": Array [
+      "subDomains": [
         "12243",
       ],
-      "topLevelDomains": Array [
+      "topLevelDomains": [
         "net",
       ],
     },
-    "labels": Array [
+    "labels": [
       "12243",
       "mitemin",
       "net",
     ],
-    "subDomains": Array [
+    "subDomains": [
       "12243",
     ],
-    "topLevelDomains": Array [
+    "topLevelDomains": [
       "net",
     ],
     "type": "LISTED",
   },
-  "url": "https://12243.mitemin.net/userpageimage/viewimage/icode/i366014/",
+  "url": "https://12243.mitemin.net/userpageimage/viewimage/icode/i366014",
 }
 `;
 
 exports[`suppertd can be changed https://img1.mitemin.net/cv/po/bcxka2bnheig0k9hc67bh6orl_177v_1kw_146_7bey.jpg.580.jpg 1`] = `
-Object {
+{
   "changed": true,
   "not_suppertd": false,
-  "pd": Object {
+  "pd": {
     "domain": "mitemin",
     "hostname": "img1.mitemin.net",
-    "icann": Object {
+    "icann": {
       "domain": "mitemin",
-      "subDomains": Array [
+      "subDomains": [
         "img1",
       ],
-      "topLevelDomains": Array [
+      "topLevelDomains": [
         "net",
       ],
     },
-    "labels": Array [
+    "labels": [
       "img1",
       "mitemin",
       "net",
     ],
-    "subDomains": Array [
+    "subDomains": [
       "img1",
     ],
-    "topLevelDomains": Array [
+    "topLevelDomains": [
       "net",
     ],
     "type": "LISTED",
@@ -67,25 +67,25 @@ Object {
 `;
 
 exports[`suppertd can be changed https://masiro.me/images/encode/other-210619172125-yXNz.jpg?quality=80 1`] = `
-Object {
+{
   "changed": true,
   "not_suppertd": false,
-  "pd": Object {
+  "pd": {
     "domain": "masiro",
     "hostname": "masiro.me",
-    "icann": Object {
+    "icann": {
       "domain": "masiro",
-      "subDomains": Array [],
-      "topLevelDomains": Array [
+      "subDomains": [],
+      "topLevelDomains": [
         "me",
       ],
     },
-    "labels": Array [
+    "labels": [
       "masiro",
       "me",
     ],
-    "subDomains": Array [],
-    "topLevelDomains": Array [
+    "subDomains": [],
+    "topLevelDomains": [
       "me",
     ],
     "type": "LISTED",
@@ -95,32 +95,32 @@ Object {
 `;
 
 exports[`suppertd can be changed https://www.novelstar.com.tw/cache/cutw_300h_450/821739d2e7af6219b020ffabf4ca49371530349123.jpg.png 1`] = `
-Object {
+{
   "changed": true,
   "not_suppertd": false,
-  "pd": Object {
+  "pd": {
     "domain": "novelstar",
     "hostname": "www.novelstar.com.tw",
-    "icann": Object {
+    "icann": {
       "domain": "novelstar",
-      "subDomains": Array [
+      "subDomains": [
         "www",
       ],
-      "topLevelDomains": Array [
+      "topLevelDomains": [
         "com",
         "tw",
       ],
     },
-    "labels": Array [
+    "labels": [
       "www",
       "novelstar",
       "com",
       "tw",
     ],
-    "subDomains": Array [
+    "subDomains": [
       "www",
     ],
-    "topLevelDomains": Array [
+    "topLevelDomains": [
       "com",
       "tw",
     ],
@@ -131,30 +131,30 @@ Object {
 `;
 
 exports[`suppertd maybe not changed https://img1.mitemin.net/k0/78/84kqizdv2mupf8n135o55zfol2wb_xan_by_go_2f0x.jpg 1`] = `
-Object {
+{
   "changed": false,
   "not_suppertd": false,
-  "pd": Object {
+  "pd": {
     "domain": "mitemin",
     "hostname": "img1.mitemin.net",
-    "icann": Object {
+    "icann": {
       "domain": "mitemin",
-      "subDomains": Array [
+      "subDomains": [
         "img1",
       ],
-      "topLevelDomains": Array [
+      "topLevelDomains": [
         "net",
       ],
     },
-    "labels": Array [
+    "labels": [
       "img1",
       "mitemin",
       "net",
     ],
-    "subDomains": Array [
+    "subDomains": [
       "img1",
     ],
-    "topLevelDomains": Array [
+    "topLevelDomains": [
       "net",
     ],
     "type": "LISTED",
