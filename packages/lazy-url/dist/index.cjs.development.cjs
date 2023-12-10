@@ -10,9 +10,6 @@ var replaceUrlProtocol = require('replace-url-protocol');
 var errIndent = require('err-indent');
 var errStackMeta = require('err-stack-meta');
 
-/**
- * Created by user on 2019/6/6.
- */
 const SYM_URL = /*#__PURE__*/Symbol('url');
 const SYM_HIDDEN = /*#__PURE__*/Symbol('hidden');
 exports.ENUM_FAKE = void 0;
@@ -32,36 +29,8 @@ class LazyURL extends URL {
   constructor(url, base) {
     let u = _core(url, base);
     super(u.url.href);
-    //this[SYM_URL] = _url;
     this[SYM_HIDDEN] = u.hidden;
-    //_numerable(this)
   }
-  /*
-  [SymbolInspect]()
-  {
-      return `LazyURL {
-  href: '${this.href}',
-  href: '${this.toRealString()}',
-  origin: '${this.origin}',
-  protocol: '${this.protocol}',
-  username: '${this.username}',
-  password: '${this.password}',
-  host: '${this.host}',
-  hostname: '${this.hostname}',
-  port: '${this.port}',
-  pathname: '${this.pathname}',
-  search: '${this.search}',
-  searchParams: ${util.inspect(this.searchParams)},
-  hash: '${this.hash}'
-  }`;
-  }
-   */
-  /*
-  [SymbolInspect]()
-  {
-      return `LazyURL(${this.href})`;
-  }
-    */
   get paths() {
     if (SymbolContext != null && this[SymbolContext] && Array.isArray(this[SymbolContext].path)) {
       return this[SymbolContext].path.slice();
@@ -99,7 +68,6 @@ class LazyURL extends URL {
           u.set('port', '');
           u.set('protocol', '');
         } else if (u.username !== '' || u.password !== '' || u.port !== '' || u.protocol !== '') {
-          //throw new TypeError(`Invalid URL ${u}`)
           throw _wrapError(new TypeError(`Invalid URL`), u);
         }
       }
@@ -114,31 +82,6 @@ class LazyURL extends URL {
   toString() {
     return this.href;
   }
-  /*
-  toJSON()
-  {
-      return this[SYM_URL].toJSON();
-  }
-   */
-  /*
-  get hash()
-  {
-      return this[SYM_URL].hash
-  }
-   set hash(value)
-  {
-      this[SYM_URL].hash = value
-  }
-   get host()
-  {
-      return this[SYM_URL].host
-  }
-   set host(value)
-  {
-      delete this[SYM_HIDDEN].hostname;
-       this[SYM_URL].host = value
-  }
-   */
   get hostname() {
     return super.hostname;
   }
@@ -172,24 +115,6 @@ class LazyURL extends URL {
     }
     return origin;
   }
-  /*
-   get password()
-  {
-      return this[SYM_URL].password
-  }
-   set password(value)
-  {
-      this[SYM_URL].password = value
-  }
-   get pathname()
-  {
-      return this[SYM_URL].pathname
-  }
-   set pathname(value)
-  {
-      this[SYM_URL].pathname = value
-  }
-    */
   get port() {
     return super.port;
   }
@@ -223,9 +148,6 @@ class LazyURL extends URL {
     const old = super.protocol;
     if (old !== value) {
       super.protocol = value;
-      /**
-       * avoid bug of https://github.com/nodejs/node/issues/39732
-       */
       replaceUrlProtocol._fixReplaceURLProtocol(this, old, value);
     }
   }
@@ -246,28 +168,6 @@ class LazyURL extends URL {
       this.password = ls.join(':');
     }
   }
-  /*
-  get search()
-  {
-      return this[SYM_URL].search
-  }
-   set search(value)
-  {
-      this[SYM_URL].search = value
-  }
-   get searchParams()
-  {
-      return this[SYM_URL].searchParams
-  }
-   get username()
-  {
-      return this[SYM_URL].username
-  }
-   set username(value)
-  {
-      this[SYM_URL].username = value
-  }
-    */
   /**
    * @alias protocol
    */
@@ -397,9 +297,7 @@ function _core(url, base) {
     if (e.code === 'ERR_INVALID_URL' || /Invalid URL/.test(e.message)) {
       if (typeof base === 'string') {
         let old = base;
-        let u = urlParse(base) /* as URL & {
-                               set(name: keyof URL, value: string): void
-                               }*/;
+        let u = urlParse(base);
         if (u.host === '' || u.protocol === '') {
           if (!old.includes('/') && [u.protocol + u.host, u.protocol + u.pathname].includes(old.toLowerCase())) {
             u = urlParse('');

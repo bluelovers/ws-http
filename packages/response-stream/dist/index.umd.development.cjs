@@ -4,9 +4,6 @@
 	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.HttpResponseStream = {}, global.stream));
 })(this, (function (exports, stream) { 'use strict';
 
-	/**
-	 * Created by user on 2020/2/26.
-	 */
 	function responseStream(serverResponse, data) {
 	  let readStream = new stream.PassThrough();
 	  readStream.end(data);
