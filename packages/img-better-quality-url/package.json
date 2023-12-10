@@ -1,6 +1,6 @@
 {
   "name": "img-better-quality-url",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "try to get better quality / full size / original image from given url",
   "keywords": [
     "better quality",
@@ -42,7 +42,7 @@
     "tsc:showConfig": "ynpx get-current-tsconfig -p"
   },
   "dependencies": {
-    "lazy-url": "^2.0.4",
+    "lazy-url": "^2.0.5",
     "mitemin": "^1.0.12",
     "parse-domain": "<6 >=5.0.0",
     "tslib": "^2"

@@ -1,6 +1,6 @@
 {
   "name": "replace-url-protocol",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "helper for avoid node.js can't update protocol for some url",
   "keywords": [
     "create-by-yarn-tool",
@@ -73,7 +73,6 @@
     "sort-package-json": "yarn-tool sort",
     "tsc:showConfig": "ynpx get-current-tsconfig -p"
   },
-  "dependencies": {},
   "packageManager": "yarn@^1.22.11",
   "gitHead": "165b4921ea083a55604eaad15f5acce8d914c0e9"
 }

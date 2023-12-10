@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.13](https://github.com/bluelovers/ws-http/compare/http-response-stream@1.0.12...http-response-stream@1.0.13) (2023-12-10)
+
+
+
+### ♻️　Chores
+
+* **deps:** update deps ([8f7bad2](https://github.com/bluelovers/ws-http/commit/8f7bad245db13b3e25401cbd5f75313973fa4700))
+
+
+### 🔖　Miscellaneous
+
+* . ([4b463fa](https://github.com/bluelovers/ws-http/commit/4b463fad270900f933b327ef06f40707e8597da5))
+
+
+
 ## [1.0.12](https://github.com/bluelovers/ws-http/compare/http-response-stream@1.0.11...http-response-stream@1.0.12) (2022-06-01)
 
 

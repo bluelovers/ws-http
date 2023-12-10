@@ -1,6 +1,6 @@
 {
   "name": "get-http-result-url",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "",
   "keywords": [
     "http",
@@ -76,7 +76,7 @@
   },
   "dependencies": {
     "http-form-urlencoded": "^1.0.24",
-    "lazy-url": "^2.0.4"
+    "lazy-url": "^2.0.5"
   },
   "packageManager": "yarn@^1.22.11",
   "gitHead": "165b4921ea083a55604eaad15f5acce8d914c0e9"

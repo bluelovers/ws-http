@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.14](https://github.com/bluelovers/ws-http/compare/img-better-quality-url@1.0.13...img-better-quality-url@1.0.14) (2023-12-10)
+
+
+
+### ♻️　Chores
+
+* **deps:** update deps ([8f7bad2](https://github.com/bluelovers/ws-http/commit/8f7bad245db13b3e25401cbd5f75313973fa4700))
+
+
+### 🔖　Miscellaneous
+
+* . ([76e6fc3](https://github.com/bluelovers/ws-http/commit/76e6fc3ce43910ca3fe80496c788e3c9a5ea6288))
+
+
+
 ## [1.0.13](https://github.com/bluelovers/ws-http/compare/img-better-quality-url@1.0.12...img-better-quality-url@1.0.13) (2022-06-01)
 
 **Note:** Version bump only for package img-better-quality-url
