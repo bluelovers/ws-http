@@ -15,7 +15,8 @@
     "url": "git+https://github.com/bluelovers/ws-http.git"
   },
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "packages/@lazy-http/*"
   ],
   "scripts": {
     "review:all": "yarn-tool ws run review --concurrency 1",

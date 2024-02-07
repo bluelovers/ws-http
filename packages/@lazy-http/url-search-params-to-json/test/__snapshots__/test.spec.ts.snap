@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test.spec {"foo":["a","b","c"],"bar":"xyz"} 1`] = `
+[
+  [
+    "foo",
+    "a",
+  ],
+  [
+    "foo",
+    "b",
+  ],
+  [
+    "foo",
+    "c",
+  ],
+  [
+    "bar",
+    "xyz",
+  ],
+]
+`;
+
+exports[`test.spec {"foo":["a","b","c"],"bar":"xyz"} 2`] = `"foo=a&foo=b&foo=c&bar=xyz"`;
+
+exports[`test.spec {"foo":["a","b","c"],"bar":"xyz"} 3`] = `
+{
+  "bar": "xyz",
+  "foo": [
+    "a",
+    "b",
+    "c",
+  ],
+}
+`;
+
+exports[`test.spec {"foo":["first_value","second_value"]} 1`] = `
+[
+  [
+    "foo",
+    "first_value",
+  ],
+  [
+    "foo",
+    "second_value",
+  ],
+]
+`;
+
+exports[`test.spec {"foo":["first_value","second_value"]} 2`] = `"foo=first_value&foo=second_value"`;
+
+exports[`test.spec {"foo":["first_value","second_value"]} 3`] = `
+{
+  "foo": [
+    "first_value",
+    "second_value",
+  ],
+}
+`;
+
+exports[`test.spec test 1`] = `
+[
+  [
+    "foo",
+    "first_value",
+  ],
+  [
+    "foo",
+    "second_value",
+  ],
+]
+`;
+
+exports[`test.spec test 2`] = `"foo=first_value&foo=second_value"`;
