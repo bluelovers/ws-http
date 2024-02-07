@@ -17,7 +17,7 @@ function entriesToJSON(entries, options) {
       // @ts-ignore
       json[key] = [];
     }
-    if (json.hasOwnProperty(key)) {
+    if (Object.prototype.hasOwnProperty.call(json, key)) {
       if (Array.isArray(json[key])) {
         json[key].push(val);
       } else {
@@ -47,7 +47,7 @@ function removeSquareBracketsFromJSON(json, ks) {
       const key2 = key.replace(/\[\]$/, '');
       if (!key2.length) {
         throw new TypeError(`Invalid key: '${key}'`);
-      } else if (json.hasOwnProperty(key2)) {
+      } else if (Object.prototype.hasOwnProperty.call(json, key2)) {
         throw new TypeError(`'${key2}' already exists in keys`);
       }
       delete json[key];

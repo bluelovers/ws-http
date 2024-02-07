@@ -25,7 +25,7 @@ export function entriesToJSON<T extends Record<string, any>>(entries: IEntriesLi
 			json[key] = [];
 		}
 
-		if (json.hasOwnProperty(key))
+		if (Object.prototype.hasOwnProperty.call(json, key))
 		{
 			// if the current key is already an array, we'll add the value to it
 			if (Array.isArray(json[key]))
@@ -76,7 +76,7 @@ export function removeSquareBracketsFromJSON<T extends Record<string, unknown>>(
 			{
 				throw new TypeError(`Invalid key: '${key}'`)
 			}
-			else if (json.hasOwnProperty(key2))
+			else if (Object.prototype.hasOwnProperty.call(json, key2))
 			{
 				throw new TypeError(`'${key2}' already exists in keys`)
 			}

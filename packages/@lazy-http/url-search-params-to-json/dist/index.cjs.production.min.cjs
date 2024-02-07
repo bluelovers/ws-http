@@ -3,7 +3,7 @@
 function entriesToJSON(r, e) {
   const {removeSquareBracketsArrayKey: s = !1, squareBracketsArrayKey: a = !1} = null != e ? e : {}, t = new Set;
   let o = {};
-  for (const [e, s] of r) a && e.endsWith("[]") && (o[e] = []), o.hasOwnProperty(e) ? (Array.isArray(o[e]) ? o[e].push(s) : o[e] = [ o[e], s ], 
+  for (const [e, s] of r) a && e.endsWith("[]") && (o[e] = []), Object.prototype.hasOwnProperty.call(o, e) ? (Array.isArray(o[e]) ? o[e].push(s) : o[e] = [ o[e], s ], 
   t.add(e)) : o[e] = s;
   return s && (o = removeSquareBracketsFromJSON(o, t)), o;
 }
@@ -17,7 +17,7 @@ function removeSquareBracketsFromJSON(r, e) {
     if (e.endsWith("[]") && Array.isArray(s)) {
       const a = e.replace(/\[\]$/, "");
       if (!a.length) throw new TypeError(`Invalid key: '${e}'`);
-      if (r.hasOwnProperty(a)) throw new TypeError(`'${a}' already exists in keys`);
+      if (Object.prototype.hasOwnProperty.call(r, a)) throw new TypeError(`'${a}' already exists in keys`);
       delete r[e], r[a] = s;
     }
   })), r;
