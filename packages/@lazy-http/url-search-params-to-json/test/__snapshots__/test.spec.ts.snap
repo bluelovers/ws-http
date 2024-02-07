@@ -58,17 +58,13 @@ exports[`test.spec {"foo":["first_value","second_value"]} 3`] = `
 }
 `;
 
-exports[`test.spec test 1`] = `
-[
-  [
-    "foo",
+exports[`test.spec squareBrackets 1`] = `
+{
+  "foo[]": [
     "first_value",
-  ],
-  [
-    "foo",
     "second_value",
   ],
-]
+}
 `;
 
-exports[`test.spec test 2`] = `"foo=first_value&foo=second_value"`;
+exports[`test.spec squareBrackets 2`] = `"foo%5B%5D=first_value&foo%5B%5D=second_value"`;

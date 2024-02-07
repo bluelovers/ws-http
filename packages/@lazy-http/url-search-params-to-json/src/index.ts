@@ -1,11 +1,30 @@
 
 export type IEntriesLike<K extends string, V extends unknown> = [key: K, val: V][] | IterableIterator<[K, V]>
 
-export function entriesToJSON<T extends Record<string, any>>(entries: IEntriesLike<string, unknown>)
+export interface IOptions
 {
-	const json : T = {} as any;
+	removeSquareBracketsArrayKey?: boolean,
+	squareBracketsArrayKey?: boolean,
+}
+
+/**
+ * @see https://stackoverflow.com/a/52539264/4563339
+ */
+export function entriesToJSON<T extends Record<string, any>>(entries: IEntriesLike<string, unknown>, options?: IOptions)
+{
+	const { removeSquareBracketsArrayKey = false, squareBracketsArrayKey = false } = options ?? {};
+
+	const ks = new Set<string>();
+
+	let json : T = {} as any;
 	for (const [key, val] of entries)
 	{
+		if (squareBracketsArrayKey && key.endsWith('[]'))
+		{
+			// @ts-ignore
+			json[key] = [];
+		}
+
 		if (json.hasOwnProperty(key))
 		{
 			// if the current key is already an array, we'll add the value to it
@@ -20,6 +39,8 @@ export function entriesToJSON<T extends Record<string, any>>(entries: IEntriesLi
 				// @ts-ignore
 				json[key] = [json[key], val];
 			}
+
+			ks.add(key)
 		}
 		else
 		{
@@ -28,21 +49,79 @@ export function entriesToJSON<T extends Record<string, any>>(entries: IEntriesLi
 			json[key] = val;
 		}
 	}
+
+	if (removeSquareBracketsArrayKey)
+	{
+		json = removeSquareBracketsFromJSON(json, ks)
+	}
+
 	return json
 }
 
-export function searchParamsToJSON<T extends Record<string, any>>(sp: URLSearchParams)
+export function removeSquareBracketsFromJSON<T extends Record<string, unknown>>(json: T, ks?: Set<string>)
 {
-	return entriesToJSON<T>(sp.entries())
+	ks ??= new Set(Object.keys(json));
+
+	json = {
+		...json,
+	}
+
+	ks.forEach(key =>
+	{
+		const val = json[key];
+		if (key.endsWith('[]') && Array.isArray(val))
+		{
+			const key2 = key.replace(/\[\]$/, '');
+			if (!key2.length)
+			{
+				throw new TypeError(`Invalid key: '${key}'`)
+			}
+			else if (json.hasOwnProperty(key2))
+			{
+				throw new TypeError(`'${key2}' already exists in keys`)
+			}
+			delete json[key]
+			// @ts-ignore
+			json[key2] = val;
+		}
+	})
+
+	return json
 }
 
-export function jsonToEntries(json: Record<string, unknown>)
+/**
+ * @see https://stackoverflow.com/a/52539264/4563339
+ */
+export function searchParamsToJSON<T extends Record<string, any>>(sp: URLSearchParams, options?: IOptions)
 {
+	return entriesToJSON<T>(sp.entries(), options)
+}
+
+export function searchParamsStringToJSON<T extends Record<string, any>>(sp: string, options?: IOptions)
+{
+	return searchParamsToJSON<T>(new URLSearchParams(sp), options)
+}
+
+export function jsonToEntries(json: Record<string, unknown>, options?: IOptions)
+{
+	const { squareBracketsArrayKey = false, removeSquareBracketsArrayKey = false } = options ?? {};
+
+	if (removeSquareBracketsArrayKey)
+	{
+		json = removeSquareBracketsFromJSON(json)
+	}
+
 	return Object.entries(json)
 		.reduce((entries, [key, val]) => {
-
 			if (Array.isArray(val))
 			{
+				let bool = key.endsWith('[]');
+
+				if (squareBracketsArrayKey && !bool)
+				{
+					key += '[]';
+				}
+
 				val.forEach(v => {
 					entries.push([key, v])
 				})
@@ -56,9 +135,9 @@ export function jsonToEntries(json: Record<string, unknown>)
 		}, [] as [string, unknown][])
 }
 
-export function jsonToSearchParams(json: Record<string, unknown>)
+export function jsonToSearchParams(json: Record<string, unknown>, options?: IOptions)
 {
-	return new URLSearchParams(jsonToEntries(json) as any)
+	return new URLSearchParams(jsonToEntries(json, options) as any)
 }
 
 export default searchParamsToJSON
