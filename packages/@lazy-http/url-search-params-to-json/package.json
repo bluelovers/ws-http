@@ -10,14 +10,14 @@
     "create-by-yarn-tool",
     "create-by-tsdx"
   ],
-  "homepage": "https://github.com/bluelovers/ws-http/tree/master/packages/url-search-params-to-json#readme",
+  "homepage": "https://github.com/bluelovers/ws-http/tree/master/packages/@lazy-http/url-search-params-to-json#readme",
   "bugs": {
     "url": "https://github.com/bluelovers/ws-http/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bluelovers/ws-http.git",
-    "directory": "packages/url-search-params-to-json"
+    "directory": "packages/@lazy-http/url-search-params-to-json"
   },
   "license": "ISC",
   "author": "bluelovers",

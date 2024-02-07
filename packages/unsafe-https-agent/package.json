@@ -40,7 +40,7 @@
     "tslib": "^2"
   },
   "devDependencies": {
-    "@types/node-fetch": "^2.6.9",
+    "@types/node-fetch": "^2.6.11",
     "cross-fetch": "^4.0.0"
   },
   "gitHead": "165b4921ea083a55604eaad15f5acce8d914c0e9"

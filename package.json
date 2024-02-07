@@ -75,17 +75,17 @@
   },
   "resolutions": {},
   "dependencies": {
-    "axios": "^1.6.2",
+    "axios": "^1.6.7",
     "tslib": "^2"
   },
   "devDependencies": {
     "@bluelovers/tsconfig": "^1.0.34",
-    "@types/jest": "^29.5.10",
-    "@types/node": "^20.10.3",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.16",
     "@types/url-parse": "^1.4.11",
     "@yarn-tool/ws-find-up-paths": "*",
     "jest": "^29.7.0",
-    "ts-jest": "^29.1.1"
+    "ts-jest": "^29.1.2"
   },
   "peerDependencies": {
     "lerna": "<=6 >5"

@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "lazy-url": "^2.0.5",
-    "mitemin": "^1.0.12",
+    "mitemin": "^1.0.14",
     "parse-domain": "<6 >=5.0.0",
     "tslib": "^2"
   },
