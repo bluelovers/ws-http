@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.8](https://github.com/bluelovers/ws-http/compare/unsafe-https-agent@1.0.7...unsafe-https-agent@1.0.8) (2024-02-07)
+
+
+
+### 📌　Dependencies
+
+* update deps ([933cfda](https://github.com/bluelovers/ws-http/commit/933cfda042b66a5824158ec616c6e54f52ff6cf0))
+
+
+
 ## [1.0.7](https://github.com/bluelovers/ws-http/compare/unsafe-https-agent@1.0.6...unsafe-https-agent@1.0.7) (2023-12-10)
 
 

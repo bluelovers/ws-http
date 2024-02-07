@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.15](https://github.com/bluelovers/ws-http/compare/img-better-quality-url@1.0.14...img-better-quality-url@1.0.15) (2024-02-07)
+
+
+
+### 📌　Dependencies
+
+* update deps ([933cfda](https://github.com/bluelovers/ws-http/commit/933cfda042b66a5824158ec616c6e54f52ff6cf0))
+
+
+
 ## [1.0.14](https://github.com/bluelovers/ws-http/compare/img-better-quality-url@1.0.13...img-better-quality-url@1.0.14) (2023-12-10)
 
 
